@@ -1,12 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
-/* Resets and basic setup*/
 const GlobalStyle = createGlobalStyle`
 :root {
-    --primary: white;
-    --primary-light: white;
-    --secondary: white;
-    --secondary-light: white;
     --white: white;
     --black: black;
   
@@ -51,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     line-height: 1.5;
-    font-size: 1.25rem; /* var(--fs-400) */
+    font-size: 1.25rem;
   }
   
   ul[class],
@@ -72,30 +67,25 @@ const GlobalStyle = createGlobalStyle`
     height: auto;
     display: block;
   }
-  
-  /* Typography */
-  
-  .text-serif {
-    font-family: var(--ff-serif);
-    font-weight: 200;
-  }
-  
-  .page-title {
-    font-size: var(--fs-900);
-  }
-  
-  .section-title {
-    font-size: var(--fs-500);
-    color: var(--secondary);
-  }
-  
-  /* general layout */
-  
-  .container {
-    max-width: 40rem;
-    padding: 2rem;
-    margin: 0 auto;
-  }
+//iPhone 6/7/8+ for final presentation
+  .leaflet-container {
+  width: 100%;
+  height: 672px;
+}
+//Samsung Galaxy S10 for tests on own device to use with touch
+@media (min-height: 760px) {
+  .leaflet-container {
+  width: 100%;
+  height: 696px;
+}
+}
+//Basic monitor to use with mouse
+@media (min-height: 800px) {
+  .leaflet-container {
+  width: 100%;
+  height: 100vh;
+}
+}
   `;
 
 export default GlobalStyle;

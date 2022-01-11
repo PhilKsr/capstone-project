@@ -87,6 +87,7 @@ const FooterNavbar = styled.ul`
   align-items: center;
   background: #313131;
   position: fixed;
+  z-index: 999;
   bottom: 0;
   right: 0;
   left: 0;
