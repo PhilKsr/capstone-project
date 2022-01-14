@@ -1,0 +1,53 @@
+import AlpineHut from "../model/alpine_hut-model.js";
+import Aqueduct from "../model/aqueducts-model.js";
+import Attraction from "../model/attractions-model.js";
+import CampSite from "../model/camp_sites-model.js";
+import Canoe from "../model/canoe-model.js";
+import CaravanSite from "../model/caravan_site-model.js";
+import Castle from "../model/castles-model.js";
+import Fuel from "../model/fuel-model.js";
+import Geyser from "../model/geysers-model.js";
+import Hotel from "../model/hotels-model.js";
+import Restaurant from "../model/restaurants-model.js";
+import Ruin from "../model/ruins-model.js";
+import ThemePark from "../model/theme_parks-model.js";
+import Viewpoint from "../model/viewpoints-model.js";
+import Waterfall from "../model/waterfalls-model.js";
+
+const getAll = async (req, res) => {
+  const result = [];
+  const alpine_huts = await AlpineHut.find().limit(25);
+  result = [...result, ...alpine_huts];
+  const aqueducts = await Aqueduct.find().limit(25);
+  result = [...result, ...aqueducts];
+  const attractions = await Attraction.find().limit(25);
+  result = [...result, ...attractions];
+  const campSites = await CampSite.find().limit(25);
+  result = [...result, ...campSites];
+  const canoes = await Canoe.find().limit(25);
+  result = [...result, ...canoes];
+  const caravanSites = await CaravanSite.find().limit(25);
+  result = [...result, ...caravanSites];
+  const castles = await Castle.find().limit(25);
+  result = [...result, ...castles];
+  const fuels = await Fuel.find().limit(25);
+  result = [...result, ...fuels];
+  const geysers = await Geyser.find().limit(25);
+  result = [...result, ...geysers];
+  const hotels = await Hotel.find().limit(25);
+  result = [...result, ...hotels];
+  const restaurants = await Restaurant.find().limit(25);
+  result = [...result, ...restaurants];
+  const ruins = await Ruin.find().limit(25);
+  result = [...result, ...ruins];
+  const themeParks = await ThemePark.find().limit(25);
+  result = [...result, ...themeParks];
+  const viewpoints = await Viewpoint.find().limit(25);
+  result = [...result, ...viewpoints];
+  const waterfalls = await Waterfall.find().limit(25);
+  result = [...result, ...waterfalls];
+
+  res.json(result);
+};
+
+export default getAll;
