@@ -61,10 +61,6 @@ server.get("/api/viewpoints", getViewpoints);
 server.get("/api/waterfalls", getWaterfalls);
 server.get("/api", getAll);
 
-server.get("/", (req, res) => {
-  res.json({ status: "Server is up and running" });
-});
-
 //Static assets (images, css, js)
 server.use(express.static(path.join(__dirname, "../client/dist")));
 
