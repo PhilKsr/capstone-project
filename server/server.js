@@ -17,6 +17,9 @@ import getThemeParks from "./controller/theme_parks.controller.js";
 import getViewpoints from "./controller/viewpoints.controller.js";
 import getWaterfalls from "./controller/waterfalls.controller.js";
 import getAll from "./controller/all.controller.js";
+import getCastles from "./controller/castles.controller.js";
+import getGeysers from "./controller/geysers.controller.js";
+import getHotels from "./controller/hotels.controller.js";
 
 const __dirname = dirname(import.meta.url);
 
@@ -47,10 +50,10 @@ server.get("/api/attractions", getAttractions);
 server.get("/api/camp_sites", getCampSites);
 server.get("/api/canoes", getCanoes);
 server.get("/api/caravan_sites", getCaravanSites);
-server.get("/api/castles", getCaravanSites);
+server.get("/api/castles", getCastles);
 server.get("/api/fuel", getFuel);
-server.get("/api/geysers", getFuel);
-server.get("/api/hotels", getFuel);
+server.get("/api/geysers", getGeysers);
+server.get("/api/hotels", getHotels);
 server.get("/api/restaurants", getRestaurants);
 server.get("/api/ruins", getRuins);
 server.get("/api/theme_parks", getThemeParks);

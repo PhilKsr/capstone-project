@@ -1,5 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  TileLayer,
+  useMapEvent,
+  Popup,
+} from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 function Map() {
   const [initialLocations, setInitialLocations] = useState([]);
@@ -7,10 +14,10 @@ function Map() {
 
   const fetchLocations = async () => {
     const res = await fetch(
-      `http://localhost:5000/api/waterfalls?boundsSW=${
-        map.getBounds()._southWest.lat + "," + map.getBounds()._southWest.lng
+      `http://localhost:5000/api/castles?boundsSW=${
+        map.getBounds()._southWest.lng + "," + map.getBounds()._southWest.lat
       }&boundsNE=${
-        map.getBounds()._northEast.lat + "," + map.getBounds()._northEast.lng
+        map.getBounds()._northEast.lng + "," + map.getBounds()._northEast.lat
       }`
     );
     const data = await res.json();
@@ -19,17 +26,18 @@ function Map() {
 
   useEffect(() => {
     fetchLocations();
-  }, []);
+  }, [map]);
 
-  const clickHandler = () => {
-    console.log(map);
-    console.log(map.getBounds()._southWest.lat);
-    console.log(map.getBounds()._southWest.lng);
+  const EventWatcher = () => {
+    useMapEvent("mouseup", () => {
+      fetchLocations();
+    });
+    return null;
   };
 
   return (
     <>
-      <button onClick={clickHandler}>show all</button>
+      <button>show all</button>
       <MapContainer
         center={[53.55, 9.99]}
         zoom={7}
@@ -39,15 +47,24 @@ function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
-        {initialLocations.map((location) => (
-          <Marker
-            key={location._id}
-            position={[
-              location.geometry.coordinates[1],
-              location.geometry.coordinates[0],
-            ]}></Marker>
-        ))}
-        <Marker position={[53.55, 9.99]}></Marker>
+        <EventWatcher />
+        <MarkerClusterGroup>
+          {initialLocations.map((location) => (
+            <Marker
+              key={location._id}
+              position={[
+                location.geometry.coordinates[1],
+                location.geometry.coordinates[0],
+              ]}>
+              <Popup>
+                <div>
+                  <p>{location.properties.name}</p>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
+          <Marker position={[53.55, 9.99]}></Marker>
+        </MarkerClusterGroup>
       </MapContainer>
     </>
   );

@@ -1,11 +1,15 @@
 import Viewpoint from "../model/viewpoints-model.js";
 
-const count = function random(count) {
-  return Math.floor(Math.random() * count);
-};
-
 const getViewpoints = async (req, res) => {
-  const result = await Viewpoint.find().limit(25).skip(random()).next();
+  const boundsSW = req.query.boundsSW;
+  const boundsNE = req.query.boundsNE;
+  const result = await Viewpoint.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   res.json(result);
 };
 

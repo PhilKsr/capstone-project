@@ -1,7 +1,15 @@
 import Canoe from "../model/canoe-model.js";
 
 const getCanoes = async (req, res) => {
-  const result = await Canoe.find().limit(25);
+  const boundsSW = req.query.boundsSW;
+  const boundsNE = req.query.boundsNE;
+  const result = await Canoe.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   res.json(result);
 };
 

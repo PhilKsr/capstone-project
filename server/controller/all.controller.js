@@ -15,36 +15,128 @@ import Viewpoint from "../model/viewpoints-model.js";
 import Waterfall from "../model/waterfalls-model.js";
 
 const getAll = async (req, res) => {
-  const result = [];
-  const alpine_huts = await AlpineHut.find().limit(25);
+  const boundsSW = req.query.boundsSW;
+  const boundsNE = req.query.boundsNE;
+  let result = [];
+  const alpine_huts = await AlpineHut.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...alpine_huts];
-  const aqueducts = await Aqueduct.find().limit(25);
+  const aqueducts = await Aqueduct.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...aqueducts];
-  const attractions = await Attraction.find().limit(25);
+  const attractions = await Attraction.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...attractions];
-  const campSites = await CampSite.find().limit(25);
+  const campSites = await CampSite.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...campSites];
-  const canoes = await Canoe.find().limit(25);
+  const canoes = await Canoe.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...canoes];
-  const caravanSites = await CaravanSite.find().limit(25);
+  const caravanSites = await CaravanSite.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...caravanSites];
-  const castles = await Castle.find().limit(25);
+  const castles = await Castle.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...castles];
-  const fuels = await Fuel.find().limit(25);
+  const fuels = await Fuel.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...fuels];
-  const geysers = await Geyser.find().limit(25);
+  const geysers = await Geyser.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...geysers];
-  const hotels = await Hotel.find().limit(25);
+  const hotels = await Hotel.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...hotels];
-  const restaurants = await Restaurant.find().limit(25);
+  const restaurants = await Restaurant.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...restaurants];
-  const ruins = await Ruin.find().limit(25);
+  const ruins = await Ruin.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...ruins];
-  const themeParks = await ThemePark.find().limit(25);
+  const themeParks = await ThemePark.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...themeParks];
-  const viewpoints = await Viewpoint.find().limit(25);
+  const viewpoints = await Viewpoint.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...viewpoints];
-  const waterfalls = await Waterfall.find().limit(25);
+  const waterfalls = await Waterfall.find({
+    geometry: {
+      $geoWithin: {
+        $box: [boundsSW.split(","), boundsNE.split(",")],
+      },
+    },
+  });
   result = [...result, ...waterfalls];
 
   res.json(result);
