@@ -37,7 +37,6 @@ function Map() {
 
   return (
     <>
-      <button>show all</button>
       <MapContainer
         center={[53.55, 9.99]}
         zoom={7}
