@@ -4,10 +4,6 @@ import styled from "styled-components";
 function FilterMenu({ addToFilteredLocations }) {
   const [showFilterMenu, setShowFilterMenu] = useState(false);
 
-  const showFilter = () => {
-    setShowFilterMenu(!showFilterMenu);
-  };
-
   const filterOptions = [
     "Alpine Huts",
     "Attractions",
@@ -21,6 +17,9 @@ function FilterMenu({ addToFilteredLocations }) {
     "Themeparks",
     "Waterfalls",
   ];
+  const showFilter = () => {
+    setShowFilterMenu(!showFilterMenu);
+  };
 
   return (
     <FilterContainer>
@@ -30,7 +29,7 @@ function FilterMenu({ addToFilteredLocations }) {
             return (
               <li key={index}>
                 <input
-                  type='radio'
+                  type='checkbox'
                   name={option}
                   onClick={addToFilteredLocations}
                 />
