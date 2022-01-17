@@ -85,7 +85,7 @@ const FooterNavbar = styled.ul`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #313131;
+  background: var(--black);
   position: fixed;
   z-index: 999;
   bottom: 0;
@@ -109,14 +109,8 @@ const FooterNavbar = styled.ul`
   //Switch auf filled Icons! -> Fill: Füllung / Stroke: Outline
   li a.active {
     svg {
-      background: white;
-      fill: #313131;
-    }
-  }
-  li a.hover {
-    svg {
-      background: white;
-      fill: #313131;
+      background: var(--white);
+      fill: var(--black);
     }
   }
 `;

@@ -9,7 +9,7 @@ function LocationMarker() {
     },
     locationfound(e) {
       setPosition(e.latlng);
-      map.flyTo(e.latlng, map.getZoom());
+      map.flyTo(e.latlng, 12, map.getZoom());
     },
   });
 
