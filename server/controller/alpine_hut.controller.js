@@ -1,8 +1,6 @@
 import AlpineHut from "../model/alpine_hut-model.js";
 
-const getAlpineHuts = async (req, res) => {
-  const boundsSW = req.query.boundsSW;
-  const boundsNE = req.query.boundsNE;
+const getAlpineHuts = async (boundsSW, boundsNE) => {
   const result = await AlpineHut.find({
     geometry: {
       $geoWithin: {
@@ -10,7 +8,7 @@ const getAlpineHuts = async (req, res) => {
       },
     },
   });
-  res.json(result);
+  return result;
 };
 
 export default getAlpineHuts;

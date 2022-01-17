@@ -1,8 +1,6 @@
 import Castle from "../model/castles-model.js";
 
-const getCastles = async (req, res) => {
-  const boundsSW = req.query.boundsSW;
-  const boundsNE = req.query.boundsNE;
+const getCastles = async (boundsSW, boundsNE) => {
   const result = await Castle.find({
     geometry: {
       $geoWithin: {
@@ -10,7 +8,7 @@ const getCastles = async (req, res) => {
       },
     },
   });
-  res.json(result);
+  return result;
 };
 
 export default getCastles;

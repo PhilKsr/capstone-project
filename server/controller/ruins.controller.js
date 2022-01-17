@@ -1,8 +1,6 @@
 import Ruin from "../model/ruins-model.js";
 
-const getRuins = async (req, res) => {
-  const boundsSW = req.query.boundsSW;
-  const boundsNE = req.query.boundsNE;
+const getRuins = async (boundsSW, boundsNE) => {
   const result = await Ruin.find({
     geometry: {
       $geoWithin: {
@@ -10,7 +8,7 @@ const getRuins = async (req, res) => {
       },
     },
   });
-  res.json(result);
+  return result;
 };
 
 export default getRuins;

@@ -1,8 +1,6 @@
 import Restaurant from "../model/restaurants-model.js";
 
-const getRestaurants = async (req, res) => {
-  const boundsSW = req.query.boundsSW;
-  const boundsNE = req.query.boundsNE;
+const getRestaurants = async (boundsSW, boundsNE) => {
   const result = await Restaurant.find({
     geometry: {
       $geoWithin: {
@@ -10,7 +8,7 @@ const getRestaurants = async (req, res) => {
       },
     },
   });
-  res.json(result);
+  return result;
 };
 
 export default getRestaurants;

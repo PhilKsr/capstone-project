@@ -1,8 +1,6 @@
 import Hotel from "../model/hotels-model.js";
 
-const getHotels = async (req, res) => {
-  const boundsSW = req.query.boundsSW;
-  const boundsNE = req.query.boundsNE;
+const getHotels = async (boundsSW, boundsNE) => {
   const result = await Hotel.find({
     geometry: {
       $geoWithin: {
@@ -10,7 +8,7 @@ const getHotels = async (req, res) => {
       },
     },
   });
-  res.json(result);
+  return result;
 };
 
 export default getHotels;

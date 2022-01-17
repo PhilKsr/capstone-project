@@ -1,8 +1,8 @@
 import { useMapEvent } from "react-leaflet";
 
-function MapMoveWatcher({ fetchLocations }) {
+function MapMoveWatcher({ fetchLocations, filter }) {
   useMapEvent("mouseup", () => {
-    fetchLocations();
+    fetchLocations(filter);
   });
   return null;
 }

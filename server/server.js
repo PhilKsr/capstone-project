@@ -4,21 +4,17 @@ import path from "path";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import getAlpineHuts from "./controller/alpine_hut.controller.js";
-import getAqueducts from "./controller/aqueduct.controller.js";
 import cors from "cors";
 import getAttractions from "./controller/attractions.controller.js";
 import getCampSites from "./controller/camp_sites.controller.js";
-import getCanoes from "./controller/canoe.controller.js";
 import getCaravanSites from "./controller/caravan_sites.controller.js";
 import getFuel from "./controller/fuel.controller.js";
 import getRestaurants from "./controller/restaurants.controller.js";
 import getRuins from "./controller/ruins.controller.js";
 import getThemeParks from "./controller/theme_parks.controller.js";
-import getViewpoints from "./controller/viewpoints.controller.js";
 import getWaterfalls from "./controller/waterfalls.controller.js";
 import getAll from "./controller/all.controller.js";
 import getCastles from "./controller/castles.controller.js";
-import getGeysers from "./controller/geysers.controller.js";
 import getHotels from "./controller/hotels.controller.js";
 
 const __dirname = dirname(import.meta.url);
@@ -45,19 +41,15 @@ db.once("open", function (callback) {
 });
 
 server.get("/api/alpine_huts", getAlpineHuts);
-server.get("/api/aqueducts", getAqueducts);
 server.get("/api/attractions", getAttractions);
 server.get("/api/camp_sites", getCampSites);
-server.get("/api/canoes", getCanoes);
 server.get("/api/caravan_sites", getCaravanSites);
 server.get("/api/castles", getCastles);
 server.get("/api/fuel", getFuel);
-server.get("/api/geysers", getGeysers);
 server.get("/api/hotels", getHotels);
 server.get("/api/restaurants", getRestaurants);
 server.get("/api/ruins", getRuins);
 server.get("/api/theme_parks", getThemeParks);
-server.get("/api/viewpoints", getViewpoints);
 server.get("/api/waterfalls", getWaterfalls);
 server.get("/api", getAll);
 

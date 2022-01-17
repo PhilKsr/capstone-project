@@ -1,8 +1,6 @@
 import Fuel from "../model/fuel-model.js";
 
-const getFuel = async (req, res) => {
-  const boundsSW = req.query.boundsSW;
-  const boundsNE = req.query.boundsNE;
+const getFuel = async (boundsSW, boundsNE) => {
   const result = await Fuel.find({
     geometry: {
       $geoWithin: {
@@ -10,7 +8,7 @@ const getFuel = async (req, res) => {
       },
     },
   });
-  res.json(result);
+  return result;
 };
 
 export default getFuel;

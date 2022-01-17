@@ -1,53 +1,60 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  MapContainer,
-  Marker,
-  TileLayer,
-  Popup,
-  useMapEvents,
-} from "react-leaflet";
+import React, { useEffect, useState } from "react";
+import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 import MapMoveWatcher from "../lib/MapMoveWatcher";
-import styled from "styled-components";
 import LocationMarker from "./LocationMarker";
+import LocateButton from "./LocateButton";
+import FilterMenu from "./FilterMenu";
 
 function Map() {
-  const [initialLocations, setInitialLocations] = useState([]);
+  const [locations, setLocations] = useState([]);
   const [mapInstance, setMapInstance] = useState();
+  const [filteredLocations, setFilteredLocations] = useState([]);
 
-  const fetchLocations = async () => {
+  const fetchLocations = async (filterArray) => {
     if (!mapInstance) {
       return;
     }
-    const res = await fetch(
-      `http://localhost:5000/api/castles?boundsSW=${
-        mapInstance.getBounds().getWest() +
-        "," +
-        mapInstance.getBounds().getSouth()
-      }&boundsNE=${
-        mapInstance.getBounds().getEast() +
-        "," +
-        mapInstance.getBounds().getNorth()
-      }`
-    );
-    const data = await res.json();
-    setInitialLocations(data);
-  };
-
-  const clicked = (e) => {
-    const map = e.target.previousSibling;
-    mapInstance.fire("tileunload");
+    if (mapInstance._zoom >= 6) {
+      const res = await fetch(
+        `/api?boundsSW=${
+          mapInstance.getBounds().getWest() +
+          "," +
+          mapInstance.getBounds().getSouth()
+        }&boundsNE=${
+          mapInstance.getBounds().getEast() +
+          "," +
+          mapInstance.getBounds().getNorth()
+        }&collections=${
+          filterArray && filterArray.length > 0 ? filterArray.join(",") : false
+        }`
+      );
+      const data = await res.json();
+      setLocations(data);
+    }
   };
 
   useEffect(() => {
     fetchLocations();
   }, [mapInstance]);
 
+  const addToFilteredLocations = (event) => {
+    if (event.target.checked) {
+      setFilteredLocations([...filteredLocations, event.target.name]);
+    } else if (!event.target.checked) {
+      setFilteredLocations(
+        filteredLocations.filter(
+          (oneLocation) => oneLocation !== event.target.name
+        )
+      );
+    }
+  };
+
   return (
     <>
       <MapContainer
         center={[53.55, 9.99]}
-        zoom={7}
+        zoom={8}
         scrollWheelZoom={true}
         whenCreated={setMapInstance}>
         <TileLayer
@@ -55,37 +62,39 @@ function Map() {
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
 
-        <MapMoveWatcher fetchLocations={fetchLocations} />
+        <MapMoveWatcher
+          fetchLocations={fetchLocations}
+          filter={filteredLocations}
+        />
 
         <MarkerClusterGroup>
-          {initialLocations.map((location) => (
+          {locations.map((oneLocation) => (
             <Marker
-              key={location._id}
+              key={oneLocation._id}
               position={[
-                location.geometry.coordinates[1],
-                location.geometry.coordinates[0],
+                oneLocation.geometry.coordinates[1],
+                oneLocation.geometry.coordinates[0],
               ]}>
               <Popup>
                 <div>
-                  <p>{location.properties.name}</p>
+                  <p>{oneLocation.properties.name}</p>
                 </div>
               </Popup>
             </Marker>
           ))}
           <Marker position={[53.55, 9.99]}></Marker>
         </MarkerClusterGroup>
+
         <LocationMarker />
       </MapContainer>
-      <LocateButton onClick={clicked}>Locate me!</LocateButton>
+
+      <LocateButton mapInstance={mapInstance} />
+      <FilterMenu
+        addToFilteredLocations={addToFilteredLocations}
+        filteredLocations={filteredLocations}
+      />
     </>
   );
 }
 
 export default Map;
-
-const LocateButton = styled.button`
-  position: absolute;
-  z-index: 100;
-  top: 0;
-  right: 0;
-`;

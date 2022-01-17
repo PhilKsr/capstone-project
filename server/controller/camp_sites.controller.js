@@ -1,8 +1,6 @@
 import CampSite from "../model/camp_sites-model.js";
 
-const getCampSites = async (req, res) => {
-  const boundsSW = req.query.boundsSW;
-  const boundsNE = req.query.boundsNE;
+const getCampSites = async (boundsSW, boundsNE) => {
   const result = await CampSite.find({
     geometry: {
       $geoWithin: {
@@ -10,7 +8,7 @@ const getCampSites = async (req, res) => {
       },
     },
   });
-  res.json(result);
+  return result;
 };
 
 export default getCampSites;

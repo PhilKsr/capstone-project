@@ -1,8 +1,6 @@
 import Waterfall from "../model/waterfalls-model.js";
 
-const getWaterfalls = async (req, res) => {
-  const boundsSW = req.query.boundsSW;
-  const boundsNE = req.query.boundsNE;
+const getWaterfalls = async (boundsSW, boundsNE) => {
   const result = await Waterfall.find({
     geometry: {
       $geoWithin: {
@@ -10,7 +8,7 @@ const getWaterfalls = async (req, res) => {
       },
     },
   });
-  res.json(result);
+  return result;
 };
 
 export default getWaterfalls;

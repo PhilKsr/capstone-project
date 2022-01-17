@@ -1,8 +1,6 @@
 import ThemePark from "../model/theme_parks-model.js";
 
-const getThemeParks = async (req, res) => {
-  const boundsSW = req.query.boundsSW;
-  const boundsNE = req.query.boundsNE;
+const getThemeParks = async (boundsSW, boundsNE) => {
   const result = await ThemePark.find({
     geometry: {
       $geoWithin: {
@@ -10,7 +8,7 @@ const getThemeParks = async (req, res) => {
       },
     },
   });
-  res.json(result);
+  return result;
 };
 
 export default getThemeParks;

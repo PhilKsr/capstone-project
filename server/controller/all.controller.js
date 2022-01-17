@@ -1,143 +1,112 @@
-import AlpineHut from "../model/alpine_hut-model.js";
-import Aqueduct from "../model/aqueducts-model.js";
-import Attraction from "../model/attractions-model.js";
-import CampSite from "../model/camp_sites-model.js";
-import Canoe from "../model/canoe-model.js";
-import CaravanSite from "../model/caravan_site-model.js";
-import Castle from "../model/castles-model.js";
-import Fuel from "../model/fuel-model.js";
-import Geyser from "../model/geysers-model.js";
-import Hotel from "../model/hotels-model.js";
-import Restaurant from "../model/restaurants-model.js";
-import Ruin from "../model/ruins-model.js";
-import ThemePark from "../model/theme_parks-model.js";
-import Viewpoint from "../model/viewpoints-model.js";
-import Waterfall from "../model/waterfalls-model.js";
+import getAlpineHuts from "./alpine_hut.controller.js";
+import getAttractions from "./attractions.controller.js";
+import getCampSites from "./camp_sites.controller.js";
+import getCaravanSites from "./caravan_sites.controller.js";
+import getCastles from "./castles.controller.js";
+import getFuel from "./fuel.controller.js";
+import getHotels from "./hotels.controller.js";
+import getRestaurants from "./restaurants.controller.js";
+import getRuins from "./ruins.controller.js";
+import getThemeParks from "./theme_parks.controller.js";
+import getWaterfalls from "./waterfalls.controller.js";
 
 const getAll = async (req, res) => {
   const boundsSW = req.query.boundsSW;
   const boundsNE = req.query.boundsNE;
+  const filter = req.query.collections;
   let result = [];
-  const alpine_huts = await AlpineHut.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...alpine_huts];
-  const aqueducts = await Aqueduct.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...aqueducts];
-  const attractions = await Attraction.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...attractions];
-  const campSites = await CampSite.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...campSites];
-  const canoes = await Canoe.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...canoes];
-  const caravanSites = await CaravanSite.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...caravanSites];
-  const castles = await Castle.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...castles];
-  const fuels = await Fuel.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...fuels];
-  const geysers = await Geyser.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...geysers];
-  const hotels = await Hotel.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...hotels];
-  const restaurants = await Restaurant.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...restaurants];
-  const ruins = await Ruin.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...ruins];
-  const themeParks = await ThemePark.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...themeParks];
-  const viewpoints = await Viewpoint.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...viewpoints];
-  const waterfalls = await Waterfall.find({
-    geometry: {
-      $geoWithin: {
-        $box: [boundsSW.split(","), boundsNE.split(",")],
-      },
-    },
-  });
-  result = [...result, ...waterfalls];
+
+  if (filter === "false") {
+    const attractions = await getAttractions(boundsSW, boundsNE);
+    const randomAttractions = attractions
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+
+    result = [...randomAttractions];
+    res.json(result);
+    return;
+  }
+
+  if (filter.includes("Alpine Huts")) {
+    const alpineHuts = await getAlpineHuts(boundsSW, boundsNE);
+    const randomAlpineHuts = alpineHuts
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomAlpineHuts];
+  }
+  if (filter.includes("Attractions")) {
+    const attractions = await getAttractions(boundsSW, boundsNE);
+    const randomAttractions = attractions
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomAttractions];
+  }
+  if (filter.includes("Campsites")) {
+    const campSites = await getCampSites(boundsSW, boundsNE);
+    const randomCampSites = campSites
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomCampSites];
+  }
+
+  if (filter.includes("Caravansites")) {
+    const caravanSites = await getCaravanSites(boundsSW, boundsNE);
+    const randomCaravanSites = caravanSites
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomCaravanSites];
+  }
+  if (filter.includes("Castles")) {
+    const castles = await getCastles(boundsSW, boundsNE);
+    const randomCastles = castles
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomCastles];
+  }
+  if (filter.includes("Fuelstations")) {
+    const fuels = await getFuel(boundsSW, boundsNE);
+    const randomFuels = fuels
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomFuels];
+  }
+
+  if (filter.includes("Hotels")) {
+    const hotels = await getHotels(boundsSW, boundsNE);
+    const randomHotels = hotels
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomHotels];
+  }
+  if (filter.includes("Restaurants")) {
+    const restaurants = await getRestaurants(boundsSW, boundsNE);
+    const randomRestaurants = restaurants
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomRestaurants];
+  }
+  if (filter.includes("Ruins")) {
+    const ruins = await getRuins(boundsSW, boundsNE);
+    const randomRuins = ruins
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomRuins];
+  }
+  if (filter.includes("Themeparks")) {
+    themeParks = await getThemeParks(boundsSW, boundsNE);
+    const randomThemeParks = themeParks
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomThemeParks];
+  }
+
+  if (filter.includes("Waterfalls")) {
+    const waterfalls = await getWaterfalls(boundsSW, boundsNE);
+    const randomWaterfalls = waterfalls
+      .sort(() => Math.random() - Math.random())
+      .slice(0, 500);
+    result = [...result, ...randomWaterfalls];
+  }
 
   res.json(result);
 };
