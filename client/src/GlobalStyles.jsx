@@ -72,6 +72,7 @@ const GlobalStyle = createGlobalStyle`
   width: 100%;
   height: 672px;
 }
+
 //Samsung Galaxy S10 for tests on own device to use with touch
 @media (min-height: 760px) {
   .leaflet-container {

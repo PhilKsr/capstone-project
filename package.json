@@ -21,5 +21,8 @@
   "engines": {
     "npm": "8.x",
     "node": "17.x"
+  },
+  "dependencies": {
+    "dotenv": "^11.0.0"
   }
 }
