@@ -9,7 +9,19 @@ import FilterMenu from "./FilterMenu";
 function Map() {
   const [locations, setLocations] = useState([]);
   const [mapInstance, setMapInstance] = useState();
-  const [filteredLocations, setFilteredLocations] = useState([]);
+  const [filteredLocations, setFilteredLocations] = useState([
+    { name: "Alpine Huts", checked: false },
+    { name: "Attractions", checked: false },
+    { name: "Campsites", checked: false },
+    { name: "Caravansites", checked: false },
+    { name: "Castles", checked: false },
+    { name: "Fuelstations", checked: false },
+    { name: "Hotels", checked: false },
+    { name: "Restaurants", checked: false },
+    { name: "Ruins", checked: false },
+    { name: "Themeparks", checked: false },
+    { name: "Waterfalls", checked: false },
+  ]);
 
   const fetchLocations = async (filterArray) => {
     if (!mapInstance) {
@@ -38,16 +50,23 @@ function Map() {
     fetchLocations();
   }, [mapInstance]);
 
-  const addToFilteredLocations = (event) => {
-    if (event.target.checked) {
-      setFilteredLocations([...filteredLocations, event.target.name]);
-    } else if (!event.target.checked) {
-      setFilteredLocations(
-        filteredLocations.filter(
-          (oneLocation) => oneLocation !== event.target.name
-        )
-      );
-    }
+  const checkFilteredLocations = (event) => {
+    const index = filteredLocations.findIndex(
+      (location) => location.name === event.target.name
+    );
+    let newFilterLocation = filteredLocations.map((element, i) => {
+      if (i === index) {
+        return { ...element, checked: event.target.checked };
+      }
+      return element;
+    });
+    setFilteredLocations(newFilterLocation);
+  };
+
+  const getFiltered = () => {
+    return filteredLocations
+      .filter((location) => location.checked)
+      .map((location) => location.name);
   };
 
   return (
@@ -64,7 +83,7 @@ function Map() {
 
         <MapMoveWatcher
           fetchLocations={fetchLocations}
-          filter={filteredLocations}
+          filter={getFiltered()}
         />
 
         <MarkerClusterGroup>
@@ -90,7 +109,7 @@ function Map() {
 
       <LocateButton mapInstance={mapInstance} />
       <FilterMenu
-        addToFilteredLocations={addToFilteredLocations}
+        checkFilteredLocations={checkFilteredLocations}
         filteredLocations={filteredLocations}
       />
     </>

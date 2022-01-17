@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-function FilterMenu({ addToFilteredLocations }) {
+function FilterMenu({ checkFilteredLocations, filteredLocations }) {
   const [showFilterMenu, setShowFilterMenu] = useState(false);
 
   const filterOptions = [
@@ -25,15 +25,16 @@ function FilterMenu({ addToFilteredLocations }) {
     <FilterContainer>
       {showFilterMenu && (
         <ul>
-          {filterOptions.map((option, index) => {
+          {filteredLocations?.map((oneFilter, index) => {
             return (
               <li key={index}>
                 <input
                   type='checkbox'
-                  name={option}
-                  onClick={addToFilteredLocations}
+                  name={oneFilter.name}
+                  onChange={checkFilteredLocations}
+                  checked={oneFilter.checked}
                 />
-                {option}
+                {oneFilter.name}
               </li>
             );
           })}
@@ -76,6 +77,7 @@ const FilterContainer = styled.div`
   }
   ul {
     background-color: var(--black);
+    opacity: 80%;
     position: absolute;
     z-index: 100;
     bottom: 0;

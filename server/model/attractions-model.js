@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 const attractionsSchema = new mongoose.Schema({
-  type: String,
+  properties: {
+    name: { type: String, required: true },
+  },
 });
 const Attraction = mongoose.model("attractions", attractionsSchema);
 

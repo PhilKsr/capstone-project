@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 const caravanSitesSchema = new mongoose.Schema({
-  type: String,
+  properties: {
+    name: { type: String, required: true },
+  },
 });
 const CaravanSite = mongoose.model("caravan_sites", caravanSitesSchema);
 

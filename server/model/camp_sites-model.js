@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 
 const campSitesSchema = new mongoose.Schema({
-  type: String,
+  properties: {
+    name: { type: String, required: true },
+    website: { type: String, required: true },
+  },
 });
 const CampSite = mongoose.model("camp_sites", campSitesSchema);
 
