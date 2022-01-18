@@ -87,7 +87,7 @@ margin-left: 0.75rem;
 
 
 //Samsung Galaxy S10 for tests on own device to use with touch
-@media (min-height: 760px) {
+@media (min-height: 720px) {
   .leaflet-container {
   width: 100%;
   height: 696px;
@@ -143,8 +143,18 @@ margin-left: 10px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' %3E%3Cpath d='M12.2 13l3.4 6.6c.6 1.1 2.5-.4 2-1.2l-4-6.2z'/%3E%3Ccircle cx='10.8' cy='8.9' r='3.9' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E");
 }
 
+.leaflet-container a {
+  -webkit-tap-highlight-color: var(--black);
+
+}
+
 .leaflet-control-zoom {
   a{
+    background-color: var(--black);
+    border: none;
+    color: var(--white);
+  }
+  a:hover{
     background-color: var(--black);
     border: none;
     color: var(--white);
