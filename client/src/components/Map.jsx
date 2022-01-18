@@ -6,6 +6,8 @@ import LocationMarker from "./LocationMarker";
 import LocateButton from "./LocateButton";
 import FilterMenu from "./FilterMenu";
 import Searchbar from "./Searchbar";
+import L from "leaflet";
+import getIcon from "../lib/getIcon";
 
 function Map() {
   const [locations, setLocations] = useState([]);
@@ -43,6 +45,7 @@ function Map() {
         }`
       );
       const data = await res.json();
+      console.log(data);
       setLocations(data);
     }
   };
@@ -73,7 +76,7 @@ function Map() {
   return (
     <>
       <MapContainer
-        center={[53.55, 9.99]}
+        center={[48.137154, 11.576124]}
         zoom={8}
         scrollWheelZoom={true}
         whenCreated={setMapInstance}>
@@ -89,7 +92,8 @@ function Map() {
               position={[
                 oneLocation.geometry.coordinates[1],
                 oneLocation.geometry.coordinates[0],
-              ]}>
+              ]}
+              icon={getIcon(oneLocation.type)}>
               <Popup>
                 <div>
                   <p>{oneLocation.properties.name}</p>
@@ -97,7 +101,6 @@ function Map() {
               </Popup>
             </Marker>
           ))}
-          <Marker position={[53.55, 9.99]}></Marker>
         </MarkerClusterGroup>
 
         <Searchbar className='searchbar' />
