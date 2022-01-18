@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 const ruinSchema = new mongoose.Schema({
-  type: String,
+  properties: {
+    name: { type: String, required: true },
+  },
 });
 const Ruin = mongoose.model("ruins", ruinSchema);
 

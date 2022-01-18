@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
-import NewTrip from "../pages/NewTrip";
+import NewTrip from "./pages/NewTrip";
 
 function App() {
   return (

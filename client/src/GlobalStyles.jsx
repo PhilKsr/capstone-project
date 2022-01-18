@@ -2,8 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 :root {
-    --white: white;
-    --black: black;
+    --white: #ffffff;
+    --black: #313131;
   
     --ff-sans: sans-serif;
     --ff-serif: serif;

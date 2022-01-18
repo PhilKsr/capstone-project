@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 const themeParkSchema = new mongoose.Schema({
-  type: String,
+  properties: {
+    name: { type: String, required: true },
+  },
 });
 const ThemePark = mongoose.model("theme_parks", themeParkSchema);
 
