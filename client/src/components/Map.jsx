@@ -5,6 +5,7 @@ import MapMoveWatcher from "../lib/MapMoveWatcher";
 import LocationMarker from "./LocationMarker";
 import LocateButton from "./LocateButton";
 import FilterMenu from "./FilterMenu";
+import Searchbar from "./Searchbar";
 
 function Map() {
   const [locations, setLocations] = useState([]);
@@ -81,11 +82,6 @@ function Map() {
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
 
-        <MapMoveWatcher
-          fetchLocations={fetchLocations}
-          filter={getFiltered()}
-        />
-
         <MarkerClusterGroup>
           {locations.map((oneLocation) => (
             <Marker
@@ -104,6 +100,11 @@ function Map() {
           <Marker position={[53.55, 9.99]}></Marker>
         </MarkerClusterGroup>
 
+        <Searchbar className='searchbar' />
+        <MapMoveWatcher
+          fetchLocations={fetchLocations}
+          filter={getFiltered()}
+        />
         <LocationMarker />
       </MapContainer>
 
