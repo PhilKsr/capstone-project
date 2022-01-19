@@ -75,11 +75,30 @@ const GlobalStyle = createGlobalStyle`
   height: 672px;
 }
 
+.leaflet-right{
+margin-right: 2.5rem; 
+color: var(--white);
+}
+
+.leaflet-left.leaflet-top { 
+margin-top: 28rem;
+margin-left: 0.75rem;
+}
+
+
 //Samsung Galaxy S10 for tests on own device to use with touch
-@media (min-height: 760px) {
+@media (min-height: 720px) {
   .leaflet-container {
   width: 100%;
   height: 696px;
+}
+.leaflet-right {
+margin-right: 1.75rem; 
+}
+
+.leaflet-left.leaflet-top { 
+margin-top: 34rem;
+margin-left: 0.75rem;
 }
 }
 //Basic monitor to use with mouse
@@ -88,6 +107,58 @@ const GlobalStyle = createGlobalStyle`
   width: 100%;
   height: 100vh;
 }
+
+.leaflet-right {
+margin-right: 10px; 
+}
+
+.leaflet-left.leaflet-top { 
+margin-top: 10px;
+margin-left: 10px;
+}
+}
+
+.leaflet-control-geocoder {
+  background-color: var(--black);
+  color: var(--white);
+  input {
+    color: var(--white);
+  }
+  ul li a {
+    color: var(--white);
+    span {
+      color: var(--white);
+      opacity: 80%;
+    }
+  }
+}
+
+::placeholder {
+    color: var(--white);
+    opacity: 75%;
+  }
+
+.leaflet-control-geocoder-icon {
+  background-color: var(--black);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' %3E%3Cpath d='M12.2 13l3.4 6.6c.6 1.1 2.5-.4 2-1.2l-4-6.2z'/%3E%3Ccircle cx='10.8' cy='8.9' r='3.9' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+.leaflet-container a {
+  -webkit-tap-highlight-color: var(--black);
+
+}
+
+.leaflet-control-zoom {
+  a{
+    background-color: var(--black);
+    border: none;
+    color: var(--white);
+  }
+  a:hover{
+    background-color: var(--black);
+    border: none;
+    color: var(--white);
+  }
 }
   `;
 

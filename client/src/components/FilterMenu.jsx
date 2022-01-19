@@ -95,6 +95,9 @@ const FilterContainer = styled.div`
   }
 
   input {
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    border-radius: 3px;
     transform: scale(1.5);
     margin-right: 1rem;
   }
