@@ -102,7 +102,7 @@ margin-left: 0.75rem;
 }
 }
 //Basic monitor to use with mouse
-@media (min-height: 800px) {
+@media (min-height: 790px) {
   .leaflet-container {
   width: 100%;
   height: 100vh;
@@ -121,8 +121,10 @@ margin-left: 10px;
 .leaflet-control-geocoder {
   background-color: var(--black);
   color: var(--white);
+  opacity: 95%;
   input {
     color: var(--white);
+    border-radius: 30px;
   }
   ul li a {
     color: var(--white);
@@ -143,9 +145,14 @@ margin-left: 10px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' %3E%3Cpath d='M12.2 13l3.4 6.6c.6 1.1 2.5-.4 2-1.2l-4-6.2z'/%3E%3Ccircle cx='10.8' cy='8.9' r='3.9' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E");
 }
 
+.leaflet-touch .leaflet-bar{
+  border: none;
+  border-radius: 5px;
+}
+
 .leaflet-container a {
   -webkit-tap-highlight-color: var(--black);
-
+  opacity: 95%;
 }
 
 .leaflet-control-zoom {
@@ -160,6 +167,7 @@ margin-left: 10px;
     color: var(--white);
   }
 }
+
   `;
 
 export default GlobalStyle;

@@ -1,4 +1,7 @@
-import getCollection from "../lib/controllerHelpers.js";
+import {
+  getCollection,
+  getWebsiteCollection,
+} from "../lib/controllerHelpers.js";
 import AlpineHut from "../model/alpine_hut-model.js";
 import Attraction from "../model/attractions-model.js";
 import CampSite from "../model/camp_sites-model.js";
@@ -18,28 +21,44 @@ const getAll = async (req, res) => {
   let result = [];
 
   if (filter === "false") {
-    const attractions = await getCollection(Attraction, boundsSW, boundsNE);
+    const attractions = await getWebsiteCollection(
+      Attraction,
+      boundsSW,
+      boundsNE
+    );
     const randomAttractions = attractions.slice(0, 25);
     result = [...result, ...randomAttractions];
-    const alpineHuts = await getCollection(AlpineHut, boundsSW, boundsNE);
+    const alpineHuts = await getWebsiteCollection(
+      AlpineHut,
+      boundsSW,
+      boundsNE
+    );
     const randomAlpineHuts = alpineHuts.slice(0, 25);
     result = [...result, ...randomAlpineHuts];
-    const campSites = await getCollection(CampSite, boundsSW, boundsNE);
+    const campSites = await getWebsiteCollection(CampSite, boundsSW, boundsNE);
     const randomCampSites = campSites.slice(0, 25);
     result = [...result, ...randomCampSites];
-    const caravanSites = await getCollection(CaravanSite, boundsSW, boundsNE);
+    const caravanSites = await getWebsiteCollection(
+      CaravanSite,
+      boundsSW,
+      boundsNE
+    );
     const randomCaravanSites = caravanSites.slice(0, 25);
     result = [...result, ...randomCaravanSites];
-    const castles = await getCollection(Castle, boundsSW, boundsNE);
+    const castles = await getWebsiteCollection(Castle, boundsSW, boundsNE);
     const randomCastles = castles.slice(0, 25);
     result = [...result, ...randomCastles];
-    const hotels = await getCollection(Hotel, boundsSW, boundsNE);
+    const hotels = await getWebsiteCollection(Hotel, boundsSW, boundsNE);
     const randomHotels = hotels.slice(0, 25);
     result = [...result, ...randomHotels];
     const ruins = await getCollection(Ruin, boundsSW, boundsNE);
     const randomRuins = ruins.slice(0, 25);
     result = [...result, ...randomRuins];
-    const themeParks = await getCollection(ThemePark, boundsSW, boundsNE);
+    const themeParks = await getWebsiteCollection(
+      ThemePark,
+      boundsSW,
+      boundsNE
+    );
     const randomThemeParks = themeParks.slice(0, 25);
     result = [...result, ...randomThemeParks];
 
@@ -48,28 +67,40 @@ const getAll = async (req, res) => {
   }
 
   if (filter.includes("Alpine Huts")) {
-    const alpineHuts = await getCollection(AlpineHut, boundsSW, boundsNE);
+    const alpineHuts = await getWebsiteCollection(
+      AlpineHut,
+      boundsSW,
+      boundsNE
+    );
     const randomAlpineHuts = alpineHuts.slice(0, 500);
     result = [...result, ...randomAlpineHuts];
   }
   if (filter.includes("Attractions")) {
-    const attractions = await getCollection(Attraction, boundsSW, boundsNE);
+    const attractions = await getWebsiteCollection(
+      Attraction,
+      boundsSW,
+      boundsNE
+    );
     const randomAttractions = attractions.slice(0, 500);
     result = [...result, ...randomAttractions];
   }
   if (filter.includes("Campsites")) {
-    const campSites = await getCollection(CampSite, boundsSW, boundsNE);
+    const campSites = await getWebsiteCollection(CampSite, boundsSW, boundsNE);
     const randomCampSites = campSites.slice(0, 500);
     result = [...result, ...randomCampSites];
   }
 
   if (filter.includes("Caravansites")) {
-    const caravanSites = await getCollection(CaravanSite, boundsSW, boundsNE);
+    const caravanSites = await getWebsiteCollection(
+      CaravanSite,
+      boundsSW,
+      boundsNE
+    );
     const randomCaravanSites = caravanSites.slice(0, 500);
     result = [...result, ...randomCaravanSites];
   }
   if (filter.includes("Castles")) {
-    const castles = await getCollection(Castle, boundsSW, boundsNE);
+    const castles = await getWebsiteCollection(Castle, boundsSW, boundsNE);
     const randomCastles = castles.slice(0, 500);
     result = [...result, ...randomCastles];
   }
@@ -80,12 +111,16 @@ const getAll = async (req, res) => {
   }
 
   if (filter.includes("Hotels")) {
-    const hotels = await getCollection(Hotel, boundsSW, boundsNE);
+    const hotels = await getWebsiteCollection(Hotel, boundsSW, boundsNE);
     const randomHotels = hotels.slice(0, 500);
     result = [...result, ...randomHotels];
   }
   if (filter.includes("Restaurants")) {
-    const restaurants = await getCollection(Restaurant, boundsSW, boundsNE);
+    const restaurants = await getWebsiteCollection(
+      Restaurant,
+      boundsSW,
+      boundsNE
+    );
     const randomRestaurants = restaurants.slice(0, 500);
     result = [...result, ...randomRestaurants];
   }
@@ -95,7 +130,11 @@ const getAll = async (req, res) => {
     result = [...result, ...randomRuins];
   }
   if (filter.includes("Themeparks")) {
-    const themeParks = await getCollection(ThemePark, boundsSW, boundsNE);
+    const themeParks = await getWebsiteCollection(
+      ThemePark,
+      boundsSW,
+      boundsNE
+    );
     const randomThemeParks = themeParks.slice(0, 500);
     result = [...result, ...randomThemeParks];
   }

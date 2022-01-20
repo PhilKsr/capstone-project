@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
-import MapMoveWatcher from "../lib/MapMoveWatcher";
+import { MapMoveWatcher } from "../lib/mapMoveWatcher";
 import LocationMarker from "./LocationMarker";
 import LocateButton from "./LocateButton";
 import FilterMenu from "./FilterMenu";
 import Searchbar from "./Searchbar";
-import L from "leaflet";
 import getIcon from "../lib/getIcon";
+import styled from "styled-components";
+import { filterLocations } from "../lib/filter";
 
 function Map() {
   const [locations, setLocations] = useState([]);
   const [mapInstance, setMapInstance] = useState();
+  const [roadtrip, setRoadtrip] = useState([]);
   const [filteredLocations, setFilteredLocations] = useState([
     { name: "Alpine Huts", checked: false },
     { name: "Attractions", checked: false },
@@ -45,7 +47,6 @@ function Map() {
         }`
       );
       const data = await res.json();
-      console.log(data);
       setLocations(data);
     }
   };
@@ -55,16 +56,7 @@ function Map() {
   }, [mapInstance]);
 
   const checkFilteredLocations = (event) => {
-    const index = filteredLocations.findIndex(
-      (location) => location.name === event.target.name
-    );
-    let newFilterLocation = filteredLocations.map((element, i) => {
-      if (i === index) {
-        return { ...element, checked: event.target.checked };
-      }
-      return element;
-    });
-    setFilteredLocations(newFilterLocation);
+    setFilteredLocations(filterLocations(event, filteredLocations));
   };
 
   const getFiltered = () => {
@@ -94,9 +86,22 @@ function Map() {
                 oneLocation.geometry.coordinates[0],
               ]}
               icon={getIcon(oneLocation.type)}>
-              <Popup>
+              <Popup offset={[0, -5]} keepInView='true'>
                 <div>
-                  <p>{oneLocation.properties.name}</p>
+                  <h3>{oneLocation.properties.name}</h3>
+                  {oneLocation.properties.website && (
+                    <>
+                      <p>
+                        Visit{" "}
+                        <a
+                          href={oneLocation.properties.website}
+                          target='_blank'>
+                          website
+                        </a>{" "}
+                        for more details!
+                      </p>
+                    </>
+                  )}
                 </div>
               </Popup>
             </Marker>
@@ -111,6 +116,11 @@ function Map() {
         <LocationMarker />
       </MapContainer>
 
+      <RoadtripName
+        type='text'
+        name='roadtrip'
+        placeholder='Name of roadtrip...'
+      />
       <LocateButton mapInstance={mapInstance} />
       <FilterMenu
         checkFilteredLocations={checkFilteredLocations}
@@ -121,3 +131,36 @@ function Map() {
 }
 
 export default Map;
+
+const RoadtripName = styled.input`
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  margin-left: 5.5rem;
+  margin-top: 4rem;
+  color: var(--white);
+  background-color: var(--black);
+  opacity: 95%;
+  border: none;
+  width: 12rem;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  :focus {
+    outline: none;
+  }
+
+  //Basic MacBook Pro to use with mouse
+  @media (min-width: 1000px) {
+    width: 15rem;
+    height: 2rem;
+    margin-left: 38rem;
+    margin-top: 10px;
+  }
+
+  //Basic 2nd screen to use with mouse
+  @media (min-width: 1500px) {
+    margin-left: 52rem;
+    margin-top: 15px;
+  }
+`;

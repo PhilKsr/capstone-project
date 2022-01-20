@@ -4,19 +4,6 @@ import styled from "styled-components";
 function FilterMenu({ checkFilteredLocations, filteredLocations }) {
   const [showFilterMenu, setShowFilterMenu] = useState(false);
 
-  const filterOptions = [
-    "Alpine Huts",
-    "Attractions",
-    "Campsites",
-    "Caravansites",
-    "Castles",
-    "Fuelstations",
-    "Hotels",
-    "Restaurants",
-    "Ruins",
-    "Themeparks",
-    "Waterfalls",
-  ];
   const showFilter = () => {
     setShowFilterMenu(!showFilterMenu);
   };
