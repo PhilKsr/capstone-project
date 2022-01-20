@@ -1,6 +1,6 @@
 import { useMapEvent } from "react-leaflet";
 
-export function MapMoveWatcher({ fetchLocations, filter }) {
+export default function MapMoveWatcher({ fetchLocations, filter }) {
   useMapEvent("moveend", () => {
     fetchLocations(filter);
   });
