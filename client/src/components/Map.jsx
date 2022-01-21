@@ -9,11 +9,19 @@ import Searchbar from "./Searchbar";
 import getIcon from "../lib/getIcon";
 import styled from "styled-components";
 import { filterLocations } from "../lib/filter";
+import {
+  id,
+  addLocationToRoadtrip,
+  deleteLocationFromRoadtrip,
+} from "../lib/addLocationToRoadtrip";
 
 function Map() {
   const [locations, setLocations] = useState([]);
   const [mapInstance, setMapInstance] = useState();
-  const [roadtrip, setRoadtrip] = useState([]);
+  const [roadtrip, setRoadtrip] = useState({
+    roadtripName: "",
+    roadtripLocations: [],
+  });
   const [filteredLocations, setFilteredLocations] = useState([
     { name: "Alpine Huts", checked: false },
     { name: "Attractions", checked: false },
@@ -65,6 +73,26 @@ function Map() {
       .map((location) => location.name);
   };
 
+  const handleInputChange = (event) => {
+    setRoadtrip({ ...roadtrip, name: event.target.value });
+  };
+
+  const addLocation = (event) => {
+    const index = event.target.name;
+    const newLocation = locations[index];
+    let updatedRoadtripLocations;
+    if (roadtrip.roadtripLocations.some(id)) {
+      updatedRoadtripLocations = deleteLocationFromRoadtrip(
+        roadtrip,
+        newLocation
+      );
+    } else {
+      updatedRoadtripLocations = addLocationToRoadtrip(roadtrip, newLocation);
+    }
+    setRoadtrip({ ...roadtrip, roadtripLocations: updatedRoadtripLocations });
+    console.log(roadtrip);
+  };
+
   return (
     <>
       <MapContainer
@@ -78,7 +106,7 @@ function Map() {
         />
 
         <MarkerClusterGroup>
-          {locations.map((oneLocation) => (
+          {locations.map((oneLocation, index) => (
             <Marker
               key={oneLocation._id}
               position={[
@@ -100,6 +128,14 @@ function Map() {
                         </a>{" "}
                         for more details!
                       </p>
+                      <button
+                        onClick={addLocation}
+                        id={oneLocation._id}
+                        name={index}>
+                        {roadtrip.roadtripLocations.some(id)
+                          ? "Remove from roadtrip"
+                          : "Add to roadtrip"}
+                      </button>
                     </>
                   )}
                 </div>
@@ -120,17 +156,28 @@ function Map() {
         type='text'
         name='roadtrip'
         placeholder='Name of roadtrip...'
+        value={roadtrip.name}
+        onChange={handleInputChange}
       />
       <LocateButton mapInstance={mapInstance} />
       <FilterMenu
         checkFilteredLocations={checkFilteredLocations}
         filteredLocations={filteredLocations}
       />
+      <SaveButton>Save roadtrip to collection</SaveButton>
     </>
   );
 }
 
 export default Map;
+
+const SaveButton = styled.button`
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  margin-bottom: 5rem;
+  margin-left: 38rem;
+`;
 
 const RoadtripName = styled.input`
   position: absolute;
