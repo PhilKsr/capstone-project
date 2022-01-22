@@ -67,12 +67,12 @@ const GlobalStyle = createGlobalStyle`
     height: auto;
     display: block;
   }
-//iPhone 6/7/8+ for final presentation
+//iPhone 6/7/8 for final presentation
   .leaflet-container {
     position: relative;
     z-index: 10;
   width: 100%;
-  height: 672px;
+  height: 100vh;
 }
 
 .leaflet-right{
@@ -87,10 +87,10 @@ margin-left: 0.75rem;
 
 
 //Samsung Galaxy S10 for tests on own device to use with touch
-@media (min-height: 720px) {
+@media (min-height: 7590px) {
   .leaflet-container {
   width: 100%;
-  height: 696px;
+  height: 100vh;
 }
 .leaflet-right {
 margin-right: 1.75rem; 

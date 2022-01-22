@@ -59,15 +59,12 @@ export default function AllLocationMarker({
                         website
                       </a>{" "}
                       for more details!
-                      <button
-                        onClick={addLocation}
-                        id={oneLocation._id}
-                        name={index}>
-                        +
-                      </button>
                     </p>
                   </>
                 )}
+                <button onClick={addLocation} id={oneLocation._id} name={index}>
+                  +
+                </button>
               </PopupContent>
             </Popup>
           </Marker>
@@ -80,7 +77,7 @@ const PopupContent = styled.div`
   text-align: center;
   button {
     box-sizing: content-box;
-    margin-left: 1rem;
+    margin-top: 1rem;
     padding: 0.1rem 0.4rem 0.2rem 0.4rem;
     border: none;
     border-radius: 50%;

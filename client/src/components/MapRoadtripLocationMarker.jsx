@@ -43,12 +43,12 @@ export default function RoadtripLocationMarker({
                       website
                     </a>{" "}
                     for more details!
-                    <button onClick={removeLocation} id={oneLocation._id}>
-                      -
-                    </button>
                   </p>
                 </>
               )}
+              <button onClick={removeLocation} id={oneLocation._id}>
+                -
+              </button>
             </PopupContent>
           </Popup>
         </Marker>
@@ -61,8 +61,8 @@ const PopupContent = styled.div`
   text-align: center;
   button {
     box-sizing: content-box;
-    margin-left: 1rem;
-    padding: 0.1rem 0.4rem 0.2rem 0.4rem;
+    margin-top: 1rem;
+    padding: 0.1rem 0.45rem 0.2rem 0.45rem;
     border: none;
     border-radius: 50%;
     color: var(--white);
