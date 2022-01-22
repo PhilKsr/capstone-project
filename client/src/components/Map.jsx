@@ -137,34 +137,25 @@ function Map() {
         checkFilteredLocations={checkFilteredLocations}
         filteredLocations={filteredLocations}
       />
-      <SaveButton onClick={addRoadtripToDatabase}>
-        Save roadtrip to collection
-      </SaveButton>
     </>
   );
 }
 
 export default Map;
 
-const SaveButton = styled.button`
-  position: absolute;
-  z-index: 100;
-  bottom: 0;
-  margin-bottom: 5rem;
-  margin-left: 38rem;
-`;
-
 const RoadtripName = styled.input`
   position: absolute;
   z-index: 100;
   top: 0;
-  margin-left: 5.5rem;
-  margin-top: 4rem;
+  right: 0;
+  margin-right: 5.5rem;
+  margin-top: 15px;
   color: var(--white);
   background-color: var(--black);
   opacity: 95%;
   border: none;
   width: 12rem;
+  height: 30px;
   padding: 5px;
   border-radius: 5px;
   text-align: center;
@@ -173,16 +164,9 @@ const RoadtripName = styled.input`
   }
 
   //Basic MacBook Pro to use with mouse
-  @media (min-width: 1000px) {
+  @media (min-width: 600px) {
     width: 15rem;
-    height: 2rem;
-    margin-left: 38rem;
-    margin-top: 10px;
-  }
-
-  //Basic 2nd screen to use with mouse
-  @media (min-width: 1500px) {
-    margin-left: 52rem;
+    margin-right: 23em;
     margin-top: 15px;
   }
 `;
