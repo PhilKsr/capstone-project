@@ -48,7 +48,7 @@ export default function AllLocationMarker({
               oneLocation.geometry.coordinates[0],
             ]}
             icon={getIcon(oneLocation.type)}>
-            <Popup offset={[0, -5]} keepInView='true'>
+            <Popup offset={[0, -5]}>
               <PopupContent>
                 <h3>{oneLocation.properties.name}</h3>
                 {oneLocation.properties.website && (

@@ -32,7 +32,7 @@ export default function RoadtripLocationMarker({
             oneLocation.geometry.coordinates[0],
           ]}
           icon={getRoadtripIcon(oneLocation.type)}>
-          <Popup offset={[0, -5]} keepInView='true'>
+          <Popup offset={[0, -5]}>
             <PopupContent>
               <h3>{oneLocation.properties.name}</h3>
               {oneLocation.properties.website && (

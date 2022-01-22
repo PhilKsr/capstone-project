@@ -10,14 +10,17 @@ import styled from "styled-components";
 import { filterLocations } from "../lib/filter";
 import AllLocationMarker from "./MapAllLocationMarker";
 import RoadtripLocationMarker from "./MapRoadtripLocationMarker";
+import { loadFromLocal, saveToLocal } from "../lib/localStorage";
 
 function Map() {
-  const [locations, setLocations] = useState([]);
-  const [mapInstance, setMapInstance] = useState();
-  const [roadtrip, setRoadtrip] = useState({
+  const resetRoadtrip = {
     roadtripName: "",
     roadtripLocations: [],
-  });
+  };
+  const recentRoadtrip = loadFromLocal("_roadtrip");
+  const [locations, setLocations] = useState([]);
+  const [mapInstance, setMapInstance] = useState();
+  const [roadtrip, setRoadtrip] = useState(recentRoadtrip ?? resetRoadtrip);
   const [filteredLocations, setFilteredLocations] = useState([
     { name: "Alpine Huts", checked: false },
     { name: "Attractions", checked: false },
@@ -58,6 +61,9 @@ function Map() {
   useEffect(() => {
     fetchAllLocations();
   }, [mapInstance]);
+  useEffect(() => {
+    saveToLocal("_roadtrip", roadtrip);
+  }, [roadtrip]);
 
   const checkFilteredLocations = (event) => {
     setFilteredLocations(filterLocations(event, filteredLocations));
