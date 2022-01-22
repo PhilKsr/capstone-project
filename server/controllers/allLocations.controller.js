@@ -2,17 +2,17 @@ import {
   getCollection,
   getWebsiteCollection,
 } from "../lib/controllerHelpers.js";
-import AlpineHut from "../model/alpine_hut-model.js";
-import Attraction from "../model/attractions-model.js";
-import CampSite from "../model/camp_sites-model.js";
-import CaravanSite from "../model/caravan_site-model.js";
-import Castle from "../model/castles-model.js";
-import Fuel from "../model/fuel-model.js";
-import Hotel from "../model/hotels-model.js";
-import Restaurant from "../model/restaurants-model.js";
-import Ruin from "../model/ruins-model.js";
-import ThemePark from "../model/theme_parks-model.js";
-import Waterfall from "../model/waterfalls-model.js";
+import AlpineHut from "../models/alpine_hut.model.js";
+import Attraction from "../models/attractions.model.js";
+import CampSite from "../models/camp_sites.model.js";
+import CaravanSite from "../models/caravan_site.model.js";
+import Castle from "../models/castles.model.js";
+import Fuel from "../models/fuel.model.js";
+import Hotel from "../models/hotels.model.js";
+import Restaurant from "../models/restaurants.model.js";
+import Ruin from "../models/ruins.model.js";
+import ThemePark from "../models/theme_parks.model.js";
+import Waterfall from "../models/waterfalls.model.js";
 
 const getAll = async (req, res) => {
   const boundsSW = req.query.boundsSW;

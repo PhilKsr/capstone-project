@@ -20,15 +20,15 @@ function Navbar() {
       </li>
 
       <li>
-        <NavLink to='new'>
+        <NavLink to='roadtrip'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             height='24px'
             viewBox='0 0 24 24'
             width='24px'
             fill='#ffffff'>
-            <path d='M0 0h24v24H0V0z' fill='none' />
-            <path d='M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z' />
+            <path d='M0 0h24v24H0z' fill='none' />
+            <path d='M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z' />
           </svg>
         </NavLink>
       </li>
