@@ -44,7 +44,7 @@ export default function ResetButton({ onResetRoadtrip }) {
               </svg>
             </CloseButton>
             <h2>Really reset?</h2>
-            <p>Do you really want to reset your Roadtrip?</p>
+            <p>Do you really want to reset your roadtrip?</p>
             <p>Changes cannot be undone.</p>
             <div>
               <button
@@ -105,6 +105,7 @@ const Modal = styled.div`
   background-color: var(--black);
   color: white;
   width: 80%;
+  border-radius: 15px;
   h2 {
     text-align: center;
     font-size: 1.5rem;
