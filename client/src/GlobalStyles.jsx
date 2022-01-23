@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
     height: 760px;
   }
   .leaflet-right {
-  margin-right: 1.75rem; 
+  margin-right: 2rem; 
   }
 
   .leaflet-left.leaflet-top { 
