@@ -1,7 +1,5 @@
 import Map from "../components/Map";
 
-function NewTrip() {
+export default function Roadtrip() {
   return <Map />;
 }
-
-export default NewTrip;

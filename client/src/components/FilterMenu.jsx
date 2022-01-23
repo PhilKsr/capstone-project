@@ -61,6 +61,7 @@ const FilterContainer = styled.div`
     border: none;
     border-radius: 50%;
     background-color: var(--black);
+    cursor: pointer;
   }
   ul {
     background-color: var(--black);

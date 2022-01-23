@@ -68,6 +68,7 @@ const AddToDatabaseButton = styled.button`
   border: none;
   border-radius: 50%;
   background-color: var(--black);
+  cursor: pointer;
 `;
 
 const ConfirmationSign = styled.button`
@@ -82,4 +83,5 @@ const ConfirmationSign = styled.button`
   border: none;
   border-radius: 50%;
   background-color: #1d981d;
+  cursor: pointer;
 `;

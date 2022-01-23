@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
-import NewTrip from "./pages/NewTrip";
+import Roadtrip from "./pages/RoadtripMap";
+import Collection from "./pages/Collection";
 
 function App() {
   return (
@@ -9,11 +9,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<h1>HOME should be displayed</h1>} />
-        <Route path='roadtrip' element={<NewTrip />} />
-        <Route
-          path='collections'
-          element={<h1>COLLECTIONS should be displayed</h1>}
-        />
+        <Route path='roadtrip' element={<Roadtrip />} />
+        <Route path='collections' element={<Collection />} />
         <Route
           path='discover'
           element={<h1>DISCOVER should be displayed</h1>}

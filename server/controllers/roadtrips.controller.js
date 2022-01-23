@@ -12,3 +12,8 @@ export const postRoadtrip = async (req, res) => {
     res.json(error);
   }
 };
+
+export const getAllRoadtrips = async (req, res) => {
+  const results = await Roadtrip.find();
+  res.json(results);
+};

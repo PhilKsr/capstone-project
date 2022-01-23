@@ -93,6 +93,7 @@ const StyledResetButton = styled.button`
   border-radius: 50%;
   background-color: var(--black);
   color: white;
+  cursor: pointer;
 `;
 
 const Modal = styled.div`
@@ -100,6 +101,7 @@ const Modal = styled.div`
   z-index: 150;
   bottom: 0;
   left: 0;
+  padding: 0 10px 0 10px;
   margin-left: 2.5rem;
   margin-bottom: 15rem;
   background-color: var(--black);
@@ -127,6 +129,7 @@ const Modal = styled.div`
       border: none;
       border-radius: 50%;
       background-color: #1d981d;
+      cursor: pointer;
     }
     button + button {
       background-color: #ef3c3c;
@@ -148,6 +151,7 @@ const CloseButton = styled.button`
   border: none;
   border-radius: 50%;
   background-color: var(--black);
+  cursor: pointer;
 `;
 
 const Background = styled.div`

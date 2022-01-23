@@ -34,4 +34,5 @@ const LocateMeButton = styled.button`
   border: none;
   border-radius: 50%;
   background-color: var(--black);
+  cursor: pointer;
 `;

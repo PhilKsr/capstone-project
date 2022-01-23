@@ -1,8 +1,12 @@
 import express from "express";
-import { postRoadtrip } from "../controllers/roadtrips.controller.js";
+import {
+  getAllRoadtrips,
+  postRoadtrip,
+} from "../controllers/roadtrips.controller.js";
 
 const router = express.Router();
 
 router.post("/roadtrips", postRoadtrip);
+router.get("/roadtrips", getAllRoadtrips);
 
 export default router;
