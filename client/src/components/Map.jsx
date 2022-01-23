@@ -12,6 +12,7 @@ import AllLocationMarker from "./MapAllLocationMarker";
 import RoadtripLocationMarker from "./MapRoadtripLocationMarker";
 import { loadFromLocal, saveToLocal } from "../lib/localStorage";
 import ResetButton from "./ResetButton";
+import SaveButton from "./SaveButton";
 
 function Map() {
   const emptyRoadtrip = {
@@ -84,17 +85,6 @@ function Map() {
     setRoadtrip(newLocation);
   };
 
-  const addRoadtripToDatabase = async () => {
-    const result = await fetch("/api/roadtrips", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(roadtrip),
-    });
-    return await result.json();
-  };
-
   const resetRoadtrip = () => {
     setRoadtrip(emptyRoadtrip);
   };
@@ -143,6 +133,7 @@ function Map() {
         filteredLocations={filteredLocations}
       />
       <ResetButton onResetRoadtrip={resetRoadtrip} />
+      <SaveButton roadtrip={roadtrip} />
     </>
   );
 }
