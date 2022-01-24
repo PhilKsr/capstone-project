@@ -7,24 +7,24 @@ export default function RoadtripLocationMarker({
   onUpdateRoadtripLocations,
 }) {
   const removeLocation = (event) => {
-    const index = roadtrip.roadtripLocations.findIndex(
+    const index = roadtrip.locations.findIndex(
       (oneLocation) => oneLocation._id === event.target.id
     );
-    const updatedRoadtripLocations = roadtrip.roadtripLocations.filter(
+    const updatedRoadtripLocations = roadtrip.locations.filter(
       (oneLocation) => {
-        return oneLocation._id !== roadtrip.roadtripLocations[index]._id;
+        return oneLocation._id !== roadtrip.locations[index]._id;
       }
     );
     onUpdateRoadtripLocations({
       ...roadtrip,
-      roadtripLocations: updatedRoadtripLocations,
+      locations: updatedRoadtripLocations,
     });
     console.log(updatedRoadtripLocations);
   };
 
   return (
     <>
-      {roadtrip.roadtripLocations.map((oneLocation) => (
+      {roadtrip.locations.map((oneLocation) => (
         <Marker
           key={oneLocation._id}
           position={[

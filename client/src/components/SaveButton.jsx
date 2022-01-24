@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 export default function SaveButton({ roadtrip }) {
+  const roadtripId = useParams();
+
   const [confirmation, setConfirmation] = useState(false);
 
   const confirmationHandler = () => {
@@ -10,6 +13,10 @@ export default function SaveButton({ roadtrip }) {
 
   const secondConfirmationHandler = () => {
     setTimeout(() => setConfirmation(false), 2000);
+  };
+
+  const handleSave = () => {
+    roadtrip._id ? updateRoadtrip() : saveToDatabase();
   };
 
   const saveToDatabase = async () => {
@@ -23,11 +30,22 @@ export default function SaveButton({ roadtrip }) {
     return await result.json();
   };
 
+  const updateRoadtrip = async () => {
+    const result = await fetch(`/api/roadtrips?roadtripId=${roadtripId.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(roadtrip),
+    });
+    return await result.json();
+  };
+
   return (
     <>
       <AddToDatabaseButton
         onClick={() => {
-          saveToDatabase(), confirmationHandler(), secondConfirmationHandler();
+          handleSave(), confirmationHandler(), secondConfirmationHandler();
         }}>
         <svg
           xmlns='http://www.w3.org/2000/svg'

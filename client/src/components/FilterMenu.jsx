@@ -78,7 +78,7 @@ const FilterContainer = styled.div`
   li {
     color: var(--white);
     list-style: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-top: 1rem;
   }
 

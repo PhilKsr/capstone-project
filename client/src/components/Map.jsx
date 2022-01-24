@@ -13,16 +13,23 @@ import RoadtripLocationMarker from "./MapRoadtripLocationMarker";
 import { loadFromLocal, saveToLocal } from "../lib/localStorage";
 import ResetButton from "./ResetButton";
 import SaveButton from "./SaveButton";
+import { useParams } from "react-router-dom";
+import ShowAllLocationsButton from "./ShowAllLocationsButton";
 
 function Map() {
+  const roadtripId = useParams();
+
+  const lastPlan = loadFromLocal("_roadtrip");
+
   const emptyRoadtrip = {
-    roadtripName: "",
-    roadtripLocations: [],
+    name: "",
+    locations: [],
   };
-  const recentRoadtrip = loadFromLocal("_roadtrip");
+
   const [locations, setLocations] = useState([]);
+  const [showAllLocations, setShowAllLocations] = useState(true);
   const [mapInstance, setMapInstance] = useState();
-  const [roadtrip, setRoadtrip] = useState(recentRoadtrip ?? emptyRoadtrip);
+  const [roadtrip, setRoadtrip] = useState(lastPlan ?? emptyRoadtrip);
   const [filteredLocations, setFilteredLocations] = useState([
     { name: "Alpine Huts", checked: false },
     { name: "Attractions", checked: false },
@@ -61,8 +68,15 @@ function Map() {
   };
 
   useEffect(() => {
+    if (roadtripId !== undefined) {
+      fetchRoadtrip();
+    }
+  }, []);
+
+  useEffect(() => {
     fetchAllLocations();
   }, [mapInstance]);
+
   useEffect(() => {
     saveToLocal("_roadtrip", roadtrip);
   }, [roadtrip]);
@@ -78,7 +92,7 @@ function Map() {
   };
 
   const handleInputChange = (event) => {
-    setRoadtrip({ ...roadtrip, roadtripName: event.target.value });
+    setRoadtrip({ ...roadtrip, name: event.target.value });
   };
 
   const updateRoadtripLocations = (newLocation) => {
@@ -89,11 +103,21 @@ function Map() {
     setRoadtrip(emptyRoadtrip);
   };
 
+  const fetchRoadtrip = async () => {
+    const res = await fetch(`/api/roadtrip?roadtripId=${roadtripId.id}`);
+    const data = await res.json();
+    setRoadtrip(data);
+  };
+
+  const onSetShowAllLocations = () => {
+    setShowAllLocations(!showAllLocations);
+  };
+
   return (
     <>
       <MapContainer
-        center={[48.137154, 11.576124]}
-        zoom={8}
+        center={[51.095123, 10.271483]}
+        zoom={6}
         scrollWheelZoom={true}
         whenCreated={setMapInstance}>
         <TileLayer
@@ -105,6 +129,7 @@ function Map() {
             locations={locations}
             roadtrip={roadtrip}
             onUpdateRoadtripLocations={updateRoadtripLocations}
+            showAllLocations={showAllLocations}
           />
         </MarkerClusterGroup>
         <RoadtripLocationMarker
@@ -123,7 +148,7 @@ function Map() {
       <RoadtripName
         type='text'
         name='roadtrip'
-        placeholder='Name of roadtrip...'
+        placeholder='Type a name!'
         value={roadtrip.name}
         onChange={handleInputChange}
       />
@@ -134,6 +159,10 @@ function Map() {
       />
       <ResetButton onResetRoadtrip={resetRoadtrip} />
       <SaveButton roadtrip={roadtrip} />
+      <ShowAllLocationsButton
+        onSetShowAllLocations={onSetShowAllLocations}
+        showAllLocations={showAllLocations}
+      />
     </>
   );
 }
