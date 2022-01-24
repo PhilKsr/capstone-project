@@ -11,16 +11,17 @@ import { filterLocations } from "../lib/filter";
 import AllLocationMarker from "./MapAllLocationMarker";
 import RoadtripLocationMarker from "./MapRoadtripLocationMarker";
 import { loadFromLocal, saveToLocal } from "../lib/localStorage";
+import ResetButton from "./ResetButton";
 
 function Map() {
-  const resetRoadtrip = {
+  const emptyRoadtrip = {
     roadtripName: "",
     roadtripLocations: [],
   };
   const recentRoadtrip = loadFromLocal("_roadtrip");
   const [locations, setLocations] = useState([]);
   const [mapInstance, setMapInstance] = useState();
-  const [roadtrip, setRoadtrip] = useState(recentRoadtrip ?? resetRoadtrip);
+  const [roadtrip, setRoadtrip] = useState(recentRoadtrip ?? emptyRoadtrip);
   const [filteredLocations, setFilteredLocations] = useState([
     { name: "Alpine Huts", checked: false },
     { name: "Attractions", checked: false },
@@ -94,6 +95,10 @@ function Map() {
     return await result.json();
   };
 
+  const resetRoadtrip = () => {
+    setRoadtrip(emptyRoadtrip);
+  };
+
   return (
     <>
       <MapContainer
@@ -137,6 +142,7 @@ function Map() {
         checkFilteredLocations={checkFilteredLocations}
         filteredLocations={filteredLocations}
       />
+      <ResetButton onResetRoadtrip={resetRoadtrip} />
     </>
   );
 }
@@ -149,7 +155,7 @@ const RoadtripName = styled.input`
   top: 0;
   right: 0;
   margin-right: 5.5rem;
-  margin-top: 15px;
+  margin-top: 10px;
   color: var(--white);
   background-color: var(--black);
   opacity: 95%;

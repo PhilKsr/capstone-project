@@ -78,6 +78,7 @@ const PopupContent = styled.div`
   button {
     box-sizing: content-box;
     padding: 0.1rem 0.4rem 0.2rem 0.4rem;
+    margin-top: 0.5rem;
     border: none;
     border-radius: 50%;
     color: var(--white);

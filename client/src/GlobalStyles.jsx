@@ -19,7 +19,8 @@ const GlobalStyle = createGlobalStyle`
   *,
   *::before,
   *::after {
-    box-sizing: border-box;
+    font-family: 'Libre Franklin', sans-serif;
+        box-sizing: border-box;
   }
   
   input,
@@ -95,7 +96,7 @@ const GlobalStyle = createGlobalStyle`
     height: 760px;
   }
   .leaflet-right {
-  margin-right: 1.75rem; 
+  margin-right: 2rem; 
   }
 
   .leaflet-left.leaflet-top { 
