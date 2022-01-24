@@ -16,7 +16,7 @@ import SaveButton from "./SaveButton";
 import { useParams } from "react-router-dom";
 import ShowAllLocationsButton from "./ShowAllLocationsButton";
 
-function Map() {
+export default function Map() {
   const roadtripId = useParams();
 
   const lastPlan = loadFromLocal("_roadtrip");
@@ -166,8 +166,6 @@ function Map() {
     </>
   );
 }
-
-export default Map;
 
 const RoadtripName = styled.input`
   position: absolute;

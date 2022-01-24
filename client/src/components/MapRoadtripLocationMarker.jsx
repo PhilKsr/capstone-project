@@ -19,7 +19,6 @@ export default function RoadtripLocationMarker({
       ...roadtrip,
       locations: updatedRoadtripLocations,
     });
-    console.log(updatedRoadtripLocations);
   };
 
   return (

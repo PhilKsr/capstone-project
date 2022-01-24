@@ -27,7 +27,6 @@ export default function AllLocationMarker({
       ...roadtrip,
       locations: updatedRoadtripLocations,
     });
-    console.log(roadtrip);
   };
 
   return (
