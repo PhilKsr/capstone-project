@@ -35,7 +35,7 @@ export default function AllLocationMarker({
       {showAllLocations &&
         locations
           .filter((oneLocation) => {
-            return !roadtrip.locations.some((oneRoadtriplocation) => {
+            return !roadtrip?.locations?.some((oneRoadtriplocation) => {
               return (
                 oneRoadtriplocation.properties.name ===
                 oneLocation.properties.name
