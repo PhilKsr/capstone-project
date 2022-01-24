@@ -61,7 +61,7 @@ export default function Modal({
 }
 
 const StyledModal = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 150;
   bottom: 0;
   left: 0;
@@ -119,11 +119,14 @@ const CloseButton = styled.button`
 `;
 
 const Background = styled.div`
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
   z-index: 125;
   top: 0;
-  height: 100vh;
-  width: 100vw;
+  bottom: 0;
+  right: 0;
+  left: 0;
   background-color: var(--black);
   opacity: 60%;
 `;
