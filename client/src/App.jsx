@@ -9,7 +9,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<h1>HOME should be displayed</h1>} />
-        <Route path='new' element={<NewTrip />} />
+        <Route path='roadtrip' element={<NewTrip />} />
         <Route
           path='collections'
           element={<h1>COLLECTIONS should be displayed</h1>}

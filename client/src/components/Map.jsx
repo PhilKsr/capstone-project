@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 import MapMoveWatcher from "../lib/MapMoveWatcher";
-import LocationMarker from "./LocationMarker";
+import LocationMarker from "./MapYourLocationMarker";
 import LocateButton from "./LocateButton";
 import FilterMenu from "./FilterMenu";
 import Searchbar from "./Searchbar";
-import getIcon from "../lib/getIcon";
 import styled from "styled-components";
 import { filterLocations } from "../lib/filter";
+import AllLocationMarker from "./MapAllLocationMarker";
+import RoadtripLocationMarker from "./MapRoadtripLocationMarker";
+import { loadFromLocal, saveToLocal } from "../lib/localStorage";
 
 function Map() {
+  const resetRoadtrip = {
+    roadtripName: "",
+    roadtripLocations: [],
+  };
+  const recentRoadtrip = loadFromLocal("_roadtrip");
   const [locations, setLocations] = useState([]);
   const [mapInstance, setMapInstance] = useState();
-  const [roadtrip, setRoadtrip] = useState([]);
+  const [roadtrip, setRoadtrip] = useState(recentRoadtrip ?? resetRoadtrip);
   const [filteredLocations, setFilteredLocations] = useState([
     { name: "Alpine Huts", checked: false },
     { name: "Attractions", checked: false },
@@ -28,7 +35,7 @@ function Map() {
     { name: "Waterfalls", checked: false },
   ]);
 
-  const fetchLocations = async (filterArray) => {
+  const fetchAllLocations = async (filterArray) => {
     if (!mapInstance) {
       return;
     }
@@ -52,8 +59,11 @@ function Map() {
   };
 
   useEffect(() => {
-    fetchLocations();
+    fetchAllLocations();
   }, [mapInstance]);
+  useEffect(() => {
+    saveToLocal("_roadtrip", roadtrip);
+  }, [roadtrip]);
 
   const checkFilteredLocations = (event) => {
     setFilteredLocations(filterLocations(event, filteredLocations));
@@ -63,6 +73,25 @@ function Map() {
     return filteredLocations
       .filter((location) => location.checked)
       .map((location) => location.name);
+  };
+
+  const handleInputChange = (event) => {
+    setRoadtrip({ ...roadtrip, roadtripName: event.target.value });
+  };
+
+  const updateRoadtripLocations = (newLocation) => {
+    setRoadtrip(newLocation);
+  };
+
+  const addRoadtripToDatabase = async () => {
+    const result = await fetch("/api/roadtrips", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(roadtrip),
+    });
+    return await result.json();
   };
 
   return (
@@ -76,41 +105,21 @@ function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
-
         <MarkerClusterGroup>
-          {locations.map((oneLocation) => (
-            <Marker
-              key={oneLocation._id}
-              position={[
-                oneLocation.geometry.coordinates[1],
-                oneLocation.geometry.coordinates[0],
-              ]}
-              icon={getIcon(oneLocation.type)}>
-              <Popup offset={[0, -5]} keepInView='true'>
-                <div>
-                  <h3>{oneLocation.properties.name}</h3>
-                  {oneLocation.properties.website && (
-                    <>
-                      <p>
-                        Visit{" "}
-                        <a
-                          href={oneLocation.properties.website}
-                          target='_blank'>
-                          website
-                        </a>{" "}
-                        for more details!
-                      </p>
-                    </>
-                  )}
-                </div>
-              </Popup>
-            </Marker>
-          ))}
+          <AllLocationMarker
+            locations={locations}
+            roadtrip={roadtrip}
+            onUpdateRoadtripLocations={updateRoadtripLocations}
+          />
         </MarkerClusterGroup>
+        <RoadtripLocationMarker
+          roadtrip={roadtrip}
+          onUpdateRoadtripLocations={updateRoadtripLocations}
+        />
 
         <Searchbar className='searchbar' />
         <MapMoveWatcher
-          fetchLocations={fetchLocations}
+          fetchLocations={fetchAllLocations}
           filter={getFiltered()}
         />
         <LocationMarker />
@@ -120,6 +129,8 @@ function Map() {
         type='text'
         name='roadtrip'
         placeholder='Name of roadtrip...'
+        value={roadtrip.name}
+        onChange={handleInputChange}
       />
       <LocateButton mapInstance={mapInstance} />
       <FilterMenu
@@ -136,13 +147,15 @@ const RoadtripName = styled.input`
   position: absolute;
   z-index: 100;
   top: 0;
-  margin-left: 5.5rem;
-  margin-top: 4rem;
+  right: 0;
+  margin-right: 5.5rem;
+  margin-top: 15px;
   color: var(--white);
   background-color: var(--black);
   opacity: 95%;
   border: none;
   width: 12rem;
+  height: 30px;
   padding: 5px;
   border-radius: 5px;
   text-align: center;
@@ -151,16 +164,9 @@ const RoadtripName = styled.input`
   }
 
   //Basic MacBook Pro to use with mouse
-  @media (min-width: 1000px) {
+  @media (min-width: 600px) {
     width: 15rem;
-    height: 2rem;
-    margin-left: 38rem;
-    margin-top: 10px;
-  }
-
-  //Basic 2nd screen to use with mouse
-  @media (min-width: 1500px) {
-    margin-left: 52rem;
+    margin-right: 23em;
     margin-top: 15px;
   }
 `;

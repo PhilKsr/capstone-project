@@ -4,7 +4,8 @@ import path from "path";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import getAll from "./controller/all.controller.js";
+import RoadtripRoutes from "./routes/roadtrip.routes.js";
+import AllLocationsRoutes from "./routes/allLocations.routes.js";
 
 const __dirname = dirname(import.meta.url);
 
@@ -15,13 +16,13 @@ const dbHost = process.env.DB_HOST;
 const dbName = process.env.DB_NAME;
 const serverPort = process.env.PORT || 4000;
 
-const server = express();
 mongoose.connect(
   `mongodb+srv://${dbUser}:${dbPassword}@${dbHost}/${dbName}?retryWrites=true&w=majority`
 );
+const server = express();
 
-server.use(express.json());
 server.use(cors());
+server.use(express.json());
 
 const db = mongoose.connection;
 db.on("error", console.log.bind(console, "Mongodb connection error"));
@@ -29,7 +30,8 @@ db.once("open", function (callback) {
   console.log("Mongodb connection succeeded");
 });
 
-server.get("/api", getAll);
+server.use("/api", RoadtripRoutes);
+server.use("/api", AllLocationsRoutes);
 
 //Static assets (images, css, js)
 server.use(express.static(path.join(__dirname, "../client/dist")));
