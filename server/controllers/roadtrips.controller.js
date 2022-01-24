@@ -24,6 +24,7 @@ export const getOneRoadtrip = async (req, res) => {
     const result = await Roadtrip.findOne({ _id: `${id}` });
     res.json(result);
   }
+  res.status(404).send("No roadtrip found");
 };
 
 export const deleteOneRoadtrip = async (req, res) => {

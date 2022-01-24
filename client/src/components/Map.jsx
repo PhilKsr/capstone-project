@@ -68,7 +68,7 @@ function Map() {
   };
 
   useEffect(() => {
-    if (roadtripId !== undefined) {
+    if (roadtripId) {
       fetchRoadtrip();
     }
   }, []);
