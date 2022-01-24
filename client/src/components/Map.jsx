@@ -68,7 +68,7 @@ function Map() {
   };
 
   useEffect(() => {
-    if (roadtripId) {
+    if (Object.keys(roadtripId).length) {
       fetchRoadtrip();
     }
   }, []);

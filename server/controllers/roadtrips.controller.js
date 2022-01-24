@@ -20,11 +20,8 @@ export const getAllRoadtrips = async (req, res) => {
 
 export const getOneRoadtrip = async (req, res) => {
   const id = req.query.roadtripId;
-  if (id !== "undefined") {
-    const result = await Roadtrip.findOne({ _id: `${id}` });
-    res.json(result);
-  }
-  res.status(404).send("No roadtrip found");
+  const result = await Roadtrip.findOne({ _id: `${id}` });
+  res.json(result);
 };
 
 export const deleteOneRoadtrip = async (req, res) => {

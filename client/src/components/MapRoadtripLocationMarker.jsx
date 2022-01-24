@@ -24,7 +24,7 @@ export default function RoadtripLocationMarker({
 
   return (
     <>
-      {roadtrip.locations.map((oneLocation) => (
+      {roadtrip?.locations?.map((oneLocation) => (
         <Marker
           key={oneLocation._id}
           position={[
