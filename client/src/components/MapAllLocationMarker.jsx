@@ -8,14 +8,11 @@ export default function AllLocationMarker({
   onUpdateRoadtripLocations,
   showAllLocations,
 }) {
-  const addLocation = (event) => {
-    const index = locations.findIndex(
-      (oneLocation) => oneLocation._id === event.target.id
-    );
+  const addLocation = (index) => {
     const newLocation = locations[index];
     let updatedRoadtripLocations;
     if (
-      roadtrip?.locations.some(
+      roadtrip?.locations?.some(
         (element) => element._id === locations[index]._id
       )
     ) {
@@ -65,12 +62,7 @@ export default function AllLocationMarker({
                       </p>
                     </>
                   )}
-                  <button
-                    onClick={addLocation}
-                    id={oneLocation._id}
-                    name={index}>
-                    +
-                  </button>
+                  <button onClick={() => addLocation(index)}>+</button>
                 </PopupContent>
               </Popup>
             </Marker>

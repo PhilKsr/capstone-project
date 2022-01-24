@@ -6,10 +6,7 @@ export default function RoadtripLocationMarker({
   roadtrip,
   onUpdateRoadtripLocations,
 }) {
-  const removeLocation = (event) => {
-    const index = roadtrip.locations.findIndex(
-      (oneLocation) => oneLocation._id === event.target.id
-    );
+  const removeLocation = (index) => {
     const updatedRoadtripLocations = roadtrip.locations.filter(
       (oneLocation) => {
         return oneLocation._id !== roadtrip.locations[index]._id;
@@ -23,7 +20,7 @@ export default function RoadtripLocationMarker({
 
   return (
     <>
-      {roadtrip?.locations?.map((oneLocation) => (
+      {roadtrip?.locations?.map((oneLocation, index) => (
         <Marker
           key={oneLocation._id}
           position={[
@@ -45,9 +42,7 @@ export default function RoadtripLocationMarker({
                   </p>
                 </>
               )}
-              <button onClick={removeLocation} id={oneLocation._id}>
-                -
-              </button>
+              <button onClick={() => removeLocation(index)}>-</button>
             </PopupContent>
           </Popup>
         </Marker>
