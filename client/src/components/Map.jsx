@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 import MapMoveWatcher from "../lib/MapMoveWatcher";
 import LocationMarker from "./MapYourLocationMarker";
@@ -14,6 +14,8 @@ import ResetButton from "./ResetButton";
 import SaveButton from "./SaveButton";
 import { useParams } from "react-router-dom";
 import ShowAllLocationsButton from "./ShowAllLocationsButton";
+import AddButton from "./AddLocationButton";
+import MapNewLocationMarker from "./MapNewLocationMarker";
 
 export default function Map() {
   const roadtripId = useParams();
@@ -27,6 +29,7 @@ export default function Map() {
   const [showAllLocations, setShowAllLocations] = useState(true);
   const [mapInstance, setMapInstance] = useState();
   const [roadtrip, setRoadtrip] = useState(emptyRoadtrip);
+  const [addNewLocation, setAddNewLocation] = useState(false);
   const [filteredLocations, setFilteredLocations] = useState([
     { name: "Alpine Huts", checked: false },
     { name: "Attractions", checked: false },
@@ -100,6 +103,8 @@ export default function Map() {
 
   const onSetShowAllLocations = () => setShowAllLocations(!showAllLocations);
 
+  const onSetAddNewLocation = () => setAddNewLocation(!addNewLocation);
+
   return (
     <>
       <MapContainer
@@ -123,7 +128,10 @@ export default function Map() {
           roadtrip={roadtrip}
           onUpdateRoadtripLocations={updateRoadtripLocations}
         />
-
+        <MapNewLocationMarker
+          addNewLocation={addNewLocation}
+          filteredLocations={filteredLocations}
+        />
         <Searchbar className='searchbar' />
         <MapMoveWatcher
           fetchLocations={fetchAllLocations}
@@ -149,6 +157,10 @@ export default function Map() {
       <ShowAllLocationsButton
         onSetShowAllLocations={onSetShowAllLocations}
         showAllLocations={showAllLocations}
+      />
+      <AddButton
+        onSetAddNewLocation={onSetAddNewLocation}
+        addNewLocation={addNewLocation}
       />
     </>
   );

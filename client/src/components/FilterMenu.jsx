@@ -68,7 +68,7 @@ const FilterContainer = styled.div`
     background-color: var(--black);
     opacity: 80%;
     position: absolute;
-    z-index: 100;
+    z-index: 150;
     bottom: 0;
     right: 0;
     margin-right: 1rem;
