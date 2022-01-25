@@ -7,17 +7,12 @@ export default function SaveButton({ roadtrip }) {
 
   const [confirmation, setConfirmation] = useState(false);
 
-  const confirmationHandler = () => {
-    setConfirmation(true);
-  };
+  const confirmationHandler = () => setConfirmation(true);
 
-  const secondConfirmationHandler = () => {
+  const secondConfirmationHandler = () =>
     setTimeout(() => setConfirmation(false), 2000);
-  };
 
-  const handleSave = () => {
-    roadtrip._id ? updateRoadtrip() : saveRoadtrip();
-  };
+  const handleSave = () => (roadtrip._id ? updateRoadtrip() : saveRoadtrip());
 
   const saveRoadtrip = async () => {
     const result = await fetch("/api/roadtrips", {
