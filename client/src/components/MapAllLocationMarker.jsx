@@ -8,37 +8,32 @@ export default function AllLocationMarker({
   onUpdateRoadtripLocations,
   showAllLocations,
 }) {
-  const addLocation = (index) => {
-    const newLocation = locations[index];
-    let updatedRoadtripLocations;
+  const addLocation = (newLocation) => {
     if (
-      roadtrip?.locations?.some(
-        (element) => element._id === locations[index]._id
-      )
+      roadtrip?.locations?.some((element) => element._id === newLocation._id)
     ) {
       return null;
     } else {
-      updatedRoadtripLocations = [...roadtrip.locations, newLocation];
+      const updatedRoadtripLocations = [...roadtrip.locations, newLocation];
+      onUpdateRoadtripLocations({
+        ...roadtrip,
+        locations: updatedRoadtripLocations,
+      });
     }
-    onUpdateRoadtripLocations({
-      ...roadtrip,
-      locations: updatedRoadtripLocations,
-    });
   };
 
+  const isLocationPartOfRoadtrip = (location, roadtrip) => {
+    !roadtrip?.locations?.some(
+      (roadtripLocation) =>
+        roadtripLocation.properties.name === location.properties.name
+    );
+  };
   return (
     <>
       {showAllLocations &&
         locations
-          .filter((oneLocation) => {
-            return !roadtrip?.locations?.some((oneRoadtriplocation) => {
-              return (
-                oneRoadtriplocation.properties.name ===
-                oneLocation.properties.name
-              );
-            });
-          })
-          .map((oneLocation, index) => (
+          .filter((location) => !isLocationPartOfRoadtrip(location, roadtrip))
+          .map((oneLocation) => (
             <Marker
               key={oneLocation._id}
               position={[
@@ -62,7 +57,7 @@ export default function AllLocationMarker({
                       </p>
                     </>
                   )}
-                  <button onClick={() => addLocation(index)}>+</button>
+                  <button onClick={() => addLocation(oneLocation)}>+</button>
                 </PopupContent>
               </Popup>
             </Marker>

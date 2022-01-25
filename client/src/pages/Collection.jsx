@@ -13,9 +13,7 @@ export default function Collection() {
     setIndex(index);
   };
 
-  useEffect(() => {
-    fetchRoadtrips();
-  }, []);
+  useEffect(() => fetchRoadtrips(), []);
 
   const fetchRoadtrips = async () => {
     const res = await fetch(`/api/roadtrips`);
@@ -23,7 +21,7 @@ export default function Collection() {
     setRoadtrips(data);
   };
 
-  const deleteFromDatabase = async (event) => {
+  const deleteFromDatabase = async () => {
     const result = await fetch(
       `/api/roadtrips?roadtripId=${roadtrips[index]._id}`,
       {
@@ -109,6 +107,9 @@ const RoadtripCard = styled.div`
   box-shadow: 10px 20px 15px rgba(0, 0, 0, 0.3);
   :last-child {
     margin-bottom: 6rem;
+  }
+  h2 {
+    margin-top: 3rem;
   }
 
   div {

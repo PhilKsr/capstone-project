@@ -38,7 +38,7 @@ export const deleteOneRoadtrip = async (req, res) => {
       });
     }
   } catch (error) {
-    res.json(error);
+    res.json({ success: false, error: error.message });
   }
 };
 
@@ -57,6 +57,6 @@ export const updateOneRoadtrip = async (req, res) => {
       });
     }
   } catch (error) {
-    res.json(error);
+    res.json({ success: false, error: error.message });
   }
 };

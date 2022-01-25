@@ -16,10 +16,10 @@ export default function SaveButton({ roadtrip }) {
   };
 
   const handleSave = () => {
-    roadtrip._id ? updateRoadtrip() : saveToDatabase();
+    roadtrip._id ? updateRoadtrip() : saveRoadtrip();
   };
 
-  const saveToDatabase = async () => {
+  const saveRoadtrip = async () => {
     const result = await fetch("/api/roadtrips", {
       method: "POST",
       headers: {
@@ -43,7 +43,7 @@ export default function SaveButton({ roadtrip }) {
 
   return (
     <>
-      <AddToDatabaseButton
+      <SaveRoadtripButton
         onClick={() => {
           handleSave(), confirmationHandler(), secondConfirmationHandler();
         }}>
@@ -56,7 +56,7 @@ export default function SaveButton({ roadtrip }) {
           <path d='M0 0h24v24H0z' fill='none' />
           <path d='M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z' />
         </svg>
-      </AddToDatabaseButton>
+      </SaveRoadtripButton>
       {confirmation && (
         <ConfirmationSign>
           <svg
@@ -74,7 +74,7 @@ export default function SaveButton({ roadtrip }) {
   );
 }
 
-const AddToDatabaseButton = styled.button`
+const SaveRoadtripButton = styled.button`
   box-sizing: content-box;
   position: absolute;
   z-index: 100;

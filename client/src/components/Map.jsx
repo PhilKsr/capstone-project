@@ -65,9 +65,7 @@ export default function Map() {
   };
 
   useEffect(() => {
-    if (Object.keys(roadtripId).length) {
-      fetchRoadtrip();
-    }
+    if (Object.keys(roadtripId).length) fetchRoadtrip();
   }, []);
 
   useEffect(() => {
@@ -92,9 +90,7 @@ export default function Map() {
     setRoadtrip(newLocation);
   };
 
-  const resetRoadtrip = () => {
-    setRoadtrip(emptyRoadtrip);
-  };
+  const resetRoadtrip = () => setRoadtrip(emptyRoadtrip);
 
   const fetchRoadtrip = async () => {
     const res = await fetch(`/api/roadtrip?roadtripId=${roadtripId.id}`);
@@ -102,9 +98,7 @@ export default function Map() {
     setRoadtrip(data);
   };
 
-  const onSetShowAllLocations = () => {
-    setShowAllLocations(!showAllLocations);
-  };
+  const onSetShowAllLocations = () => setShowAllLocations(!showAllLocations);
 
   return (
     <>
