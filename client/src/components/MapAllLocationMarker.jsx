@@ -6,69 +6,62 @@ export default function AllLocationMarker({
   locations,
   roadtrip,
   onUpdateRoadtripLocations,
+  showAllLocations,
 }) {
-  const addLocation = (event) => {
-    const index = locations.findIndex(
-      (oneLocation) => oneLocation._id === event.target.id
-    );
-    const newLocation = locations[index];
-    let updatedRoadtripLocations;
+  const addLocation = (newLocation) => {
     if (
-      roadtrip?.roadtripLocations.some(
-        (element) => element._id === locations[index]._id
-      )
+      roadtrip?.locations?.some((element) => element._id === newLocation._id)
     ) {
       return null;
     } else {
-      updatedRoadtripLocations = [...roadtrip.roadtripLocations, newLocation];
+      const updatedRoadtripLocations = [...roadtrip.locations, newLocation];
+      onUpdateRoadtripLocations({
+        ...roadtrip,
+        locations: updatedRoadtripLocations,
+      });
     }
-    onUpdateRoadtripLocations({
-      ...roadtrip,
-      roadtripLocations: updatedRoadtripLocations,
-    });
-    console.log(roadtrip);
   };
 
+  const isLocationPartOfRoadtrip = (location, roadtrip) => {
+    !roadtrip?.locations?.some(
+      (roadtripLocation) =>
+        roadtripLocation.properties.name === location.properties.name
+    );
+  };
   return (
     <>
-      {locations
-        .filter((oneLocation) => {
-          return !roadtrip.roadtripLocations.some((oneRoadtriplocation) => {
-            return (
-              oneRoadtriplocation.properties.name ===
-              oneLocation.properties.name
-            );
-          });
-        })
-        .map((oneLocation, index) => (
-          <Marker
-            key={oneLocation._id}
-            position={[
-              oneLocation.geometry.coordinates[1],
-              oneLocation.geometry.coordinates[0],
-            ]}
-            icon={getIcon(oneLocation.type)}>
-            <Popup offset={[0, -5]}>
-              <PopupContent>
-                <h3>{oneLocation.properties.name}</h3>
-                {oneLocation.properties.website && (
-                  <>
-                    <p>
-                      Visit{" "}
-                      <a href={oneLocation.properties.website} target='_blank'>
-                        website
-                      </a>{" "}
-                      for more details!
-                    </p>
-                  </>
-                )}
-                <button onClick={addLocation} id={oneLocation._id} name={index}>
-                  +
-                </button>
-              </PopupContent>
-            </Popup>
-          </Marker>
-        ))}
+      {showAllLocations &&
+        locations
+          .filter((location) => !isLocationPartOfRoadtrip(location, roadtrip))
+          .map((oneLocation) => (
+            <Marker
+              key={oneLocation._id}
+              position={[
+                oneLocation.geometry.coordinates[1],
+                oneLocation.geometry.coordinates[0],
+              ]}
+              icon={getIcon(oneLocation.type)}>
+              <Popup offset={[0, -5]}>
+                <PopupContent>
+                  <h3>{oneLocation.properties.name}</h3>
+                  {oneLocation.properties.website && (
+                    <>
+                      <p>
+                        Visit{" "}
+                        <a
+                          href={oneLocation.properties.website}
+                          target='_blank'>
+                          website
+                        </a>{" "}
+                        for more details!
+                      </p>
+                    </>
+                  )}
+                  <button onClick={() => addLocation(oneLocation)}>+</button>
+                </PopupContent>
+              </Popup>
+            </Marker>
+          ))}
     </>
   );
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function LocateButton({ mapInstance }) {
+export default function LocateButton({ mapInstance }) {
   const clicked = (e) => {
     const map = e.target.previousSibling;
     mapInstance.fire("tileunload");
@@ -20,8 +20,6 @@ function LocateButton({ mapInstance }) {
   );
 }
 
-export default LocateButton;
-
 const LocateMeButton = styled.button`
   box-sizing: content-box;
   position: absolute;
@@ -34,4 +32,5 @@ const LocateMeButton = styled.button`
   border: none;
   border-radius: 50%;
   background-color: var(--black);
+  cursor: pointer;
 `;

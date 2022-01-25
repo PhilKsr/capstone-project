@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-function Navbar() {
+export default function Navbar() {
   return (
     <FooterNavbar>
       <li>
@@ -79,14 +79,12 @@ function Navbar() {
   );
 }
 
-export default Navbar;
-
 const FooterNavbar = styled.ul`
   display: flex;
   justify-content: space-around;
   align-items: center;
   background: var(--black);
-  position: absolute;
+  position: fixed;
   z-index: 999;
   bottom: 0;
   right: 0;

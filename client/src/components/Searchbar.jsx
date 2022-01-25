@@ -5,7 +5,7 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 import geocoder from "leaflet-control-geocoder";
 
-function Searchbar() {
+export default function Searchbar() {
   const map = useMap();
 
   useEffect(() => {
@@ -36,5 +36,3 @@ function Searchbar() {
 
   return null;
 }
-
-export default Searchbar;

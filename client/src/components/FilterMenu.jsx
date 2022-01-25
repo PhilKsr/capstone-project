@@ -1,7 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-function FilterMenu({ checkFilteredLocations, filteredLocations }) {
+export default function FilterMenu({
+  checkFilteredLocations,
+  filteredLocations,
+}) {
   const [showFilterMenu, setShowFilterMenu] = useState(false);
 
   const showFilter = () => {
@@ -46,8 +49,6 @@ function FilterMenu({ checkFilteredLocations, filteredLocations }) {
   );
 }
 
-export default FilterMenu;
-
 const FilterContainer = styled.div`
   button {
     box-sizing: content-box;
@@ -61,6 +62,7 @@ const FilterContainer = styled.div`
     border: none;
     border-radius: 50%;
     background-color: var(--black);
+    cursor: pointer;
   }
   ul {
     background-color: var(--black);
@@ -77,7 +79,7 @@ const FilterContainer = styled.div`
   li {
     color: var(--white);
     list-style: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-top: 1rem;
   }
 
