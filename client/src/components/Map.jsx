@@ -10,7 +10,6 @@ import styled from "styled-components";
 import { filterLocations } from "../lib/filter";
 import AllLocationMarker from "./MapAllLocationMarker";
 import RoadtripLocationMarker from "./MapRoadtripLocationMarker";
-import { loadFromLocal, saveToLocal } from "../lib/localStorage";
 import ResetButton from "./ResetButton";
 import SaveButton from "./SaveButton";
 import { useParams } from "react-router-dom";
@@ -18,8 +17,6 @@ import ShowAllLocationsButton from "./ShowAllLocationsButton";
 
 export default function Map() {
   const roadtripId = useParams();
-
-  const lastPlan = loadFromLocal("_roadtrip");
 
   const emptyRoadtrip = {
     name: "",
@@ -29,7 +26,7 @@ export default function Map() {
   const [locations, setLocations] = useState([]);
   const [showAllLocations, setShowAllLocations] = useState(true);
   const [mapInstance, setMapInstance] = useState();
-  const [roadtrip, setRoadtrip] = useState(lastPlan ?? emptyRoadtrip);
+  const [roadtrip, setRoadtrip] = useState(emptyRoadtrip);
   const [filteredLocations, setFilteredLocations] = useState([
     { name: "Alpine Huts", checked: false },
     { name: "Attractions", checked: false },
@@ -76,10 +73,6 @@ export default function Map() {
   useEffect(() => {
     fetchAllLocations();
   }, [mapInstance]);
-
-  useEffect(() => {
-    saveToLocal("_roadtrip", roadtrip);
-  }, [roadtrip]);
 
   const checkFilteredLocations = (event) => {
     setFilteredLocations(filterLocations(event, filteredLocations));
