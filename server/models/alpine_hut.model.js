@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
 
 const alpineHutSchema = new mongoose.Schema({
+  type: { type: String, required: true },
   properties: {
     name: { type: String, required: true },
-    website: String,
-    ["contact:website"]: String,
-    ["url:official"]: String,
+    website: { type: String, required: true },
+  },
+  geometry: {
+    coordinates: { type: Array, required: true },
   },
 });
 const AlpineHut = mongoose.model("alpine_hut", alpineHutSchema);

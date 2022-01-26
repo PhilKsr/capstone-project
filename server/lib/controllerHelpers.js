@@ -30,3 +30,12 @@ export const getWebsiteCollection = async (Model, boundsSW, boundsNE) => {
   });
   return result;
 };
+
+export const postToCollection = async (LocationModel, req) => {
+  const location = new LocationModel({
+    type: req.body.type,
+    properties: req.body.properties,
+    geometry: req.body.geometry,
+  });
+  return location;
+};

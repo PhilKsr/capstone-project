@@ -25,23 +25,24 @@ export default function Map() {
     locations: [],
   };
 
+  const [mapInstance, setMapInstance] = useState();
   const [locations, setLocations] = useState([]);
   const [showAllLocations, setShowAllLocations] = useState(true);
-  const [mapInstance, setMapInstance] = useState();
   const [roadtrip, setRoadtrip] = useState(emptyRoadtrip);
   const [addNewLocation, setAddNewLocation] = useState(false);
+  const [confirmation, setConfirmation] = useState(false);
   const [filteredLocations, setFilteredLocations] = useState([
-    { name: "Alpine Huts", checked: false },
-    { name: "Attractions", checked: false },
-    { name: "Campsites", checked: false },
-    { name: "Caravansites", checked: false },
-    { name: "Castles", checked: false },
-    { name: "Fuelstations", checked: false },
-    { name: "Hotels", checked: false },
-    { name: "Restaurants", checked: false },
-    { name: "Ruins", checked: false },
-    { name: "Themeparks", checked: false },
-    { name: "Waterfalls", checked: false },
+    { name: "Alpine Hut", checked: false },
+    { name: "Attraction", checked: false },
+    { name: "Campsite", checked: false },
+    { name: "Caravansite", checked: false },
+    { name: "Castle", checked: false },
+    { name: "Fuelstation", checked: false },
+    { name: "Hotel", checked: false },
+    { name: "Restaurant", checked: false },
+    { name: "Ruin", checked: false },
+    { name: "Themepark", checked: false },
+    { name: "Waterfall", checked: false },
   ]);
 
   const fetchAllLocations = async (filterArray) => {
@@ -105,6 +106,11 @@ export default function Map() {
 
   const onSetAddNewLocation = () => setAddNewLocation(!addNewLocation);
 
+  const confirmationHandler = () => {
+    setConfirmation(true);
+    setTimeout(() => setConfirmation(false), 2000);
+  };
+
   return (
     <>
       <MapContainer
@@ -131,6 +137,8 @@ export default function Map() {
         <MapNewLocationMarker
           addNewLocation={addNewLocation}
           filteredLocations={filteredLocations}
+          onConfirmationHandler={confirmationHandler}
+          onSetAddNewLocation={onSetAddNewLocation}
         />
         <Searchbar className='searchbar' />
         <MapMoveWatcher
@@ -153,7 +161,11 @@ export default function Map() {
         filteredLocations={filteredLocations}
       />
       <ResetButton onResetRoadtrip={resetRoadtrip} />
-      <SaveButton roadtrip={roadtrip} />
+      <SaveButton
+        roadtrip={roadtrip}
+        confirmation={confirmation}
+        onConfirmationHandler={confirmationHandler}
+      />
       <ShowAllLocationsButton
         onSetShowAllLocations={onSetShowAllLocations}
         showAllLocations={showAllLocations}

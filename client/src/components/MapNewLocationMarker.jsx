@@ -1,43 +1,118 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 import styled from "styled-components";
 
 export default function MapNewLocationMarker({
   addNewLocation,
   filteredLocations,
+  onConfirmationHandler,
+  onSetAddNewLocation,
 }) {
+  const initialLocationDetails = {
+    type: "",
+    properties: {
+      name: "",
+      website: "",
+    },
+    geometry: {
+      type: "Point",
+      coordinates: [],
+    },
+  };
+
   const [newLocation, setNewLocation] = useState([]);
+  const [locationDetails, setLocationDetails] = useState(
+    initialLocationDetails
+  );
+
+  useEffect(() => {
+    console.log(newLocation);
+    const newCoordinates = {
+      ...locationDetails.geometry,
+      coordinates: [newLocation[1], newLocation[0]],
+    };
+    setLocationDetails({
+      ...locationDetails,
+      geometry: newCoordinates,
+    });
+  }, [newLocation]);
 
   useMapEvents({
     click(e) {
-      setNewLocation([e.latlng]);
+      const coordinates = Object.values(e.latlng);
+      setNewLocation(coordinates);
+      console.log(locationDetails);
     },
   });
+
+  const handleSelectChange = (event) => {
+    setLocationDetails({ ...locationDetails, type: event.target.value });
+  };
+
+  const handleInputChange = (event) => {
+    const newProperties = {
+      ...locationDetails.properties,
+      [event.target.name]: event.target.value,
+    };
+    setLocationDetails({
+      ...locationDetails,
+      properties: newProperties,
+    });
+  };
+
+  const saveNewLocation = async () => {
+    const result = await fetch("/api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(locationDetails),
+    });
+    setLocationDetails(initialLocationDetails);
+    onSetAddNewLocation();
+    return await result.json();
+  };
 
   return (
     <>
       {addNewLocation && newLocation.length && (
-        <Marker position={newLocation[0]}>
+        <Marker position={newLocation}>
           <Popup offset={[0, -5]}>
-            <PopupContent>
+            <PopupForm>
               <FormContainer>
                 <label htmlFor='name'>Name of location:</label>
-                <input type='text' name='name' />
+                <input
+                  type='text'
+                  name='name'
+                  value={locationDetails.properties.name}
+                  onChange={handleInputChange}
+                />
               </FormContainer>
               <FormContainer>
                 <label htmlFor='type'>Choose type of location:</label>
-                <select name='type'>
+                <select name='type' onChange={handleSelectChange}>
+                  <option value=''> -Please choose- </option>
                   {filteredLocations?.map((filter, index) => (
-                    <option key={index}>{filter.name}</option>
+                    <option key={index} value={filter.name}>
+                      {filter.name}
+                    </option>
                   ))}
                 </select>
               </FormContainer>
               <FormContainer>
                 <label htmlFor='website'>Website:</label>
-                <input type='text' name='website' />
+                <input
+                  type='text'
+                  name='website'
+                  value={locationDetails.properties.website}
+                  onChange={handleInputChange}
+                />
               </FormContainer>
               <SaveButton>
-                <button>
+                <button
+                  onClick={() => {
+                    saveNewLocation(), onConfirmationHandler();
+                  }}>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     height='24px'
@@ -49,7 +124,7 @@ export default function MapNewLocationMarker({
                   </svg>
                 </button>
               </SaveButton>
-            </PopupContent>
+            </PopupForm>
           </Popup>
         </Marker>
       )}
@@ -58,7 +133,7 @@ export default function MapNewLocationMarker({
   );
 }
 
-const PopupContent = styled.div`
+const PopupForm = styled.div`
   padding: 0.5rem;
   font-size: 0.8rem;
 
