@@ -36,11 +36,22 @@ export default function Collection() {
     return await result.json();
   };
 
+  const showMore = () => {
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+      if (button.classList.contains("visible")) {
+        button.classList.remove("visible");
+      } else {
+        button.classList.add("visible");
+      }
+    });
+  };
+
   return (
     <>
       <CardContainer>
         {roadtrips.map((oneRoadtrip, index) => (
-          <RoadtripCard>
+          <RoadtripCard onClick={showMore}>
             <div>
               <li key={oneRoadtrip._id}>
                 <h2>{oneRoadtrip.name}</h2>
@@ -131,7 +142,14 @@ const RoadtripCard = styled.div`
     background-color: var(--black);
     color: white;
     cursor: pointer;
+    opacity: 0%;
+    transition: opacity 0.6s;
   }
+
+  .visible {
+    opacity: 100%;
+  }
+
   button + button {
     margin: 0;
   }
