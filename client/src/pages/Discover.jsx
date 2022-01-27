@@ -65,7 +65,9 @@ export default function Discover() {
         <section>
           <div style={{ backgroundImage: `url(${link.picture_url})` }}></div>
           <h3>
-            <a href={link.website}>{link.name.toUpperCase()}</a>
+            <a href={link.website} target='_blank'>
+              {link.name.toUpperCase()}
+            </a>
           </h3>
         </section>
       ))}
@@ -97,7 +99,7 @@ const ContentContainer = styled.div`
       background-size: cover;
       margin: 1rem;
       border-radius: 15px;
-      opacity: 70%;
+      opacity: 80%;
     }
     h3 {
       position: absolute;
@@ -106,7 +108,7 @@ const ContentContainer = styled.div`
       border-radius: 15px;
       padding: 0.5rem;
       opacity: 90%;
-      font-size: 1rem;
+      font-size: 1.1rem;
 
       a {
         text-decoration: none;
