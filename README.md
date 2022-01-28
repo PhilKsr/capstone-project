@@ -1,6 +1,7 @@
 # Welcome to roAdventure!
 
 The Webapp helps you to plan the best roadtrips ever. To make sure that you can easily use it I have explained some features of the map:
+![Map:]()
 
 ## 1. Location button
 - Find yourself with the Location button
