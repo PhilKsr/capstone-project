@@ -151,7 +151,7 @@ export default function Map() {
       <RoadtripName
         type='text'
         name='roadtrip'
-        placeholder='Type a name!'
+        placeholder='Roadtrip name...'
         value={roadtrip.name}
         onChange={handleInputChange}
       />

@@ -33,10 +33,6 @@ const ContentContainer = styled.div`
     padding-top: 1rem;
   }
 
-  h3 {
-    font-size: 1rem;
-  }
-
   ul {
     padding: 0;
   }
