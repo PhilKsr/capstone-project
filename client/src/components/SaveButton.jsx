@@ -1,16 +1,12 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
-export default function SaveButton({ roadtrip }) {
+export default function SaveButton({
+  roadtrip,
+  confirmation,
+  onConfirmationHandler,
+}) {
   const roadtripId = useParams();
-
-  const [confirmation, setConfirmation] = useState(false);
-
-  const confirmationHandler = () => setConfirmation(true);
-
-  const secondConfirmationHandler = () =>
-    setTimeout(() => setConfirmation(false), 2000);
 
   const handleSave = () => (roadtrip._id ? updateRoadtrip() : saveRoadtrip());
 
@@ -40,7 +36,7 @@ export default function SaveButton({ roadtrip }) {
     <>
       <SaveRoadtripButton
         onClick={() => {
-          handleSave(), confirmationHandler(), secondConfirmationHandler();
+          handleSave(), onConfirmationHandler();
         }}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
