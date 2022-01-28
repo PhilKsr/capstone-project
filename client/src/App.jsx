@@ -4,6 +4,7 @@ import Roadtrip from "./pages/RoadtripMap";
 import Collection from "./pages/Collection";
 import Discover from "./pages/Discover";
 import Home from "./pages/Home";
+import PackingList from "./pages/PackingList";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path='/roadtrip/:id' element={<Roadtrip />} />
         <Route path='/collections' element={<Collection />} />
         <Route path='discover' element={<Discover />} />
-        <Route path='profile' element={<h1>PROFILE should be displayed</h1>} />
+        <Route path='packing-list' element={<PackingList />} />
       </Routes>
     </div>
   );

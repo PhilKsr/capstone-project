@@ -63,7 +63,7 @@ export default function Navbar() {
       </li>
 
       <li>
-        <NavLink to='profile'>
+        <NavLink to='packing-list'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             height='24px'
