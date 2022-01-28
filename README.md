@@ -1,7 +1,7 @@
 # Welcome to roAdventure!
 
 The Webapp helps you to plan the best roadtrips ever. To make sure that you can easily use it I have explained some features of the map:
-![Map:]()
+![Map:](https://github.com/Philipp-Kaiser/capstone-project/blob/2e1d0943dca648ce52070862e43e304631834aae/roAdventure.png)
 
 ## 1. Location button
 - Find yourself with the Location button
