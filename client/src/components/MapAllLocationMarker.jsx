@@ -22,18 +22,20 @@ export default function AllLocationMarker({
     }
   };
 
-  const isLocationPartOfRoadtrip = (location, roadtrip) => {
-    !roadtrip?.locations?.some(
-      (roadtripLocation) =>
-        roadtripLocation.properties.name === location.properties.name
-    );
+  const isLocationPartOfRoadtrip = (location, newRoadtrip) => {
+    return !newRoadtrip?.locations?.some((oneRoadtriplocation) => {
+      return oneRoadtriplocation.properties.name === location.properties.name;
+    });
   };
+
   return (
     <>
       {showAllLocations &&
         locations
-          .filter((location) => !isLocationPartOfRoadtrip(location, roadtrip))
-          .map((oneLocation) => (
+          .filter((oneLocation) =>
+            isLocationPartOfRoadtrip(oneLocation, roadtrip)
+          )
+          .map((oneLocation, index) => (
             <Marker
               key={oneLocation._id}
               position={[

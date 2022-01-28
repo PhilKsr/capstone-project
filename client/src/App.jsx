@@ -9,7 +9,7 @@ function App() {
     <div className='App'>
       <Navbar />
       <Routes>
-        <Route path='/' element={<h1>HOME should be displayed</h1>} />
+        <Route path='/' element={<h2>Hi!</h2>} />
         <Route path='/roadtrip' element={<Roadtrip />} />
         <Route path='/roadtrip/:id' element={<Roadtrip />} />
         <Route path='/collections' element={<Collection />} />

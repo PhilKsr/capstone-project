@@ -14,7 +14,7 @@ import Ruin from "../models/ruins.model.js";
 import ThemePark from "../models/theme_parks.model.js";
 import Waterfall from "../models/waterfalls.model.js";
 
-const getAll = async (req, res) => {
+export const getAll = async (req, res) => {
   const boundsSW = req.query.boundsSW;
   const boundsNE = req.query.boundsNE;
   const filter = req.query.collections;
@@ -66,7 +66,7 @@ const getAll = async (req, res) => {
     return;
   }
 
-  if (filter.includes("Alpine Huts")) {
+  if (filter.includes("Alpine Hut")) {
     const alpineHuts = await getWebsiteCollection(
       AlpineHut,
       boundsSW,
@@ -75,7 +75,7 @@ const getAll = async (req, res) => {
     const randomAlpineHuts = alpineHuts.slice(0, 500);
     result = [...result, ...randomAlpineHuts];
   }
-  if (filter.includes("Attractions")) {
+  if (filter.includes("Attraction")) {
     const attractions = await getWebsiteCollection(
       Attraction,
       boundsSW,
@@ -84,13 +84,13 @@ const getAll = async (req, res) => {
     const randomAttractions = attractions.slice(0, 500);
     result = [...result, ...randomAttractions];
   }
-  if (filter.includes("Campsites")) {
+  if (filter.includes("Campsite")) {
     const campSites = await getWebsiteCollection(CampSite, boundsSW, boundsNE);
     const randomCampSites = campSites.slice(0, 500);
     result = [...result, ...randomCampSites];
   }
 
-  if (filter.includes("Caravansites")) {
+  if (filter.includes("Caravansite")) {
     const caravanSites = await getWebsiteCollection(
       CaravanSite,
       boundsSW,
@@ -99,23 +99,23 @@ const getAll = async (req, res) => {
     const randomCaravanSites = caravanSites.slice(0, 500);
     result = [...result, ...randomCaravanSites];
   }
-  if (filter.includes("Castles")) {
+  if (filter.includes("Castle")) {
     const castles = await getWebsiteCollection(Castle, boundsSW, boundsNE);
     const randomCastles = castles.slice(0, 500);
     result = [...result, ...randomCastles];
   }
-  if (filter.includes("Fuelstations")) {
+  if (filter.includes("Fuelstation")) {
     const fuels = await getCollection(Fuel, boundsSW, boundsNE);
     const randomFuels = fuels.slice(0, 500);
     result = [...result, ...randomFuels];
   }
 
-  if (filter.includes("Hotels")) {
+  if (filter.includes("Hotel")) {
     const hotels = await getWebsiteCollection(Hotel, boundsSW, boundsNE);
     const randomHotels = hotels.slice(0, 500);
     result = [...result, ...randomHotels];
   }
-  if (filter.includes("Restaurants")) {
+  if (filter.includes("Restaurant")) {
     const restaurants = await getWebsiteCollection(
       Restaurant,
       boundsSW,
@@ -124,12 +124,12 @@ const getAll = async (req, res) => {
     const randomRestaurants = restaurants.slice(0, 500);
     result = [...result, ...randomRestaurants];
   }
-  if (filter.includes("Ruins")) {
+  if (filter.includes("Ruin")) {
     const ruins = await getCollection(Ruin, boundsSW, boundsNE);
     const randomRuins = ruins.slice(0, 500);
     result = [...result, ...randomRuins];
   }
-  if (filter.includes("Themeparks")) {
+  if (filter.includes("Themepark")) {
     const themeParks = await getWebsiteCollection(
       ThemePark,
       boundsSW,
@@ -139,7 +139,7 @@ const getAll = async (req, res) => {
     result = [...result, ...randomThemeParks];
   }
 
-  if (filter.includes("Waterfalls")) {
+  if (filter.includes("Waterfall")) {
     const waterfalls = await getCollection(Waterfall, boundsSW, boundsNE);
     const randomWaterfalls = waterfalls.slice(0, 500);
     result = [...result, ...randomWaterfalls];
@@ -148,4 +148,68 @@ const getAll = async (req, res) => {
   res.json(result);
 };
 
-export default getAll;
+export const postLocation = async (req, res) => {
+  try {
+    const type = req.body.type;
+    let location;
+    if (type === "Alpine Hut") {
+      location = new AlpineHut({
+        ...req.body,
+      });
+    }
+    if (type === "Attraction") {
+      location = new Attraction({
+        ...req.body,
+      });
+    }
+    if (type === "Campsite") {
+      location = new CampSite({
+        ...req.body,
+      });
+    }
+    if (type === "Caravansite") {
+      location = new CaravanSite({
+        ...req.body,
+      });
+    }
+    if (type === "Castle") {
+      location = new Castle({
+        ...req.body,
+      });
+    }
+    if (type === "Fuelstation") {
+      location = new Fuel({
+        ...req.body,
+      });
+    }
+    if (type === "Hotel") {
+      location = new Hotel({
+        ...req.body,
+      });
+    }
+    if (type === "Restaurant") {
+      location = new Restaurant({
+        ...req.body,
+      });
+    }
+    if (type === "Ruin") {
+      location = new Ruin({
+        ...req.body,
+      });
+    }
+    if (type === "Themepark") {
+      location = new ThemePark({
+        ...req.body,
+      });
+    }
+    if (type === "Waterfall") {
+      location = new Waterfall({
+        ...req.body,
+      });
+    }
+    const result = await location.save();
+    res.json(result);
+  } catch (error) {
+    res.json(error);
+  }
+};

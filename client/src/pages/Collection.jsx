@@ -99,7 +99,7 @@ export default function Collection() {
   );
 }
 
-const CardContainer = styled.ul`
+const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,27 +116,22 @@ const RoadtripCard = styled.div`
   background-color: grey;
   color: white;
   box-shadow: 10px 20px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 1rem;
+  position: relative;
+
   :last-child {
     margin-bottom: 6rem;
   }
-  h2 {
-    margin-top: 3rem;
-  }
 
-  div {
-    padding: 1rem;
-    position: relative;
-  }
-  li ul {
-    padding-top: 1rem;
-  }
   button {
     box-sizing: content-box;
     position: absolute;
     top: 0;
     right: 0;
-    margin-right: 4rem;
-    padding: 0.75rem 0.75rem 0.6rem 0.75rem;
+    margin-right: 3.5rem;
+    margin-top: 0.5rem;
+    padding: 0.45rem 0.45rem 0.3rem 0.45rem;
     border: none;
     border-radius: 50%;
     background-color: var(--black);
@@ -145,6 +140,7 @@ const RoadtripCard = styled.div`
     opacity: 0%;
     transition: opacity 0.6s;
   }
+
 
   .visible {
     opacity: 100%;
