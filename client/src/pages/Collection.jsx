@@ -141,12 +141,11 @@ const RoadtripCard = styled.div`
     transition: opacity 0.6s;
   }
 
-
   .visible {
     opacity: 100%;
   }
 
   button + button {
-    margin: 0;
+    margin: 0.5rem;
   }
 `;

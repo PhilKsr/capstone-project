@@ -1,5 +1,5 @@
 import { Marker, Popup } from "react-leaflet";
-import { getIcon } from "../lib/getIcon";
+import { getIcon } from "../../lib/getIcon";
 import styled from "styled-components";
 
 export default function AllLocationMarker({

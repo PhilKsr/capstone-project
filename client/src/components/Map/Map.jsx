@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
-import MapMoveWatcher from "../lib/MapMoveWatcher";
+import MapMoveWatcher from "../../lib/MapMoveWatcher";
 import LocationMarker from "./MapYourLocationMarker";
 import LocateButton from "./LocateButton";
 import FilterMenu from "./FilterMenu";
 import Searchbar from "./Searchbar";
 import styled from "styled-components";
-import { filterLocations } from "../lib/filter";
+import { filterLocations } from "../../lib/filter";
 import AllLocationMarker from "./MapAllLocationMarker";
 import RoadtripLocationMarker from "./MapRoadtripLocationMarker";
 import ResetButton from "./ResetButton";

@@ -1,5 +1,5 @@
 import { Marker, Popup } from "react-leaflet";
-import { getRoadtripIcon } from "../lib/getIcon";
+import { getRoadtripIcon } from "../../lib/getIcon";
 import styled from "styled-components";
 
 export default function RoadtripLocationMarker({
