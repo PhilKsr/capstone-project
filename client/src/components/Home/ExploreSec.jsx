@@ -75,7 +75,7 @@ const ExploreSection = styled.section`
       justify-self: center;
       margin-top: 1rem;
       box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
-      animation: morph 35s ease-in-out infinite;
+      animation: morph 47s ease-in-out infinite;
       border-radius: 50% 40% 30% 30% / 20% 50% 70% 40%;
       transition: all 50s ease-in-out;
       @keyframes morph {
@@ -119,7 +119,7 @@ const ExploreSection = styled.section`
       }
     }
     .second {
-      animation: morph 45s ease-in-out infinite;
+      animation: morph 55s ease-in-out infinite;
       border-radius: 30% 60% 20% 70% / 70% 40% 20% 70%;
       transition: 50s ease-in-out;
       @keyframes morph {
@@ -164,7 +164,7 @@ const ExploreSection = styled.section`
     }
 
     .third {
-      animation: morph 45s ease-in-out infinite;
+      animation: morph 65s ease-in-out infinite;
       border-radius: 30% 60% 20% 70% / 70% 40% 20% 70%;
       transition: 50s ease-in-out;
       @keyframes morph {
