@@ -36,7 +36,7 @@ export default function Collection() {
     return await result.json();
   };
 
-  const showMore = () => {
+  const showButtons = () => {
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
       if (button.classList.contains("visible")) {
@@ -51,10 +51,11 @@ export default function Collection() {
     <>
       <CardContainer>
         {roadtrips.map((oneRoadtrip, index) => (
-          <RoadtripCard onClick={showMore}>
+          <RoadtripCard onClick={showButtons}>
             <div>
               <li key={oneRoadtrip._id}>
                 <h2>{oneRoadtrip.name}</h2>
+                <button>Costs</button>
                 <button>
                   <NavLink to={`/roadtrip/${oneRoadtrip._id}`}>
                     <svg
@@ -88,12 +89,14 @@ export default function Collection() {
             </div>
           </RoadtripCard>
         ))}
-        <Modal
-          onBackupHandler={backupHandler}
-          handleRoadtrip={deleteFromDatabase}
-          backupQuestion={backupQuestion}>
-          delete
-        </Modal>
+        {backupQuestion && (
+          <Modal
+            onBackupHandler={backupHandler}
+            handleRoadtrip={deleteFromDatabase}
+            backupQuestion={backupQuestion}>
+            delete
+          </Modal>
+        )}
       </CardContainer>
     </>
   );
@@ -107,6 +110,7 @@ const CardContainer = styled.div`
   width: 100%;
   height: 100%;
   font-size: 1rem;
+  margin-bottom: 5rem;
 `;
 
 const RoadtripCard = styled.div`
@@ -120,17 +124,13 @@ const RoadtripCard = styled.div`
   padding: 1rem;
   position: relative;
 
-  :last-child {
-    margin-bottom: 6rem;
-  }
-
   button {
     box-sizing: content-box;
     position: absolute;
     top: 0;
     right: 0;
-    margin-right: 3.5rem;
-    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 3.5rem;
     padding: 0.45rem 0.45rem 0.3rem 0.45rem;
     border: none;
     border-radius: 50%;
@@ -139,13 +139,18 @@ const RoadtripCard = styled.div`
     cursor: pointer;
     opacity: 0%;
     transition: opacity 0.6s;
+
+    :first-of-type {
+      margin-right: 0.5rem;
+      margin-top: 6.5rem;
+    }
+
+    :last-of-type {
+      margin: 0.5rem;
+    }
   }
 
   .visible {
     opacity: 100%;
-  }
-
-  button + button {
-    margin: 0.5rem;
   }
 `;

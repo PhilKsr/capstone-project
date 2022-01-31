@@ -29,12 +29,11 @@ export default function ResetButton({ onResetRoadtrip }) {
           </g>
         </svg>
       </StyledResetButton>
-      <Modal
-        onBackupHandler={backupHandler}
-        handleRoadtrip={onResetRoadtrip}
-        backupQuestion={backupQuestion}>
-        reset
-      </Modal>
+      {backupQuestion && (
+        <Modal onBackupHandler={backupHandler} handleRoadtrip={onResetRoadtrip}>
+          reset
+        </Modal>
+      )}
     </>
   );
 }

@@ -26,7 +26,6 @@ export default function MapNewLocationMarker({
   );
 
   useEffect(() => {
-    console.log(newLocation);
     const newCoordinates = {
       ...locationDetails.geometry,
       coordinates: [newLocation[1], newLocation[0]],
@@ -41,7 +40,6 @@ export default function MapNewLocationMarker({
     click(e) {
       const coordinates = Object.values(e.latlng);
       setNewLocation(coordinates);
-      console.log(locationDetails);
     },
   });
 
