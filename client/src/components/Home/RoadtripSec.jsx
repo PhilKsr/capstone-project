@@ -38,7 +38,7 @@ const RoadtripSection = styled.section`
   align-items: center;
 
   h3 {
-    text-align: center;
+    text-align: left;
     padding-top: 1rem;
   }
 
@@ -47,7 +47,7 @@ const RoadtripSection = styled.section`
     margin: 1rem 0 1rem 0;
     padding: 1rem;
     background-color: var(--secondary);
-    color: white;
+    color: var(--primary);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
     border-radius: 15px;
 

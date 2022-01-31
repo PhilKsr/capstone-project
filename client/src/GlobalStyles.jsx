@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 :root {
   --primary: #313131;
-  --secondary: #677c6a;
+  --secondary: #505050;
   --tertiary: #ffffff;
   
     --ff-sans: sans-serif;
@@ -44,11 +44,13 @@ const GlobalStyle = createGlobalStyle`
   h3,
   p {
     margin: 0;
+    
   }
   
   body {
     line-height: 1.5;
     font-size: 1.25rem;
+    background: linear-gradient(180deg, rgba(233,251,234,0.9500000683867297) 0%, rgba(164,209,193,0.8127451664259454) 100%); 
   }
   
   ul[class],
@@ -69,6 +71,7 @@ const GlobalStyle = createGlobalStyle`
     height: auto;
     display: block;
   }
+
 
   //iPhone 6/7/8 for final presentation
   .leaflet-container {

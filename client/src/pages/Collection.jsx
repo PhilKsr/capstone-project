@@ -142,7 +142,7 @@ const RoadtripCard = styled.div`
   margin: 1rem 0 1rem 0;
   padding: 1rem;
   background-color: var(--secondary);
-  color: white;
+  color: var(--tertiary);
   box-shadow: 10px 20px 15px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   padding: 1rem;
