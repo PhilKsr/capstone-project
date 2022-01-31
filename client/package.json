@@ -9,7 +9,6 @@
   "dependencies": {
     "@vitejs/plugin-react": "^1.0.7",
     "dotenv": "^14.1.0",
-    "immutable": "^4.0.0",
     "leaflet": "^1.7.1",
     "leaflet-control-geocoder": "^2.3.0",
     "leaflet.markercluster": "^1.5.3",
