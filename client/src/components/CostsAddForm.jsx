@@ -98,13 +98,13 @@ const FormContainer = styled.form`
   margin-top: 2rem;
 
   input {
-    background: var(--black);
+    background: var(--first);
     margin-bottom: 1rem;
     border: none;
     border-radius: 15px;
     font-size: 0.9rem;
     padding: 0.5rem;
-    color: var(--white);
+    color: var(--third);
     :focus {
       outline: none;
     }

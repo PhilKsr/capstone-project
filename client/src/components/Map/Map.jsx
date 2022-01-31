@@ -185,8 +185,8 @@ const RoadtripName = styled.input`
   right: 0;
   margin-right: 5.5rem;
   margin-top: 10px;
-  color: var(--white);
-  background-color: var(--black);
+  color: var(--third);
+  background-color: var(--first);
   opacity: 95%;
   border: none;
   width: 12rem;

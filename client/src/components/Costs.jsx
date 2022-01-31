@@ -119,7 +119,7 @@ const Background = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: var(--black);
+  background-color: var(--first);
   opacity: 75%;
 `;
 
@@ -132,8 +132,8 @@ const CostContainer = styled.div`
   z-index: 150;
   top: 0;
   margin-top: 5rem;
-  background: grey;
-  color: var(--white);
+  background: var(--second);
+  color: var(--third);
   border-radius: 15px;
 
   h2 {
@@ -161,7 +161,7 @@ const CostContainer = styled.div`
     padding: 0.75rem 0.75rem 0.6rem 0.75rem;
     border: none;
     border-radius: 50%;
-    background-color: var(--black);
+    background-color: var(--first);
     cursor: pointer;
     margin: 1rem;
   }
@@ -196,7 +196,7 @@ const SwitchContainer = styled.label`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--black);
+    background-color: var(--first);
     -webkit-transition: 0.4s;
     transition: 0.4s;
 
@@ -207,7 +207,7 @@ const SwitchContainer = styled.label`
       width: 26px;
       left: 4px;
       bottom: 4px;
-      background-color: var(--white);
+      background-color: var(--third);
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }

@@ -39,8 +39,8 @@ const FormContainer = styled.form`
 
   input {
     :first-of-type {
-      color: var(--white);
-      background-color: var(--black);
+      color: var(--third);
+      background-color: var(--first);
       border: none;
       width: 12rem;
       height: 30px;
@@ -58,7 +58,7 @@ const FormContainer = styled.form`
     padding: 0.75rem 0.75rem 0.6rem 0.75rem;
     border: none;
     border-radius: 50%;
-    background-color: var(--black);
+    background-color: var(--first);
     color: white;
     cursor: pointer;
   }
