@@ -51,6 +51,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     font-size: 1.25rem;
     background: linear-gradient(180deg, rgba(233,251,234,0.9500000683867297) 0%, rgba(164,209,193,0.8127451664259454) 100%); 
+    background-repeat: no-repeat;
   }
   
   ul[class],
@@ -150,7 +151,7 @@ const GlobalStyle = createGlobalStyle`
 
   .leaflet-control-geocoder-icon {
     background-color: var(--primary);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' %3E%3Cpath d='M12.2 13l3.4 6.6c.6 1.1 2.5-.4 2-1.2l-4-6.2z'/%3E%3Ccircle cx='10.8' cy='8.9' r='3.9' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' %3E%3Cpath d='M12.2 13l3.4 6.6c.6 1.1 2.5-.4 2-1.2l-4-6.2z'/%3E%3Ccircle cx='10.8' cy='8.9' r='3.9' fill='none' stroke='white' strokeWidth='1.5'/%3E%3C/svg%3E");
   }
 
   .leaflet-touch .leaflet-bar{

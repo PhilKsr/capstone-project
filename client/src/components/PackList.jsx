@@ -48,6 +48,7 @@ const ItemsList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .checkbox {
     transform: scale(1.5);
   }
