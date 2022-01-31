@@ -52,7 +52,7 @@ export default function CostsAddForm({ showForm, onAddCost }) {
       <input
         type='number'
         name='cost'
-        placeholder='Cost'
+        placeholder='Cost rounded to whole number'
         value={newCost.cost}
         required
         onChange={(event) => inputHandler(event)}
