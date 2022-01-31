@@ -20,7 +20,7 @@ const ProfileSection = styled.section`
   justify-content: space-evenly;
   align-items: center;
   padding: 1rem;
-  border-bottom: 1px solid var(--first);
+  border-bottom: 1px solid var(--primary);
 
   img {
     width: 8rem;

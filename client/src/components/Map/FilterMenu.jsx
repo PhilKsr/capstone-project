@@ -61,11 +61,11 @@ const FilterContainer = styled.div`
     padding: 0.75rem 0.75rem 0.6rem 0.75rem;
     border: none;
     border-radius: 50%;
-    background-color: var(--first);
+    background-color: var(--primary);
     cursor: pointer;
   }
   ul {
-    background-color: var(--first);
+    background-color: var(--primary);
     opacity: 80%;
     position: absolute;
     z-index: 150;
@@ -77,7 +77,7 @@ const FilterContainer = styled.div`
     border-radius: 20px;
   }
   li {
-    color: var(--third);
+    color: var(--tertiary);
     list-style: none;
     font-size: 0.9rem;
     margin-top: 1rem;

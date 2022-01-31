@@ -104,7 +104,7 @@ const ContentContainer = styled.div`
     h3 {
       position: absolute;
       margin-top: 5rem;
-      background: var(--first);
+      background: var(--primary);
       border-radius: 15px;
       padding: 0.5rem;
       opacity: 90%;
@@ -112,7 +112,7 @@ const ContentContainer = styled.div`
 
       a {
         text-decoration: none;
-        color: var(--third);
+        color: var(--tertiary);
       }
     }
   }

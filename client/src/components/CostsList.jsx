@@ -49,7 +49,7 @@ const ListOfCosts = styled.ul`
       padding: 0.45rem 0.45rem 0.3rem 0.45rem;
       border: none;
       border-radius: 50%;
-      background-color: var(--first);
+      background-color: var(--primary);
       color: white;
       cursor: pointer;
     }

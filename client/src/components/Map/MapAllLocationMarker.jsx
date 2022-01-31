@@ -76,7 +76,7 @@ const PopupContent = styled.div`
     margin-top: 0.5rem;
     border: none;
     border-radius: 50%;
-    color: var(--third);
+    color: var(--tertiary);
     background-color: #026202;
     transform: scale(1.5);
   }

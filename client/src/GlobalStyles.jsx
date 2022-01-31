@@ -2,9 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 :root {
-  --first: #313131;
-  --second: #677c6a;
-  --third: #ffffff;
+  --primary: #313131;
+  --secondary: #677c6a;
+  --tertiary: #ffffff;
   
     --ff-sans: sans-serif;
     --ff-serif: serif;
@@ -81,7 +81,7 @@ const GlobalStyle = createGlobalStyle`
   .leaflet-right{
   margin-top: 2.5rem;
   margin-right: 2.5rem; 
-  color: var(--third);
+  color: var(--tertiary);
   }
 
   .leaflet-left.leaflet-top { 
@@ -124,29 +124,29 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .leaflet-control-geocoder {
-    background-color: var(--first);
-    color: var(--third);
+    background-color: var(--primary);
+    color: var(--tertiary);
     opacity: 95%;
     input {
-      color: var(--third);
+      color: var(--tertiary);
       border-radius: 30px;
     }
     ul li a {
-      color: var(--third);
+      color: var(--tertiary);
       span {
-        color: var(--third);
+        color: var(--tertiary);
         opacity: 80%;
       }
     }
   }
 
   ::placeholder {
-      color: var(--third);
+      color: var(--tertiary);
       opacity: 75%;
     }
 
   .leaflet-control-geocoder-icon {
-    background-color: var(--first);
+    background-color: var(--primary);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' %3E%3Cpath d='M12.2 13l3.4 6.6c.6 1.1 2.5-.4 2-1.2l-4-6.2z'/%3E%3Ccircle cx='10.8' cy='8.9' r='3.9' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E");
   }
 
@@ -156,20 +156,20 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .leaflet-container a {
-    -webkit-tap-highlight-color: var(--first);
+    -webkit-tap-highlight-color: var(--primary);
     opacity: 95%;
   }
 
   .leaflet-control-zoom {
     a{
-      background-color: var(--first);
+      background-color: var(--primary);
       border: none;
-      color: var(--third);
+      color: var(--tertiary);
     }
     a:hover{
-      background-color: var(--first);
+      background-color: var(--primary);
       border: none;
-      color: var(--third);
+      color: var(--tertiary);
     }
   }
 }

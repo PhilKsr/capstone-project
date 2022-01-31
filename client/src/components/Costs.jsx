@@ -7,20 +7,20 @@ import CostsList from "./CostsList";
 export default function Costs({
   costHandler,
   roadtrips,
-  index,
+  roadtripIndex,
   fetchRoadtrips,
 }) {
   const [allCosts, setAllCosts] = useState([]);
 
   useEffect(() => {
-    setAllCosts(roadtrips[index]?.costs);
+    setAllCosts(roadtrips[roadtripIndex]?.costs);
   }, []);
 
-  const [summaryList, setSummaryList] = useState(false);
-  const [addForm, setAddForm] = useState(false);
+  const [displaySummaryList, setDisplaySummaryList] = useState(false);
+  const [displayAddForm, setDisplayAddForm] = useState(false);
 
-  const handleDisplay = () => setSummaryList(!summaryList);
-  const showForm = () => setAddForm(!addForm);
+  const handleDisplay = () => setDisplaySummaryList(!displaySummaryList);
+  const showForm = () => setDisplayAddForm(!displayAddForm);
 
   const addCost = (event, newCost) => {
     event.preventDefault();
@@ -48,8 +48,8 @@ export default function Costs({
   };
 
   const saveCosts = async (newCosts) => {
-    const id = roadtrips[index]._id;
-    const stagedRoadtrip = roadtrips[index];
+    const id = roadtrips[roadtripIndex]._id;
+    const stagedRoadtrip = roadtrips[roadtripIndex];
     const updatedRoadtrip = { ...stagedRoadtrip, costs: newCosts };
     const result = await fetch(`/api/roadtrips?roadtripId=${id}`, {
       method: "PUT",
@@ -68,7 +68,7 @@ export default function Costs({
           costHandler(), fetchRoadtrips();
         }}></Background>
       <CostContainer>
-        <h2>{roadtrips[index].name}</h2>
+        <h2>{roadtrips[roadtripIndex].name}</h2>
 
         {allCosts && <h3>{uniqueNames.join(" | ")}</h3>}
 
@@ -82,19 +82,19 @@ export default function Costs({
         </section>
 
         <h3>{allCosts.reduce((a, b) => Number(a) + Number(b.cost), 0)} €</h3>
-        {!summaryList && <CostsBalance allCosts={allCosts} />}
-        {summaryList && (
+        {!displaySummaryList && <CostsBalance allCosts={allCosts} />}
+        {displaySummaryList && (
           <CostsList allCosts={allCosts} onRemoveCost={removeCost} />
         )}
 
-        {addForm && (
+        {displayAddForm && (
           <CostsAddForm
             allCosts={allCosts}
             onAddCost={addCost}
             showForm={showForm}
           />
         )}
-        {!addForm && (
+        {!displayAddForm && (
           <button onClick={showForm}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -119,7 +119,7 @@ const Background = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: var(--first);
+  background-color: var(--primary);
   opacity: 75%;
 `;
 
@@ -132,8 +132,8 @@ const CostContainer = styled.div`
   z-index: 150;
   top: 0;
   margin-top: 5rem;
-  background: var(--second);
-  color: var(--third);
+  background: var(--secondary);
+  color: var(--tertiary);
   border-radius: 15px;
 
   h2 {
@@ -161,7 +161,7 @@ const CostContainer = styled.div`
     padding: 0.75rem 0.75rem 0.6rem 0.75rem;
     border: none;
     border-radius: 50%;
-    background-color: var(--first);
+    background-color: var(--primary);
     cursor: pointer;
     margin: 1rem;
   }
@@ -196,7 +196,7 @@ const SwitchContainer = styled.label`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--first);
+    background-color: var(--primary);
     -webkit-transition: 0.4s;
     transition: 0.4s;
 
@@ -207,7 +207,7 @@ const SwitchContainer = styled.label`
       width: 26px;
       left: 4px;
       bottom: 4px;
-      background-color: var(--third);
+      background-color: var(--tertiary);
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }

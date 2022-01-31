@@ -45,6 +45,6 @@ const VisibilityButton = styled.button`
   padding: 0.75rem 0.75rem 0.6rem 0.75rem;
   border: none;
   border-radius: 50%;
-  background-color: var(--first);
+  background-color: var(--primary);
   cursor: pointer;
 `;

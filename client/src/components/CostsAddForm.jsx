@@ -24,12 +24,6 @@ export default function CostsAddForm({ showForm, onAddCost }) {
   return (
     <FormContainer
       onSubmit={(event) => {
-        var ID = function () {
-          return "_" + Math.random().toString(36).substr(2, 9);
-        };
-        setNewCost({ ...newCost, id: ID });
-        console.log();
-
         onAddCost(event, newCost);
         setNewCost(initialNewCost);
       }}>
@@ -39,7 +33,7 @@ export default function CostsAddForm({ showForm, onAddCost }) {
         placeholder='Paid by...'
         value={newCost.name}
         required
-        onChange={(event) => inputHandler(event)}
+        onChange={inputHandler}
       />
       <input
         type='text'
@@ -47,15 +41,15 @@ export default function CostsAddForm({ showForm, onAddCost }) {
         placeholder='Title'
         value={newCost.title}
         required
-        onChange={(event) => inputHandler(event)}
+        onChange={inputHandler}
       />
       <input
         type='number'
         name='cost'
-        placeholder='Cost rounded to whole number'
+        placeholder='Cost rounded'
         value={newCost.cost}
         required
-        onChange={(event) => inputHandler(event)}
+        onChange={inputHandler}
       />
       <input
         type='date'
@@ -98,13 +92,13 @@ const FormContainer = styled.form`
   margin-top: 2rem;
 
   input {
-    background: var(--first);
+    background: var(--primary);
     margin-bottom: 1rem;
     border: none;
     border-radius: 15px;
     font-size: 0.9rem;
     padding: 0.5rem;
-    color: var(--third);
+    color: var(--tertiary);
     :focus {
       outline: none;
     }

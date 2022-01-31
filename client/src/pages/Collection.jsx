@@ -116,7 +116,7 @@ export default function Collection() {
         {costsList && (
           <Costs
             costHandler={costHandler}
-            index={index}
+            roadtripIndex={index}
             roadtrips={roadtrips}
             fetchRoadtrips={fetchRoadtrips}
           />
@@ -141,7 +141,7 @@ const RoadtripCard = styled.div`
   width: 90%;
   margin: 1rem 0 1rem 0;
   padding: 1rem;
-  background-color: var(--second);
+  background-color: var(--secondary);
   color: white;
   box-shadow: 10px 20px 15px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
@@ -158,7 +158,7 @@ const RoadtripCard = styled.div`
     padding: 0.45rem 0.45rem 0.3rem 0.45rem;
     border: none;
     border-radius: 50%;
-    background-color: var(--first);
+    background-color: var(--primary);
     color: white;
     cursor: pointer;
     opacity: 0%;
