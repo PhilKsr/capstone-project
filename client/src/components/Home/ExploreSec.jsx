@@ -1,7 +1,11 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 
 export default function ExploreSec() {
+  const [index, setIndex] = useState(0);
+  const [myInterval, setMyInterval] = useState();
+
   const germanPicturesOne = [
     "https://images.unsplash.com/photo-1569663818462-4e2c95e320e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     "https://images.unsplash.com/photo-1584481120104-b11d5e602e46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=667&q=80",
@@ -17,7 +21,7 @@ export default function ExploreSec() {
   ];
 
   const germanPicturesThree = [
-    "https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+    "https://images.unsplash.com/photo-1485038101637-2d4833df1b35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1828&q=80",
     "https://images.unsplash.com/photo-1624871084818-b9f5d63aa8ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
     "https://images.unsplash.com/photo-1587821397822-536a429ca1b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
     "https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
@@ -30,25 +34,36 @@ export default function ExploreSec() {
     "https://images.unsplash.com/photo-1514539079130-25950c84af65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
   ];
 
-  let index = 0;
-
-  const change = (number, pictureArray) => {
-    const imgElement = document.querySelector(`#${number}`);
-    if (imgElement) {
-      imgElement.src = pictureArray[index];
-      index >= pictureArray.length - 1 ? (index = 0) : index++;
+  const change = () => {
+    const imgElement1 = document.querySelector("#first");
+    if (imgElement1) {
+      imgElement1.src = germanPicturesOne[index];
     }
+    const imgElement2 = document.querySelector("#second");
+    if (imgElement2) {
+      imgElement2.src = germanPicturesTwo[index];
+    }
+    const imgElement3 = document.querySelector("#third");
+    if (imgElement3) {
+      imgElement3.src = germanPicturesThree[index];
+    }
+    const imgElement4 = document.querySelector("#fourth");
+    if (imgElement4) {
+      imgElement4.src = germanPicturesFour[index];
+    }
+    index === 3 ? setIndex(0) : setIndex(index + 1);
   };
 
-  window.onload = function () {
-    setInterval(() => change("first", germanPicturesOne), 5000);
-    setInterval(() => change("second", germanPicturesTwo), 5000);
-    setInterval(() => change("third", germanPicturesThree), 5000);
-    setInterval(() => change("fourth", germanPicturesFour), 5000);
+  const imageInterval = () => {
+    if (myInterval) {
+      clearInterval(myInterval);
+    }
+    const test = setInterval(change, 5000);
+    setMyInterval(test);
   };
 
   return (
-    <ExploreSection>
+    <ExploreSection onLoad={imageInterval}>
       <h2>Get inspired</h2>
 
       <NavLink to='/discover'>
@@ -60,13 +75,13 @@ export default function ExploreSec() {
           />
           <img
             id='second'
-            className='second'
+            className='two'
             src='https://images.unsplash.com/photo-1604849055820-2b719928c19d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
             alt='Bild 2'
           />
           <img
             id='third'
-            className='third'
+            className='three'
             src='https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80'
             alt='Bild 3'
           />
@@ -139,7 +154,7 @@ const ExploreSection = styled.section`
         }
       }
     }
-    .second {
+    .two {
       animation: morph 55s ease-in-out infinite;
       border-radius: 30% 60% 20% 70% / 70% 40% 20% 70%;
       transition: 50s ease-in-out;
@@ -184,7 +199,7 @@ const ExploreSection = styled.section`
       }
     }
 
-    .third {
+    .three {
       animation: morph 65s ease-in-out infinite;
       border-radius: 30% 60% 20% 70% / 70% 40% 20% 70%;
       transition: 50s ease-in-out;
