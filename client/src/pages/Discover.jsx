@@ -61,8 +61,8 @@ export default function Discover() {
 
   return (
     <ContentContainer>
-      {linkList.map((link) => (
-        <section>
+      {linkList.map((link, index) => (
+        <section key={index}>
           <div style={{ backgroundImage: `url(${link.picture_url})` }}></div>
           <h3>
             <a href={link.website} target='_blank'>
