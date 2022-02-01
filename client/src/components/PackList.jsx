@@ -57,13 +57,13 @@ const ItemsList = styled.ul`
     margin-top: 1rem;
 
     input {
-      background: var(--black);
+      background: var(--primary);
       margin-right: 1rem;
       border: none;
       border-radius: 15px;
       font-size: 0.9rem;
       padding: 0.5rem;
-      color: var(--white);
+      color: var(--tertiary);
       :focus {
         outline: none;
       }
@@ -74,7 +74,7 @@ const ItemsList = styled.ul`
     padding: 0.45rem 0.45rem 0.3rem 0.45rem;
     border: none;
     border-radius: 50%;
-    background-color: var(--black);
+    background-color: var(--primary);
     color: white;
     cursor: pointer;
   }

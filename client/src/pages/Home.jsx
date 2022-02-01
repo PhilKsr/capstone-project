@@ -20,7 +20,7 @@ const ContentContainer = styled.div`
 
   section {
     width: 100%;
-    border-bottom: 2px var(--black) solid;
+    border-bottom: 2px var(--primary) solid;
 
     :last-child {
       border: none;
@@ -42,7 +42,7 @@ const ContentContainer = styled.div`
     padding: 0.75rem 0.75rem 0.6rem 0.75rem;
     border: none;
     border-radius: 50%;
-    background-color: var(--black);
+    background-color: var(--primary);
     color: white;
     cursor: pointer;
   }

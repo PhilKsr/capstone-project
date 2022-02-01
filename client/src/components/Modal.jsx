@@ -59,7 +59,7 @@ const StyledModal = styled.div`
   padding: 0 10px 0 10px;
   margin-left: 2.5rem;
   margin-bottom: 15rem;
-  background-color: var(--black);
+  background-color: var(--primary);
   color: white;
   width: 80%;
   border-radius: 15px;
@@ -105,7 +105,7 @@ const CloseButton = styled.button`
   margin-top: -0.5rem;
   border: none;
   border-radius: 50%;
-  background-color: var(--black);
+  background-color: var(--primary);
   cursor: pointer;
 `;
 
@@ -118,6 +118,6 @@ const Background = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: var(--black);
+  background-color: var(--primary);
   opacity: 60%;
 `;

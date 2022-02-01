@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import Modal from "../components/Modal";
+import Costs from "../components/Costs";
 
 export default function Collection() {
   const [roadtrips, setRoadtrips] = useState([]);
   const [backupQuestion, setBackupQuestion] = useState(false);
   const [index, setIndex] = useState();
+  const [costsList, setCostsList] = useState(false);
 
   const backupHandler = (index) => {
     setBackupQuestion(!backupQuestion);
@@ -47,6 +49,11 @@ export default function Collection() {
     });
   };
 
+  const costHandler = (index) => {
+    setCostsList(!costsList);
+    setIndex(index);
+  };
+
   return (
     <>
       <CardContainer>
@@ -55,7 +62,17 @@ export default function Collection() {
             <div>
               <li key={oneRoadtrip._id}>
                 <h2>{oneRoadtrip.name}</h2>
-                <button>Costs</button>
+                <button onClick={() => costHandler(index)}>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    height='24px'
+                    viewBox='0 0 24 24'
+                    width='24px'
+                    fill='#ffffff'>
+                    <path d='M0 0h24v24H0z' fill='none' />
+                    <path d='M15 18.5c-2.51 0-4.68-1.42-5.76-3.5H15v-2H8.58c-.05-.33-.08-.66-.08-1s.03-.67.08-1H15V9H9.24C10.32 6.92 12.5 5.5 15 5.5c1.61 0 3.09.59 4.23 1.57L21 5.3C19.41 3.87 17.3 3 15 3c-3.92 0-7.24 2.51-8.48 6H3v2h3.06c-.04.33-.06.66-.06 1 0 .34.02.67.06 1H3v2h3.52c1.24 3.49 4.56 6 8.48 6 2.31 0 4.41-.87 6-2.3l-1.78-1.77c-1.13.98-2.6 1.57-4.22 1.57z' />
+                  </svg>
+                </button>
                 <button>
                   <NavLink to={`/roadtrip/${oneRoadtrip._id}`}>
                     <svg
@@ -92,10 +109,17 @@ export default function Collection() {
         {backupQuestion && (
           <Modal
             onBackupHandler={backupHandler}
-            handleRoadtrip={deleteFromDatabase}
-            backupQuestion={backupQuestion}>
+            handleRoadtrip={deleteFromDatabase}>
             delete
           </Modal>
+        )}
+        {costsList && (
+          <Costs
+            costHandler={costHandler}
+            roadtripIndex={index}
+            roadtrips={roadtrips}
+            fetchRoadtrips={fetchRoadtrips}
+          />
         )}
       </CardContainer>
     </>
@@ -117,7 +141,7 @@ const RoadtripCard = styled.div`
   width: 90%;
   margin: 1rem 0 1rem 0;
   padding: 1rem;
-  background-color: grey;
+  background-color: var(--secondary);
   color: white;
   box-shadow: 10px 20px 15px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
@@ -134,7 +158,7 @@ const RoadtripCard = styled.div`
     padding: 0.45rem 0.45rem 0.3rem 0.45rem;
     border: none;
     border-radius: 50%;
-    background-color: var(--black);
+    background-color: var(--primary);
     color: white;
     cursor: pointer;
     opacity: 0%;

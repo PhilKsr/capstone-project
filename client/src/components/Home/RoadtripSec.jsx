@@ -46,14 +46,14 @@ const RoadtripSection = styled.section`
     width: 90%;
     margin: 1rem 0 1rem 0;
     padding: 1rem;
-    background-color: grey;
+    background-color: var(--secondary);
     color: white;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
     border-radius: 15px;
 
     a {
       text-decoration: none;
-      color: var(--white);
+      color: var(--tertiary);
     }
 
     li ul {

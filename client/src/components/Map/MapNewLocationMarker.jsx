@@ -159,7 +159,7 @@ const SaveButton = styled.div`
     padding: 0.75rem 0.75rem 0.6rem 0.75rem;
     border: none;
     border-radius: 50%;
-    background-color: var(--black);
+    background-color: var(--primary);
     cursor: pointer;
   }
 `;

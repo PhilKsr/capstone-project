@@ -84,7 +84,7 @@ const ContentWrapper = styled.div`
   section + section {
     text-align: center;
     width: 90%;
-    background: grey;
+    background: var(--secondary);
     padding: 1rem;
     margin-top: 1rem;
     margin-bottom: 5rem;

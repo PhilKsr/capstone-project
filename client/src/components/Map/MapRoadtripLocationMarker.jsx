@@ -58,7 +58,7 @@ const PopupContent = styled.div`
     padding: 0.1rem 0.45rem 0.2rem 0.45rem;
     border: none;
     border-radius: 50%;
-    color: var(--white);
+    color: var(--tertiary);
     background-color: #9f0303;
     transform: scale(1.5);
   }
