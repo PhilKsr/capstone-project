@@ -50,7 +50,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     line-height: 1.5;
     font-size: 1.25rem;
-    background: linear-gradient(180deg, rgba(233,251,234,0.9500000683867297) 0%, rgba(164,209,193,0.8127451664259454) 100%); 
+    background: linear-gradient(180deg, #f8f5edf0 70%, #a4d1aacf 100%); 
     background-repeat: no-repeat;
   }
   
