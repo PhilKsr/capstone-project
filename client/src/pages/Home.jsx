@@ -6,12 +6,14 @@ import RoadtripSec from "../components/Home/RoadtripSec";
 
 export default function Home() {
   return (
-    <ContentContainer>
-      <ProfileSec />
-      <CreateRoadtripSec />
-      <RoadtripSec />
-      <ExploreSec />
-    </ContentContainer>
+    <>
+      <ContentContainer>
+        <ProfileSec />
+        <CreateRoadtripSec />
+        <RoadtripSec />
+        <ExploreSec />
+      </ContentContainer>
+    </>
   );
 }
 
@@ -48,7 +50,6 @@ const ContentContainer = styled.div`
   }
 
   li {
-    list-style: none;
     list-style-position: inside;
   }
 `;

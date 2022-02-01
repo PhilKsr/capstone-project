@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function CreateRoadtripSec() {
   return (
     <CreateRoadtripSection>
-      <h2>Create your new roadtrip</h2>
+      <h2>Create your next roadtrip</h2>
       <div>
         <button>
           <NavLink to={`/roadtrip/`}>
