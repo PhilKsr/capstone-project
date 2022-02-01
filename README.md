@@ -1,6 +1,35 @@
-# Welcome to roAdventure!
+# roAdventure!
 
-The Webapp helps you to plan the best roadtrips ever. To make sure that you can easily use it I have explained some features of the map:
+The Webapp helps you to plan the best roadtrips ever. 
+
+## Installing / Developing
+
+First, clone this repository
+
+Now you are ready to go:
+
+```shell
+npm install
+```
+
+
+This will install the dependencies required to run the app.
+
+```shell
+npm run dev
+```
+
+These scripts run your server and client. Connect your database and discover!
+
+
+You can configure the server port by setting the `PORT` environment variable. Creating a `.env` file is supported. You can copy `.env.example` to `.env`.
+
+| KEY  | VALUE                                                         |
+| ---- | ------------------------------------------------------------- |
+| PORT | (Optional) Port for the server environment                    |
+
+
+To make sure that you can easily use it I have explained some features of the map:
 ![Map:](https://github.com/Philipp-Kaiser/capstone-project/blob/2e1d0943dca648ce52070862e43e304631834aae/roAdventure.png)
 
 ## 1. Location button
@@ -24,3 +53,19 @@ The Webapp helps you to plan the best roadtrips ever. To make sure that you can 
 ## 6. Pin Button
 - Click to activate and a pin is dropped wherever you click on the map
 - Do us a favour and add a new location with the popup
+
+
+To build the project, run:
+
+```shell
+npm run build
+```
+
+In production, you have a single server serving everything.
+
+`/api/*` is the API endpoint.  
+`/*` is the client.
+
+## Licensing
+
+MIT
