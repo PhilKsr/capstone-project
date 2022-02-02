@@ -29,7 +29,7 @@ export default function Searchbar() {
       .on("markgeocode", function (e) {
         var latlng = e.geocode.center;
         L.marker(latlng).addTo(map).bindPopup(e.geocode.name).openPopup();
-        map.fitBounds(e.geocode.bbox);
+        map.flyTo(latlng, 12, map.getZoom());
       })
       .addTo(map);
   }, []);

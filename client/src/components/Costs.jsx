@@ -3,6 +3,7 @@ import styled from "styled-components";
 import CostsAddForm from "./CostsAddForm";
 import CostsBalance from "./CostsBalance";
 import CostsList from "./CostsList";
+import { getTotalCostsPerHead } from "../lib/costsHelpers";
 
 export default function Costs({
   costHandler,
@@ -31,17 +32,10 @@ export default function Costs({
     showForm();
   };
 
-  let uniqueNames = [];
-  allCosts.forEach((cost) => {
-    if (!uniqueNames.includes(cost.name)) {
-      uniqueNames.push(cost.name);
-    }
-  });
-
   const removeCost = (costIndex) => {
     const newCosts = [...allCosts];
     const updatedCosts = newCosts.filter(
-      (object, index) => index !== costIndex
+      (_object, index) => index !== costIndex
     );
     setAllCosts(updatedCosts);
     saveCosts(updatedCosts);
@@ -70,7 +64,9 @@ export default function Costs({
       <CostContainer>
         <h2>{roadtrips[roadtripIndex].name}</h2>
 
-        {allCosts && <h3>{uniqueNames.join(" | ")}</h3>}
+        {allCosts && (
+          <h3>{Object.keys(getTotalCostsPerHead(allCosts)).join(" | ")}</h3>
+        )}
 
         <section>
           <h3>Summary</h3>

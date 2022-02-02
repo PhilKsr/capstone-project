@@ -8,7 +8,6 @@ export default function AddPackingListItem({ onGetNewItem }) {
       title: value,
       checked: false,
     };
-
     onGetNewItem(newItem);
     event.target.reset();
   };
