@@ -7,12 +7,14 @@ export default function ExploreSec() {
     "https://images.unsplash.com/photo-1584481120104-b11d5e602e46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=667&q=80",
     "https://images.unsplash.com/photo-1635754822592-7bec2be9ab7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80",
     "https://images.unsplash.com/photo-1633262266109-1ca412cd3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "https://images.unsplash.com/photo-1633262266109-1ca412cd3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   ];
 
   const germanPicturesTwo = [
     "https://images.unsplash.com/photo-1621747609281-38853764c986?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
     "https://images.unsplash.com/photo-1599394375951-8674ecff3f8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
     "https://images.unsplash.com/photo-1591450572782-b5bfc982bcb2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1475&q=80",
+    "https://images.unsplash.com/photo-1604849055820-2b719928c19d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     "https://images.unsplash.com/photo-1604849055820-2b719928c19d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   ];
 
@@ -21,6 +23,7 @@ export default function ExploreSec() {
     "https://images.unsplash.com/photo-1624871084818-b9f5d63aa8ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
     "https://images.unsplash.com/photo-1587821397822-536a429ca1b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
     "https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+    "https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
   ];
 
   const germanPicturesFour = [
@@ -28,24 +31,8 @@ export default function ExploreSec() {
     "https://images.unsplash.com/photo-1640265225639-6cc10eddae74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
     "https://images.unsplash.com/photo-1449452198679-05c7fd30f416?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     "https://images.unsplash.com/photo-1514539079130-25950c84af65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+    "https://images.unsplash.com/photo-1514539079130-25950c84af65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
   ];
-
-  let index = 0;
-
-  const change = (number, pictureArray) => {
-    const imgElement = document.querySelector(`#${number}`);
-    if (imgElement) {
-      imgElement.src = pictureArray[index];
-      index >= pictureArray.length - 1 ? (index = 0) : index++;
-    }
-  };
-
-  window.onload = function () {
-    setInterval(() => change("first", germanPicturesOne), 5000);
-    setInterval(() => change("second", germanPicturesTwo), 5000);
-    setInterval(() => change("third", germanPicturesThree), 5000);
-    setInterval(() => change("fourth", germanPicturesFour), 5000);
-  };
 
   return (
     <ExploreSection>
@@ -55,24 +42,40 @@ export default function ExploreSec() {
         <div className='grid'>
           <img
             id='first'
-            src='https://images.unsplash.com/photo-1633262266109-1ca412cd3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+            src={
+              germanPicturesOne[
+                Math.floor(Math.random() * germanPicturesOne.length)
+              ]
+            }
             alt='Bild 1'
           />
           <img
             id='second'
             className='second'
-            src='https://images.unsplash.com/photo-1604849055820-2b719928c19d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+            src={
+              germanPicturesTwo[
+                Math.floor(Math.random() * germanPicturesOne.length)
+              ]
+            }
             alt='Bild 2'
           />
           <img
             id='third'
             className='third'
-            src='https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80'
+            src={
+              germanPicturesThree[
+                Math.floor(Math.random() * germanPicturesOne.length)
+              ]
+            }
             alt='Bild 3'
           />
           <img
             id='fourth'
-            src='https://images.unsplash.com/photo-1514539079130-25950c84af65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80'
+            src={
+              germanPicturesFour[
+                Math.floor(Math.random() * germanPicturesOne.length)
+              ]
+            }
             alt='Bild 4'
           />
         </div>
