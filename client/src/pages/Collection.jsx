@@ -128,9 +128,7 @@ const CardContainer = styled.div`
   align-items: center;
   list-style: none;
   width: 100%;
-  height: 100%;
   font-size: 1rem;
-  margin-bottom: 5rem;
 `;
 
 const RoadtripCard = styled.div`
@@ -143,6 +141,10 @@ const RoadtripCard = styled.div`
   border-radius: 15px;
   padding: 1rem;
   position: relative;
+
+  :last-of-type {
+    margin-bottom: 5rem;
+  }
 
   button {
     box-sizing: content-box;

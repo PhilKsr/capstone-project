@@ -7,7 +7,7 @@ export default function CreateRoadtripSec() {
       <h2>Create your next roadtrip</h2>
       <div>
         <button>
-          <NavLink to={`/roadtrip/`}>
+          <NavLink to={`/roadtrip`}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               height='24px'

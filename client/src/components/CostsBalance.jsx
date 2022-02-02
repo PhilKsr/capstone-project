@@ -16,18 +16,16 @@ export default function CostsBalance({ allCosts }) {
   }, [allCosts]);
 
   return (
-    <>
-      <div>
-        {Object.keys(totalCostPerHead).map((key, index) => (
-          <li id={index}>
-            <span>
-              {totalCostPerHead[key] < 0
-                ? `${key} gets paid ${(totalCostPerHead[key] * -1).toFixed()} €`
-                : `${key} has to pay ${totalCostPerHead[key].toFixed()} €`}
-            </span>
-          </li>
-        ))}
-      </div>
-    </>
+    <div>
+      {Object.keys(totalCostPerHead).map((key, index) => (
+        <li id={index}>
+          <span>
+            {totalCostPerHead[key] < 0
+              ? `${key} gets paid ${(totalCostPerHead[key] * -1).toFixed()} €`
+              : `${key} has to pay ${totalCostPerHead[key].toFixed()} €`}
+          </span>
+        </li>
+      ))}
+    </div>
   );
 }

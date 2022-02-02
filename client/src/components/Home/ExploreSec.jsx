@@ -35,7 +35,7 @@ export default function ExploreSec() {
   ];
 
   return (
-    <ExploreSection onLoad={imageInterval}>
+    <ExploreSection>
       <h2>Get inspired</h2>
 
       <NavLink to='/discover'>
