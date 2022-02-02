@@ -19,7 +19,7 @@ export default function ExploreSec() {
   ];
 
   const germanPicturesThree = [
-    "https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+    "https://images.unsplash.com/photo-1485038101637-2d4833df1b35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1828&q=80",
     "https://images.unsplash.com/photo-1624871084818-b9f5d63aa8ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
     "https://images.unsplash.com/photo-1587821397822-536a429ca1b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
     "https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
@@ -35,7 +35,7 @@ export default function ExploreSec() {
   ];
 
   return (
-    <ExploreSection>
+    <ExploreSection onLoad={imageInterval}>
       <h2>Get inspired</h2>
 
       <NavLink to='/discover'>
@@ -142,7 +142,7 @@ const ExploreSection = styled.section`
         }
       }
     }
-    .second {
+    .two {
       animation: morph 55s ease-in-out infinite;
       border-radius: 30% 60% 20% 70% / 70% 40% 20% 70%;
       transition: 50s ease-in-out;
@@ -187,7 +187,7 @@ const ExploreSection = styled.section`
       }
     }
 
-    .third {
+    .three {
       animation: morph 65s ease-in-out infinite;
       border-radius: 30% 60% 20% 70% / 70% 40% 20% 70%;
       transition: 50s ease-in-out;

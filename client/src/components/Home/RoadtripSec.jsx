@@ -38,7 +38,7 @@ const RoadtripSection = styled.section`
   align-items: center;
 
   h3 {
-    text-align: left;
+    text-align: center;
     padding-top: 1rem;
   }
 
