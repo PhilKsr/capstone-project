@@ -1,7 +1,8 @@
-# roAdventure!
+# < roAdventure >
 
-The Webapp helps you to plan the best roadtrips ever. 
-
+Roadtrips, vanlife and camping are growing trends.
+ 
+roAdventure helps you plan your roadtrips. Navigate through Germany and find amazing places. Create your next roadtrip, add your favourite locations for other users and be prepared with your own packing-list. Once you’ve created your roadtrip you can split the costs of it. You run out of ideas? Use the suggested blogs to get more inspiration. Now get ready for your next adventure and discover Germany!
 ## Installing / Developing
 
 First, clone this repository
@@ -69,3 +70,5 @@ In production, you have a single server serving everything.
 ## Licensing
 
 MIT
+
+# </ roAdventure >
