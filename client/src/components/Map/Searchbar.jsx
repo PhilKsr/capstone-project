@@ -3,7 +3,6 @@ import { useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.js";
-import geocoder from "leaflet-control-geocoder";
 
 export default function Searchbar() {
   const map = useMap();

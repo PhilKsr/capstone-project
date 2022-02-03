@@ -8,7 +8,6 @@
   },
   "plugins": ["react", "jest"],
   "rules": {
-    "prettier/prettier": "warn",
     "no-unused-vars": "warn",
     "react/jsx-uses-vars": 1,
     "react/jsx-uses-react": 1,

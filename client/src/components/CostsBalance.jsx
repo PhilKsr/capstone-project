@@ -18,7 +18,7 @@ export default function CostsBalance({ allCosts }) {
   return (
     <div>
       {Object.keys(totalCostPerHead).map((key, index) => (
-        <li id={index}>
+        <li key={index}>
           <span>
             {totalCostPerHead[key] < 0
               ? `${key} gets paid ${(totalCostPerHead[key] * -1).toFixed()} €`

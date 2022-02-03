@@ -8,7 +8,6 @@ describe("Get total from array of objects (costs).", () => {
       { name: "Kevin", cost: 12 },
       { name: "Kevin", cost: 7 },
     ];
-    const expectedObject = { Jeff: 7, Kevin: 3, Lisa: 20 };
 
     const result = getTotalCostsPerHead(costs);
 
