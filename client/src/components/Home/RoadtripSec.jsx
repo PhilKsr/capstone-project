@@ -17,7 +17,7 @@ export default function RoadtripSec() {
     <RoadtripSection>
       <h2>Work on your latest plans</h2>
       <div>
-        <NavLink to='collections'>
+        <NavLink to='/collections'>
           <h3>{latestPlan?.name}</h3>
           <ul>
             {latestPlan?.locations?.map((location) => (

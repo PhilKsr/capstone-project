@@ -1,4 +1,4 @@
-export function filterLocations(event, filteredLocations) {
+export const filterLocations = (event, filteredLocations) => {
   const index = filteredLocations.findIndex(
     (location) => location.name === event.target.name
   );
@@ -9,4 +9,11 @@ export function filterLocations(event, filteredLocations) {
     return element;
   });
   return newFilterLocation;
-}
+};
+
+export const getFilteredNames = (filterArray) => {
+  const result = filterArray
+    .filter((location) => location.checked)
+    .map((location) => location.name);
+  return result;
+};

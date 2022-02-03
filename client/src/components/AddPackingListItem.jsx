@@ -8,7 +8,6 @@ export default function AddPackingListItem({ onGetNewItem }) {
       title: value,
       checked: false,
     };
-
     onGetNewItem(newItem);
     event.target.reset();
   };
@@ -16,7 +15,7 @@ export default function AddPackingListItem({ onGetNewItem }) {
   return (
     <FormContainer onSubmit={addItem}>
       <input type='text' name='formItem' placeholder='Add item...' />
-      <button>
+      <button data-testid='addButton'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           height='24px'

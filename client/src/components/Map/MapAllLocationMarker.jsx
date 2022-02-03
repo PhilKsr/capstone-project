@@ -1,6 +1,10 @@
 import { Marker, Popup } from "react-leaflet";
 import { getIcon } from "../../lib/getIcon";
 import styled from "styled-components";
+import {
+  addNewRoadtrip,
+  isLocationAlreadyOnRoadtrip,
+} from "../../lib/roadtripHelpers";
 
 export default function AllLocationMarker({
   locations,
@@ -8,35 +12,25 @@ export default function AllLocationMarker({
   onUpdateRoadtripLocations,
   showAllLocations,
 }) {
-  const addLocation = (newLocation) => {
-    if (
-      roadtrip?.locations?.some((element) => element._id === newLocation._id)
-    ) {
-      return null;
-    } else {
-      const updatedRoadtripLocations = [...roadtrip.locations, newLocation];
+  const addLocation = (newElement, elementArray) => {
+    if (!isLocationAlreadyOnRoadtrip(newElement, elementArray)) {
       onUpdateRoadtripLocations({
         ...roadtrip,
-        locations: updatedRoadtripLocations,
+        locations: addNewRoadtrip(newElement, elementArray),
       });
     }
-  };
-
-  const isLocationPartOfRoadtrip = (location, newRoadtrip) => {
-    return !newRoadtrip?.locations?.some((oneRoadtriplocation) => {
-      return oneRoadtriplocation.properties.name === location.properties.name;
-    });
   };
 
   return (
     <>
       {showAllLocations &&
         locations
-          .filter((oneLocation) =>
-            isLocationPartOfRoadtrip(oneLocation, roadtrip)
+          .filter(
+            (oneLocation) => !isLocationAlreadyOnRoadtrip(oneLocation, roadtrip)
           )
-          .map((oneLocation, index) => (
+          .map((oneLocation) => (
             <Marker
+              data-testid='allLocations'
               key={oneLocation._id}
               position={[
                 oneLocation.geometry.coordinates[1],
@@ -59,7 +53,9 @@ export default function AllLocationMarker({
                       </p>
                     </>
                   )}
-                  <button onClick={() => addLocation(oneLocation)}>+</button>
+                  <button onClick={() => addLocation(oneLocation, roadtrip)}>
+                    +
+                  </button>
                 </PopupContent>
               </Popup>
             </Marker>

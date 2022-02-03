@@ -3,6 +3,7 @@ import styled from "styled-components";
 import CostsAddForm from "./CostsAddForm";
 import CostsBalance from "./CostsBalance";
 import CostsList from "./CostsList";
+import { getTotalCostsPerHead } from "../lib/costsHelpers";
 
 export default function Costs({
   costHandler,
@@ -31,17 +32,10 @@ export default function Costs({
     showForm();
   };
 
-  let uniqueNames = [];
-  allCosts.forEach((cost) => {
-    if (!uniqueNames.includes(cost.name)) {
-      uniqueNames.push(cost.name);
-    }
-  });
-
   const removeCost = (costIndex) => {
     const newCosts = [...allCosts];
     const updatedCosts = newCosts.filter(
-      (object, index) => index !== costIndex
+      (_object, index) => index !== costIndex
     );
     setAllCosts(updatedCosts);
     saveCosts(updatedCosts);
@@ -64,24 +58,29 @@ export default function Costs({
   return (
     <>
       <Background
+        data-testid='background'
         onClick={() => {
           costHandler(), fetchRoadtrips();
         }}></Background>
-      <CostContainer>
+      <CostContainer data-testid='costsContainer'>
         <h2>{roadtrips[roadtripIndex].name}</h2>
 
-        {allCosts && <h3>{uniqueNames.join(" | ")}</h3>}
+        {allCosts && (
+          <h3>{Object.keys(getTotalCostsPerHead(allCosts)).join(" | ")}</h3>
+        )}
 
         <section>
           <h3>Summary</h3>
-          <SwitchContainer onChange={handleDisplay}>
+          <SwitchContainer onChange={handleDisplay} data-testid='switch'>
             <input type='checkbox' />
             <span className='slider round'></span>
           </SwitchContainer>
           <h3>List</h3>
         </section>
 
-        <h3>{allCosts.reduce((a, b) => Number(a) + Number(b.cost), 0)} €</h3>
+        <h3 data-testid='total'>
+          {allCosts.reduce((a, b) => Number(a) + Number(b.cost), 0)} €
+        </h3>
         {!displaySummaryList && <CostsBalance allCosts={allCosts} />}
         {displaySummaryList && (
           <CostsList allCosts={allCosts} onRemoveCost={removeCost} />
@@ -95,7 +94,7 @@ export default function Costs({
           />
         )}
         {!displayAddForm && (
-          <button onClick={showForm}>
+          <button onClick={showForm} data-testid='addCostButton'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               height='24px'
@@ -128,10 +127,11 @@ const CostContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  width: 95%;
+  width: 90%;
   z-index: 150;
   top: 0;
   margin-top: 5rem;
+  margin-bottom: 5rem;
   background: var(--secondary);
   color: var(--tertiary);
   border-radius: 15px;
@@ -163,7 +163,8 @@ const CostContainer = styled.div`
     border-radius: 50%;
     background-color: var(--primary);
     cursor: pointer;
-    margin: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
   }
 `;
 

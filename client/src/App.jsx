@@ -17,8 +17,8 @@ function App() {
         <Route path='/roadtrip' element={<Roadtrip />} />
         <Route path='/roadtrip/:id' element={<Roadtrip />} />
         <Route path='/collections' element={<Collection />} />
-        <Route path='discover' element={<Discover />} />
-        <Route path='packing-list' element={<PackingList />} />
+        <Route path='/discover' element={<Discover />} />
+        <Route path='/packing-list' element={<PackingList />} />
       </Routes>
     </div>
   );

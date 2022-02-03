@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 import MapMoveWatcher from "../../lib/MapMoveWatcher";
 import LocationMarker from "./MapYourLocationMarker";
@@ -80,19 +80,10 @@ export default function Map() {
     setFilteredLocations(filterLocations(event, filteredLocations));
   };
 
-  const getFiltered = () => {
-    return filteredLocations
-      .filter((location) => location.checked)
-      .map((location) => location.name);
-  };
-
-  const handleInputChange = (event) => {
+  const handleInputChange = (event) =>
     setRoadtrip({ ...roadtrip, name: event.target.value });
-  };
 
-  const updateRoadtripLocations = (newLocation) => {
-    setRoadtrip(newLocation);
-  };
+  const updateRoadtripLocations = (newLocation) => setRoadtrip(newLocation);
 
   const resetRoadtrip = () => setRoadtrip(emptyRoadtrip);
 
@@ -103,7 +94,6 @@ export default function Map() {
   };
 
   const onSetShowAllLocations = () => setShowAllLocations(!showAllLocations);
-
   const onSetAddNewLocation = () => setAddNewLocation(!addNewLocation);
 
   const confirmationHandler = () => {
@@ -114,10 +104,12 @@ export default function Map() {
   return (
     <>
       <MapContainer
+        data-testid='map'
         center={[51.095123, 10.271483]}
         zoom={6}
         scrollWheelZoom={true}
-        whenCreated={setMapInstance}>
+        whenCreated={setMapInstance}
+        tap={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -143,7 +135,7 @@ export default function Map() {
         <Searchbar className='searchbar' />
         <MapMoveWatcher
           fetchLocations={fetchAllLocations}
-          filter={getFiltered()}
+          filteredLocations={filteredLocations}
         />
         <LocationMarker />
       </MapContainer>

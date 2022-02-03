@@ -20,7 +20,7 @@ export default function RoadtripLocationMarker({
 
   return (
     <>
-      {roadtrip?.locations?.map((oneLocation, index) => (
+      {roadtrip?.locations?.map((oneLocation) => (
         <Marker
           key={oneLocation._id}
           position={[
@@ -61,5 +61,6 @@ const PopupContent = styled.div`
     color: var(--tertiary);
     background-color: #9f0303;
     transform: scale(1.5);
+    margin-top: 0.5rem;
   }
 `;

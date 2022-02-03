@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export default function LocateButton({ mapInstance }) {
-  const clicked = (e) => {
-    const map = e.target.previousSibling;
+  const clicked = () => {
     mapInstance.fire("tileunload");
   };
   return (

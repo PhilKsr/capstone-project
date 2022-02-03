@@ -1,15 +1,12 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
 
 export default function ExploreSec() {
-  const [index, setIndex] = useState(0);
-  const [myInterval, setMyInterval] = useState();
-
   const germanPicturesOne = [
     "https://images.unsplash.com/photo-1569663818462-4e2c95e320e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     "https://images.unsplash.com/photo-1584481120104-b11d5e602e46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=667&q=80",
     "https://images.unsplash.com/photo-1635754822592-7bec2be9ab7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80",
+    "https://images.unsplash.com/photo-1633262266109-1ca412cd3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     "https://images.unsplash.com/photo-1633262266109-1ca412cd3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   ];
 
@@ -18,12 +15,14 @@ export default function ExploreSec() {
     "https://images.unsplash.com/photo-1599394375951-8674ecff3f8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
     "https://images.unsplash.com/photo-1591450572782-b5bfc982bcb2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1475&q=80",
     "https://images.unsplash.com/photo-1604849055820-2b719928c19d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "https://images.unsplash.com/photo-1604849055820-2b719928c19d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   ];
 
   const germanPicturesThree = [
     "https://images.unsplash.com/photo-1485038101637-2d4833df1b35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1828&q=80",
     "https://images.unsplash.com/photo-1624871084818-b9f5d63aa8ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
     "https://images.unsplash.com/photo-1587821397822-536a429ca1b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+    "https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
     "https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
   ];
 
@@ -32,62 +31,51 @@ export default function ExploreSec() {
     "https://images.unsplash.com/photo-1640265225639-6cc10eddae74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
     "https://images.unsplash.com/photo-1449452198679-05c7fd30f416?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     "https://images.unsplash.com/photo-1514539079130-25950c84af65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+    "https://images.unsplash.com/photo-1514539079130-25950c84af65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
   ];
 
-  const change = () => {
-    const imgElement1 = document.querySelector("#first");
-    if (imgElement1) {
-      imgElement1.src = germanPicturesOne[index];
-    }
-    const imgElement2 = document.querySelector("#second");
-    if (imgElement2) {
-      imgElement2.src = germanPicturesTwo[index];
-    }
-    const imgElement3 = document.querySelector("#third");
-    if (imgElement3) {
-      imgElement3.src = germanPicturesThree[index];
-    }
-    const imgElement4 = document.querySelector("#fourth");
-    if (imgElement4) {
-      imgElement4.src = germanPicturesFour[index];
-    }
-    index === 3 ? setIndex(0) : setIndex(index + 1);
-  };
-
-  const imageInterval = () => {
-    if (myInterval) {
-      clearInterval(myInterval);
-    }
-    const test = setInterval(change, 5000);
-    setMyInterval(test);
-  };
-
   return (
-    <ExploreSection onLoad={imageInterval}>
+    <ExploreSection>
       <h2>Get inspired</h2>
 
       <NavLink to='/discover'>
         <div className='grid'>
           <img
             id='first'
-            src='https://images.unsplash.com/photo-1633262266109-1ca412cd3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+            src={
+              germanPicturesOne[
+                Math.floor(Math.random() * germanPicturesOne.length)
+              ]
+            }
             alt='Bild 1'
           />
           <img
             id='second'
-            className='two'
-            src='https://images.unsplash.com/photo-1604849055820-2b719928c19d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+            className='second'
+            src={
+              germanPicturesTwo[
+                Math.floor(Math.random() * germanPicturesOne.length)
+              ]
+            }
             alt='Bild 2'
           />
           <img
             id='third'
-            className='three'
-            src='https://images.unsplash.com/photo-1633854398595-d95e682fc401?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80'
+            className='third'
+            src={
+              germanPicturesThree[
+                Math.floor(Math.random() * germanPicturesOne.length)
+              ]
+            }
             alt='Bild 3'
           />
           <img
             id='fourth'
-            src='https://images.unsplash.com/photo-1514539079130-25950c84af65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80'
+            src={
+              germanPicturesFour[
+                Math.floor(Math.random() * germanPicturesOne.length)
+              ]
+            }
             alt='Bild 4'
           />
         </div>

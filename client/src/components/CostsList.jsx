@@ -2,30 +2,30 @@ import styled from "styled-components";
 
 export default function CostsList({ allCosts, onRemoveCost }) {
   return (
-    <>
-      <ListOfCosts>
-        {allCosts?.map((purchase, index) => (
-          <li>
-            <div>
-              <span>{purchase.title}</span>
-              <span>Paid by {purchase.name}</span>
-            </div>
-            <span>{purchase.cost} €</span>
-            <button onClick={() => onRemoveCost(index)}>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                height='24px'
-                viewBox='0 0 24 24'
-                width='24px'
-                fill='#ffffff'>
-                <path d='M0 0h24v24H0z' fill='none' />
-                <path d='M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z' />
-              </svg>
-            </button>
-          </li>
-        ))}
-      </ListOfCosts>
-    </>
+    <ListOfCosts>
+      {allCosts?.map((purchase, index) => (
+        <li key={index} data-testid='costList'>
+          <div>
+            <span>{purchase.title}</span>
+            <span>Paid by {purchase.name}</span>
+          </div>
+          <span>{purchase.cost} €</span>
+          <button
+            onClick={() => onRemoveCost(index)}
+            data-testid='removeCostButton'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              height='24px'
+              viewBox='0 0 24 24'
+              width='24px'
+              fill='#ffffff'>
+              <path d='M0 0h24v24H0z' fill='none' />
+              <path d='M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z' />
+            </svg>
+          </button>
+        </li>
+      ))}
+    </ListOfCosts>
   );
 }
 
