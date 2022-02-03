@@ -6,7 +6,7 @@ export default function CreateRoadtripSec() {
     <CreateRoadtripSection>
       <h2>Create your next roadtrip</h2>
       <div>
-        <button>
+        <button data-testid='createNewRoadtrip'>
           <NavLink to={`/roadtrip`}>
             <svg
               xmlns='http://www.w3.org/2000/svg'

@@ -104,6 +104,7 @@ export default function Map() {
   return (
     <>
       <MapContainer
+        data-testid='map'
         center={[51.095123, 10.271483]}
         zoom={6}
         scrollWheelZoom={true}

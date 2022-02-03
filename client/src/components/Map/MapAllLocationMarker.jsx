@@ -30,6 +30,7 @@ export default function AllLocationMarker({
           )
           .map((oneLocation) => (
             <Marker
+              data-testid='allLocations'
               key={oneLocation._id}
               position={[
                 oneLocation.geometry.coordinates[1],

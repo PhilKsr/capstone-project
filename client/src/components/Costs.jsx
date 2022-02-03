@@ -58,6 +58,7 @@ export default function Costs({
   return (
     <>
       <Background
+        data-testid='background'
         onClick={() => {
           costHandler(), fetchRoadtrips();
         }}></Background>

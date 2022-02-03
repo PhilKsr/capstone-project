@@ -4,11 +4,10 @@ const ROADTRIP_SELECTOR = '[data-testid="roadtrip"]';
 const COSTSBUTTON_SELECTOR = '[data-testid="costsButton"]';
 const COSTLIST_SELECTOR = '[data-testid="costList"]';
 const REMOVEBUTTON_SELECTOR = '[data-testid="removeCostButton"]';
-const SERVER_URL = "http://localhost:4000";
 
 describe("Costs", () => {
   beforeEach(() => {
-    cy.visit("/collection").request(SERVER_URL + "/api/roadtrips");
+    cy.visit("/collections");
     cy.get(ROADTRIP_SELECTOR).first().click();
     cy.get(COSTSBUTTON_SELECTOR).first().click();
   });
@@ -24,7 +23,7 @@ describe("Costs", () => {
     cy.get('[name="title"]').type("Groceries");
     cy.get('[name="cost"]').type("11");
     cy.get('[data-testid="addOneCostButton"]').click();
-    cy.get('[data-testid="total"]').should("increase");
+    cy.get('[data-testid="total"]').should("contain", 133);
     cy.get('[data-testid="switch"]').click();
     cy.get(COSTLIST_SELECTOR).should("have.length", 3);
   });

@@ -4,7 +4,7 @@ export default function Modal({ onBackupHandler, handleRoadtrip, children }) {
   return (
     <>
       <Background onClick={onBackupHandler}></Background>
-      <StyledModal>
+      <StyledModal data-testid='modal'>
         <CloseButton onClick={onBackupHandler}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -21,6 +21,7 @@ export default function Modal({ onBackupHandler, handleRoadtrip, children }) {
         <p>Changes cannot be undone.</p>
         <div>
           <button
+            data-testid='confirmRemove'
             onClick={() => {
               handleRoadtrip(), onBackupHandler();
             }}>

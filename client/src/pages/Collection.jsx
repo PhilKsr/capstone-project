@@ -89,7 +89,9 @@ export default function Collection() {
                 </svg>
               </NavLink>
             </button>
-            <button onClick={() => backupHandler(index)}>
+            <button
+              onClick={() => backupHandler(index)}
+              data-testid='removeRoadtrip'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 height='24px'

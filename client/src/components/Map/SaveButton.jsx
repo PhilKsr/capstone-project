@@ -35,6 +35,7 @@ export default function SaveButton({
   return (
     <>
       <SaveRoadtripButton
+        data-testid='saveRoadtripButton'
         onClick={() => {
           handleSave(), onConfirmationHandler();
         }}>
@@ -49,7 +50,7 @@ export default function SaveButton({
         </svg>
       </SaveRoadtripButton>
       {confirmation && (
-        <ConfirmationSign>
+        <ConfirmationSign data-testid='confirmation'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             height='24px'
