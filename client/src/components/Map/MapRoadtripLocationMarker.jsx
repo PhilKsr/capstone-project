@@ -61,5 +61,6 @@ const PopupContent = styled.div`
     color: var(--tertiary);
     background-color: #9f0303;
     transform: scale(1.5);
+    margin-top: 0.5rem;
   }
 `;

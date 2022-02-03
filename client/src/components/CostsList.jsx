@@ -4,13 +4,15 @@ export default function CostsList({ allCosts, onRemoveCost }) {
   return (
     <ListOfCosts>
       {allCosts?.map((purchase, index) => (
-        <li key={index}>
+        <li key={index} data-testid='costList'>
           <div>
             <span>{purchase.title}</span>
             <span>Paid by {purchase.name}</span>
           </div>
           <span>{purchase.cost} €</span>
-          <button onClick={() => onRemoveCost(index)}>
+          <button
+            onClick={() => onRemoveCost(index)}
+            data-testid='removeCostButton'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               height='24px'

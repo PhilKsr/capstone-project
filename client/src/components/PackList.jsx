@@ -13,12 +13,14 @@ export default function PackList({
           <label>
             <input
               type='checkbox'
+              data-testid='check'
               onChange={(event) => onCheckItem(event, packingItems)}
               className='checkbox'
               name={item.title}
               checked={item.checked}
             />
             <input
+              data-testid='item'
               type='text'
               value={item.title}
               name={item.title}
@@ -26,7 +28,7 @@ export default function PackList({
               onChange={(event) => onEditItem(event, packingItems)}
             />
           </label>
-          <button onClick={() => onDeleteItem(item.title)}>
+          <button name='delete' onClick={() => onDeleteItem(item.title)}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               height='24px'

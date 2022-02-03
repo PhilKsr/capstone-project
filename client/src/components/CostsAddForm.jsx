@@ -23,6 +23,7 @@ export default function CostsAddForm({ showForm, onAddCost }) {
 
   return (
     <FormContainer
+      data-testid='addCostForm'
       onSubmit={(event) => {
         onAddCost(event, newCost);
         setNewCost(initialNewCost);
@@ -54,11 +55,10 @@ export default function CostsAddForm({ showForm, onAddCost }) {
       <input
         type='date'
         name='date'
-        required
         onChange={(event) => inputHandler(event)}
       />
       <div>
-        <button>
+        <button data-testid='addOneCostButton'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             height='24px'
@@ -90,6 +90,10 @@ const FormContainer = styled.form`
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
+
+  button {
+    margin: 1rem;
+  }
 
   input {
     background: var(--primary);

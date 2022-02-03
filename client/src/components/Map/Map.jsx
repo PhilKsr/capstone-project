@@ -107,7 +107,8 @@ export default function Map() {
         center={[51.095123, 10.271483]}
         zoom={6}
         scrollWheelZoom={true}
-        whenCreated={setMapInstance}>
+        whenCreated={setMapInstance}
+        tap={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'

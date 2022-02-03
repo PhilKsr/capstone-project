@@ -5,10 +5,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "jest --watchAll --verbose"
+    "test": "jest --watchAll --verbose",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^1.0.7",
+    "cypress": "^9.4.1",
     "dotenv": "^14.1.0",
     "leaflet": "^1.7.1",
     "leaflet-control-geocoder": "^2.3.0",

@@ -57,10 +57,15 @@ export default function Collection() {
   return (
     <CardContainer>
       {roadtrips.map((oneRoadtrip, index) => (
-        <RoadtripCard onClick={showButtons} key={oneRoadtrip._id}>
+        <RoadtripCard
+          onClick={showButtons}
+          key={oneRoadtrip._id}
+          data-testid='roadtrip'>
           <li>
             <h2>{oneRoadtrip.name}</h2>
-            <button onClick={() => costHandler(index)}>
+            <button
+              onClick={() => costHandler(index)}
+              data-testid='costsButton'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 height='24px'
@@ -95,9 +100,12 @@ export default function Collection() {
                 <path d='M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z' />
               </svg>
             </button>
-            <ul>
+            <ul className='locations__list'>
               {oneRoadtrip.locations.map((oneLocation) => (
-                <li key={oneLocation._id}>{oneLocation.properties.name}</li>
+                <li key={oneLocation._id}>
+                  {oneLocation.properties.name}{" "}
+                  <small>({oneLocation.type})</small>
+                </li>
               ))}
             </ul>
           </li>
