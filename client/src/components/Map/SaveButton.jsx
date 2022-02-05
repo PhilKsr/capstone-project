@@ -1,5 +1,8 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import Button from "../Button";
+import Save from "../../images/saveIcon.svg";
+import Confirm from "../../images/confirmIcon.svg";
 
 export default function SaveButton({
   roadtrip,
@@ -34,64 +37,44 @@ export default function SaveButton({
 
   return (
     <>
-      <SaveRoadtripButton
-        data-testid='saveRoadtripButton'
-        onClick={() => {
-          handleSave(), onConfirmationHandler();
-        }}>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          height='24px'
-          viewBox='0 0 24 24'
-          width='24px'
-          fill='#ffffff'>
-          <path d='M0 0h24v24H0z' fill='none' />
-          <path d='M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z' />
-        </svg>
+      <SaveRoadtripButton>
+        <Button
+          onClickFunction={() => {
+            handleSave();
+            onConfirmationHandler();
+          }}>
+          <img src={Save} alt='save' data-testid='saveRoadtripButton' />
+        </Button>
       </SaveRoadtripButton>
       {confirmation && (
-        <ConfirmationSign data-testid='confirmation'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            height='24px'
-            viewBox='0 0 24 24'
-            width='24px'
-            fill='#ffffff'>
-            <path d='M0 0h24v24H0z' fill='none' />
-            <path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z' />
-          </svg>
+        <ConfirmationSign>
+          <Button buttoncolor='var(--confirm)'>
+            <img src={Confirm} alt='confirm' data-testid='confirmation' />
+          </Button>
         </ConfirmationSign>
       )}
     </>
   );
 }
 
-const SaveRoadtripButton = styled.button`
-  box-sizing: content-box;
-  position: absolute;
-  z-index: 100;
-  bottom: 0;
-  right: 0;
-  margin-right: 5.5rem;
-  margin-bottom: 5rem;
-  padding: 0.75rem 0.75rem 0.6rem 0.75rem;
-  border: none;
-  border-radius: 50%;
-  background-color: var(--primary);
-  cursor: pointer;
+const SaveRoadtripButton = styled.div`
+  button {
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    right: 0;
+    margin-right: 5.5rem;
+    margin-bottom: 5rem;
+  }
 `;
 
-const ConfirmationSign = styled.button`
-  box-sizing: content-box;
-  position: absolute;
-  z-index: 100;
-  bottom: 0;
-  right: 0;
-  margin-right: 10.2rem;
-  margin-bottom: 5rem;
-  padding: 0.75rem 0.75rem 0.6rem 0.75rem;
-  border: none;
-  border-radius: 50%;
-  background-color: #1d981d;
-  cursor: pointer;
+const ConfirmationSign = styled.div`
+  button {
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    right: 0;
+    margin-right: 10.2rem;
+    margin-bottom: 5rem;
+  }
 `;

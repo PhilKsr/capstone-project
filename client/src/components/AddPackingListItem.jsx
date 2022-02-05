@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Button from "./Button";
+import Add from "../images/addIcon.svg";
 
 export default function AddPackingListItem({ onGetNewItem }) {
   const addItem = (event) => {
@@ -15,17 +17,11 @@ export default function AddPackingListItem({ onGetNewItem }) {
   return (
     <FormContainer onSubmit={addItem}>
       <input type='text' name='formItem' placeholder='Add item...' />
-      <button data-testid='addButton'>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          height='24px'
-          viewBox='0 0 24 24'
-          width='24px'
-          fill='#ffffff'>
-          <path d='M0 0h24v24H0z' fill='none' />
-          <path d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z' />
-        </svg>
-      </button>
+      <div data-testid='addButton'>
+        <Button data-testid='addButton'>
+          <img src={Add} alt='add' />
+        </Button>
+      </div>
     </FormContainer>
   );
 }

@@ -5,6 +5,8 @@ const GlobalStyle = createGlobalStyle`
   --primary: #313131;
   --secondary: #505050;
   --tertiary: #ffffff;
+  --confirm: #1d981d;
+  --cancel: #ef3c3c;
   
     --ff-sans: sans-serif;
     --ff-serif: serif;
@@ -72,7 +74,7 @@ const GlobalStyle = createGlobalStyle`
     height: auto;
     display: block;
   }
-
+  
 
   //iPhone 6/7/8 for final presentation
   .leaflet-container {
@@ -125,7 +127,7 @@ const GlobalStyle = createGlobalStyle`
   margin-top: 10px;
   margin-left: 10px;
   }
-  }
+  
 
   .leaflet-control-geocoder {
     background-color: var(--primary);

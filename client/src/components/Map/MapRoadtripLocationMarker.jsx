@@ -1,6 +1,8 @@
 import { Marker, Popup } from "react-leaflet";
 import { getRoadtripIcon } from "../../lib/getIcon";
 import styled from "styled-components";
+import Button from "../Button";
+import Cancel from "../../images/cancelIcon.svg";
 
 export default function RoadtripLocationMarker({
   roadtrip,
@@ -42,7 +44,12 @@ export default function RoadtripLocationMarker({
                   </p>
                 </>
               )}
-              <button onClick={() => removeLocation(oneLocation)}>-</button>
+              <Button
+                onClickFunction={() => removeLocation(oneLocation)}
+                buttoncolor='var(--cancel)'
+                size='0.2rem 0.2rem 0.2rem 0.2rem'>
+                <img src={Cancel} alt='cancel' />
+              </Button>
             </PopupContent>
           </Popup>
         </Marker>
@@ -54,13 +61,6 @@ export default function RoadtripLocationMarker({
 const PopupContent = styled.div`
   text-align: center;
   button {
-    box-sizing: content-box;
-    padding: 0.1rem 0.45rem 0.2rem 0.45rem;
-    border: none;
-    border-radius: 50%;
-    color: var(--tertiary);
-    background-color: #9f0303;
-    transform: scale(1.5);
-    margin-top: 0.5rem;
+    margin: 0;
   }
 `;

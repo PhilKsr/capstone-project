@@ -5,6 +5,8 @@ import {
   addNewRoadtrip,
   isLocationAlreadyOnRoadtrip,
 } from "../../lib/roadtripHelpers";
+import Button from "../Button";
+import Add from "../../images/addIcon.svg";
 
 export default function AllLocationMarker({
   locations,
@@ -53,9 +55,12 @@ export default function AllLocationMarker({
                       </p>
                     </>
                   )}
-                  <button onClick={() => addLocation(oneLocation, roadtrip)}>
-                    +
-                  </button>
+                  <Button
+                    onClickFunction={() => addLocation(oneLocation, roadtrip)}
+                    size='0.2rem 0.2rem 0.2rem 0.2rem'
+                    buttoncolor='var(--confirm)'>
+                    <img src={Add} alt='add' />
+                  </Button>
                 </PopupContent>
               </Popup>
             </Marker>
@@ -67,13 +72,6 @@ export default function AllLocationMarker({
 const PopupContent = styled.div`
   text-align: center;
   button {
-    box-sizing: content-box;
-    padding: 0.1rem 0.4rem 0.2rem 0.4rem;
-    margin-top: 0.5rem;
-    border: none;
-    border-radius: 50%;
-    color: var(--tertiary);
-    background-color: #026202;
-    transform: scale(1.5);
+    margin: 0;
   }
 `;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 import styled from "styled-components";
+import Button from "../Button";
+import Save from "../../images/saveIcon.svg";
 
 export default function MapNewLocationMarker({
   addNewLocation,
@@ -107,20 +109,13 @@ export default function MapNewLocationMarker({
                 />
               </FormContainer>
               <SaveButton>
-                <button
+                <Button
                   onClick={() => {
                     saveNewLocation(), onConfirmationHandler();
-                  }}>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    height='24px'
-                    viewBox='0 0 24 24'
-                    width='24px'
-                    fill='#ffffff'>
-                    <path d='M0 0h24v24H0z' fill='none' />
-                    <path d='M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z' />
-                  </svg>
-                </button>
+                  }}
+                  size='0.4rem 0.4rem 0.4rem 0.4rem'>
+                  <img src={Save} alt='save' />
+                </Button>
               </SaveButton>
             </PopupForm>
           </Popup>
@@ -155,11 +150,6 @@ const SaveButton = styled.div`
   padding-top: 1rem;
 
   button {
-    box-sizing: content-box;
-    padding: 0.75rem 0.75rem 0.6rem 0.75rem;
-    border: none;
-    border-radius: 50%;
-    background-color: var(--primary);
-    cursor: pointer;
+    margin: 0;
   }
 `;
