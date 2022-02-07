@@ -6,6 +6,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest --watchAll --verbose",
+    "test:ci": "npm run lint && jest",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "lint": "eslint ./src",
