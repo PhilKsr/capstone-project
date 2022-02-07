@@ -1,51 +1,35 @@
 import styled from "styled-components";
+import Button from "./Button";
+import Confirm from "../images/confirmIcon.svg";
+import Cancel from "../images/cancelIcon.svg";
 
 export default function Modal({ onBackupHandler, handleRoadtrip, children }) {
   return (
     <>
       <Background onClick={onBackupHandler}></Background>
       <StyledModal data-testid='modal'>
-        <CloseButton onClick={onBackupHandler}>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            height='24px'
-            viewBox='0 0 24 24'
-            width='24px'
-            fill='#ffffff'>
-            <path d='M0 0h24v24H0z' fill='none' />
-            <path d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z' />
-          </svg>
+        <CloseButton>
+          <Button
+            onClickFunction={onBackupHandler}
+            size='0.25rem 0.25rem 0.25rem 0.25rem'>
+            <img src={Cancel} alt='cancel' />
+          </Button>
         </CloseButton>
         <h2>Really {children}?</h2>
         <p>Do you really want to {children} your roadtrip?</p>
         <p>Changes cannot be undone.</p>
         <div>
-          <button
-            data-testid='confirmRemove'
-            onClick={() => {
-              handleRoadtrip(), onBackupHandler();
-            }}>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              height='24px'
-              viewBox='0 0 24 24'
-              width='24px'
-              fill='#ffffff'>
-              <path d='M0 0h24v24H0z' fill='none' />
-              <path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z' />
-            </svg>
-          </button>
-          <button onClick={onBackupHandler}>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              height='24px'
-              viewBox='0 0 24 24'
-              width='24px'
-              fill='#ffffff'>
-              <path d='M0 0h24v24H0z' fill='none' />
-              <path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' />
-            </svg>
-          </button>
+          <Button
+            onClickFunction={() => {
+              handleRoadtrip();
+              onBackupHandler();
+            }}
+            buttoncolor='var(--confirm)'>
+            <img src={Confirm} alt='confirm' data-testid='confirmRemove' />
+          </Button>
+          <Button onClickFunction={onBackupHandler} buttoncolor='var(--cancel)'>
+            <img src={Cancel} alt='cancel' />
+          </Button>
         </div>
       </StyledModal>
     </>
@@ -79,17 +63,6 @@ const StyledModal = styled.div`
     width: 100%;
     justify-content: space-evenly;
     padding-top: 1rem;
-    button {
-      margin-bottom: 1rem;
-      padding: 0.75rem 0.75rem 0.6rem 0.75rem;
-      border: none;
-      border-radius: 50%;
-      background-color: #1d981d;
-      cursor: pointer;
-    }
-    button + button {
-      background-color: #ef3c3c;
-    }
   }
 
   @media (min-height: 740px) {
@@ -97,17 +70,14 @@ const StyledModal = styled.div`
   }
 `;
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.25rem 0.25rem 0.1rem 0.25rem;
-  margin-right: -0.5rem;
-  margin-top: -0.5rem;
-  border: none;
-  border-radius: 50%;
-  background-color: var(--primary);
-  cursor: pointer;
+const CloseButton = styled.div`
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: -0.5rem;
+    margin-top: -0.5rem;
+  }
 `;
 
 const Background = styled.div`

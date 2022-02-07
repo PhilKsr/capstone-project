@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAverage, getTotalCostsPerHead } from "../lib/costsHelpers";
+import { getAverage, getTotalCostsPerHead } from "../../lib/costsHelpers";
 
 export default function CostsBalance({ allCosts }) {
   const [totalCostPerHead, setTotalCostPerHead] = useState({});

@@ -1,0 +1,19 @@
+import FilterMenu from "./FilterMenu";
+
+import { Meta, Story } from "@storybook/addon-docs";
+
+<Meta title='Components/FilterMenu' component={FilterMenu} />
+
+<Story name='Only Filter-Button'>
+  <FilterMenu show={false} />
+</Story>
+
+<Story name='Filter-Button with menu'>
+  <FilterMenu
+    show={true}
+    filteredLocations={[
+      { name: "First filter", checked: false },
+      { name: "Second filter", checked: false },
+    ]}
+  />
+</Story>

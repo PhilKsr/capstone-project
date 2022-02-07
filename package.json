@@ -10,7 +10,10 @@
     "client": "cd ./client && npm run dev",
     "start": "node server/server.js",
     "postinstall": "cd ./client && npm install && cd ../server && npm install",
+    "storybook": "cd ./client && npm run storybook",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:ci": "cd client && npm run test:ci",
+    "test:e2e:ci": "CYPRESS_BASE_URL=http://localhost:4000 start-server-and-test 'npm start' http://localhost:4000 cy:run",
     "cy:open": "cd ./client && npm run cy:open",
     "cy:run": "cd ./client && npm run cy:run"
   },
@@ -20,7 +23,8 @@
     "@types/jest": "^27.4.0",
     "concurrently": "^7.0.0",
     "eslint": "^8.8.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "start-server-and-test": "^1.14.0"
   },
   "engines": {
     "npm": "8.x",

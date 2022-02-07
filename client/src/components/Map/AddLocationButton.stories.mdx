@@ -1,0 +1,13 @@
+import AddButton from "./AddLocationButton";
+
+import { Meta, Story } from "@storybook/addon-docs";
+
+<Meta title='Components/AddLocationButton' component={AddButton} />
+
+<Story name='Inactive Button'>
+  <AddButton addNewLocation={false} />
+</Story>
+
+<Story name='Active Button'>
+  <AddButton addNewLocation={true} />
+</Story>

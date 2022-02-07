@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import RoadtripCard from "../RoadtripCard";
 
 export default function RoadtripSec() {
   const [latestPlan, setLatestPlan] = useState();
@@ -16,16 +17,9 @@ export default function RoadtripSec() {
   return (
     <RoadtripSection>
       <h2>Work on your latest plans</h2>
-      <div>
+      <div className='homeCard'>
         <NavLink to='/collections'>
-          <h3>{latestPlan?.name}</h3>
-          <ul>
-            {latestPlan?.locations?.map((location) => (
-              <li key={location._id}>
-                {location.properties.name} ({location.type})
-              </li>
-            ))}
-          </ul>
+          {latestPlan && <RoadtripCard oneRoadtrip={latestPlan} />}
         </NavLink>
       </div>
     </RoadtripSection>
@@ -36,28 +30,11 @@ const RoadtripSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  h3 {
-    text-align: center;
-    padding-top: 1rem;
-  }
-
   div {
-    width: 90%;
-    margin: 1rem 0 1rem 0;
-    padding: 1rem;
-    background-color: var(--secondary);
-    color: var(--primary);
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
-
-    a {
-      text-decoration: none;
-      color: var(--tertiary);
-    }
-
-    li ul {
-      padding-top: 1rem;
-    }
+    margin-left: 0.65rem;
+  }
+  a {
+    text-decoration: none;
+    color: var(--tertiary);
   }
 `;
