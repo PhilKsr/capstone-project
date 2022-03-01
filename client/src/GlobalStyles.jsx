@@ -148,7 +148,6 @@ const GlobalStyle = createGlobalStyle`
 
   ::placeholder {
       color: var(--tertiary);
-      opacity: 75%;
     }
 
   .leaflet-control-geocoder-icon {
@@ -157,6 +156,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .leaflet-touch .leaflet-bar{
+    background-color: var(--primary);
     border: none;
     border-radius: 5px;
   }

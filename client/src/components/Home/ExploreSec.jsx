@@ -18,16 +18,13 @@ export default function ExploreSec() {
   ];
 
   return (
-    <>
-      <h2>Get inspired</h2>
-      <ExploreSection>
-        {germanyPictures.map((pic, i) => (
-          <NavLink to='/discover' key={i}>
-            <div style={{ backgroundImage: `url(${pic})` }}></div>
-          </NavLink>
-        ))}
-      </ExploreSection>
-    </>
+    <ExploreSection>
+      {germanyPictures.map((pic, i) => (
+        <NavLink to='/discover' key={i}>
+          <div style={{ backgroundImage: `url(${pic})` }}></div>
+        </NavLink>
+      ))}
+    </ExploreSection>
   );
 }
 

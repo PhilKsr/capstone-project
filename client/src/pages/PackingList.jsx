@@ -50,7 +50,6 @@ export default function PackingList() {
 
   return (
     <ContentWrapper>
-      <Header />
       <section>
         <h3>Have you packed already?</h3>
         <AddPackingListItem onGetNewItem={getNewItem} />
