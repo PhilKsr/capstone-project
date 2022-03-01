@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <FooterNavbar>
       <li>
-        <NavLink to='/home'>
+        <NavLink to='/'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             enableBackground='new 0 0 24 24'
