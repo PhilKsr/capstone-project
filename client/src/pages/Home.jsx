@@ -2,7 +2,6 @@ import styled from "styled-components";
 import CreateRoadtripSec from "../components/Home/CreateRoadtripSec";
 import ExploreSec from "../components/Home/ExploreSec";
 import Header from "../components/Home/Header";
-import RoadtripSec from "../components/Home/RoadtripSec";
 
 export default function Home() {
   return (
@@ -10,7 +9,6 @@ export default function Home() {
       <ContentContainer>
         <Header />
         <CreateRoadtripSec />
-        <RoadtripSec />
         <ExploreSec />
       </ContentContainer>
     </>
