@@ -120,4 +120,31 @@ const ContentContainer = styled.div`
       }
     }
   }
+
+  @media (min-width: 768px) {
+    margin-top: 3rem;
+    section {
+      background-color: var(--primary);
+      width: 60%;
+      margin-bottom: 3rem;
+      :nth-child(odd) {
+        align-self: start;
+        padding-left: 4rem;
+      }
+      :nth-child(even) {
+        align-self: end;
+        padding-right: 4rem;
+      }
+      div {
+        margin: 0;
+        width: 90%;
+        height: 30rem;
+        border-radius: 0;
+      }
+    }
+    a {
+      font-size: 2.5rem;
+      padding: 1rem;
+    }
+  }
 `;
