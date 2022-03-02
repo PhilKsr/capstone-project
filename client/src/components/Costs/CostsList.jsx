@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Remove from "../../images/removeIcon.svg";
+import Remove from "../../assets/removeIcon.svg";
 import Button from "../Button";
 
 export default function CostsList({ allCosts, onRemoveCost }) {

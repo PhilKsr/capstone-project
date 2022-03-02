@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "../components/Modal";
 import Costs from "../components/Costs/Costs";
-import Cost from "../images/costIcon.svg";
-import Edit from "../images/editIcon.svg";
-import Remove from "../images/removeIcon.svg";
+import Cost from "../assets/costIcon.svg";
+import Edit from "../assets/editIcon.svg";
+import Remove from "../assets/removeIcon.svg";
 import Button from "../components/Button";
 
 export default function Collection() {

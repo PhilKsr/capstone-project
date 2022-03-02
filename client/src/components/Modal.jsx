@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "./Button";
-import Confirm from "../images/confirmIcon.svg";
-import Cancel from "../images/cancelIcon.svg";
+import Confirm from "../assets/confirmIcon.svg";
+import Cancel from "../assets/cancelIcon.svg";
 
 export default function Modal({ onBackupHandler, handleRoadtrip, children }) {
   return (

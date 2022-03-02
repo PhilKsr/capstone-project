@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "./Button";
-import Remove from "../images/removeIcon.svg";
+import Remove from "../assets/removeIcon.svg";
 
 export default function PackList({
   packingItems,

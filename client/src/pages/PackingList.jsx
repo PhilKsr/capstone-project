@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import AddPackingListItem from "../components/AddPackingListItem";
 import PackList from "../components/PackList";
 import styled from "styled-components";
-import Header from "../components/Home/Header";
 
 export default function PackingList() {
   const [packingItems, setPackingItems] = useState([]);

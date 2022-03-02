@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../Button";
-import Add from "../../images/addIcon.svg";
+import Add from "../../assets/addIcon.svg";
 
 export default function CreateRoadtripSec() {
   return (

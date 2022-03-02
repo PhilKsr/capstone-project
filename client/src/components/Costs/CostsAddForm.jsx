@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Button from "../Button";
-import Save from "../../images/saveIcon.svg";
-import Cancel from "../../images/cancelIcon.svg";
+import Save from "../../assets/saveIcon.svg";
+import Cancel from "../../assets/cancelIcon.svg";
 
 export default function CostsAddForm({ showForm, onAddCost }) {
   const initialNewCost = {

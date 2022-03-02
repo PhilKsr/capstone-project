@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "./Button";
-import Add from "../images/addIcon.svg";
+import Add from "../assets/addIcon.svg";
 
 export default function AddPackingListItem({ onGetNewItem }) {
   const addItem = (event) => {

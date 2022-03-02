@@ -5,7 +5,7 @@ import CostsBalance from "./CostsBalance";
 import CostsList from "./CostsList";
 import { getTotalCostsPerHead } from "../../lib/costsHelpers";
 import Button from "../Button";
-import Add from "../../images/addIcon.svg";
+import Add from "../../assets/addIcon.svg";
 
 export default function Costs({
   costHandler,
