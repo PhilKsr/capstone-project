@@ -50,4 +50,10 @@ const FormContainer = styled.form`
   button {
     margin: 0;
   }
+
+  @media (min-width: 768px) {
+    input {
+      width: 100%;
+    }
+  }
 `;

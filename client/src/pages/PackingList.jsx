@@ -83,4 +83,11 @@ const ContentWrapper = styled.div`
     margin-bottom: 5rem;
     border-radius: 15px;
   }
+
+  @media (min-width: 768px) {
+    h2 {
+      margin: 2rem;
+      font-size: 3rem;
+    }
+  }
 `;
