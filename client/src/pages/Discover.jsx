@@ -99,15 +99,19 @@ const ContentContainer = styled.div`
       background-size: cover;
       margin: 1rem;
       border-radius: 15px;
-      opacity: 80%;
+      opacity: 85%;
+
+      :hover {
+        opacity: 100%;
+      }
     }
     h3 {
       position: absolute;
       margin-top: 5rem;
       background: var(--primary);
       border-radius: 15px;
-      padding: 0.5rem;
-      opacity: 90%;
+      padding: 0.3rem;
+      opacity: 75%;
       font-size: 1.1rem;
 
       a {

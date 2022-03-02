@@ -60,7 +60,7 @@ export default function Collection() {
 
   return (
     <CardContainer>
-      {roadtrips.map((oneRoadtrip) => (
+      {roadtrips.map((oneRoadtrip, index) => (
         <Roadtripcard
           onClick={showButtons}
           key={oneRoadtrip._id}

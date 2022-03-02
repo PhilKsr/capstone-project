@@ -12,24 +12,21 @@ export default function PackList({
     <ItemsList>
       {packingItems?.map((item, index) => (
         <li key={index}>
-          <label>
-            <input
-              type='checkbox'
-              data-testid='check'
-              onChange={(event) => onCheckItem(event, packingItems)}
-              className='checkbox'
-              name={item.title}
-              checked={item.checked}
-            />
-            <input
-              data-testid='item'
-              type='text'
-              value={item.title}
-              name={item.title}
-              className={item.checked ? "line-through" : ""}
-              onChange={(event) => onEditItem(event, packingItems)}
-            />
-          </label>
+          <input
+            type='checkbox'
+            data-testid='check'
+            onChange={(event) => onCheckItem(event, packingItems)}
+            className='checkbox'
+            name={item.title}
+            checked={item.checked}
+          />
+          <input
+            data-testid='item'
+            type='text'
+            value={item.title}
+            name={item.title}
+            className={item.checked ? "line-through" : ""}
+            onChange={(event) => onEditItem(event, packingItems)}></input>
           <Button
             onClickFunction={() => onDeleteItem(item.title)}
             size='0.45rem 0.45rem 0.45rem 0.45rem'>
@@ -48,23 +45,24 @@ const ItemsList = styled.ul`
 
   .checkbox {
     transform: scale(1.5);
+    margin: 1rem;
   }
   li {
     display: flex;
     align-items: center;
     margin-top: 1rem;
-
-    input {
-      background: var(--primary);
-      margin-right: 1rem;
-      border: none;
-      border-radius: 15px;
-      font-size: 0.9rem;
-      padding: 0.5rem;
-      color: var(--tertiary);
-      :focus {
-        outline: none;
-      }
+    background: var(--primary);
+    border-radius: 15px;
+  }
+  input {
+    background: var(--primary);
+    margin-right: 1rem;
+    border: none;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    color: var(--tertiary);
+    :focus {
+      outline: none;
     }
   }
 
