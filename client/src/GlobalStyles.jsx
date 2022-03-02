@@ -36,8 +36,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     line-height: 1.5;
     font-size: 1.25rem;
-    background: linear-gradient(180deg, #f8f5edf0 70%, #a4d1aacf 100%); 
-    background-repeat: no-repeat;
+/*     background: linear-gradient(180deg, #f8f5edf0 70%, #a4d1aacf 100%); 
+    background-repeat: no-repeat; */
   }
   
   ul[class],

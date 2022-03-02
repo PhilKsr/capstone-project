@@ -27,20 +27,20 @@ export default function RoadtripCard({
       onClick={showButtons}
       key={oneRoadtrip._id}
       data-testid='roadtrip'>
-      <h3>{oneRoadtrip.name}</h3>
+      <h2>{oneRoadtrip.name}</h2>
       <Button
         onClickFunction={() => backupHandler(index)}
-        size='0.45rem 0.45rem 0.45rem 0.45rem'>
+        size='0.45rem 0.45rem 0.35rem 0.45rem'>
         <img src={Remove} alt='remove' data-testid='removeRoadtrip' />
       </Button>
       <NavLink to={`/roadtrip/${oneRoadtrip._id}`}>
-        <Button size='0.45rem 0.45rem 0.45rem 0.45rem'>
+        <Button size='0.45rem 0.45rem 0.35rem 0.45rem'>
           <img src={Edit} alt='edit' />
         </Button>
       </NavLink>
       <Button
         onClickFunction={() => costHandler(index)}
-        size='0.45rem 0.45rem 0.45rem 0.45rem'>
+        size='0.45rem 0.45rem 0.35rem 0.45rem'>
         <img src={Cost} alt='costs' data-testid='costsButton' />
       </Button>
       <ul className='locations__list'>
@@ -55,27 +55,24 @@ export default function RoadtripCard({
 }
 
 const Roadtripcard = styled.div`
-  width: 90%;
+  width: 85%;
   margin: 1rem 0 1rem 0;
   padding: 1rem;
   background-color: var(--secondary);
   color: var(--tertiary);
-  box-shadow: 10px 20px 15px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   padding: 1rem;
   position: relative;
-  min-height: 10rem;
+  min-height: min-content;
 
-  :last-of-type {
-    margin-bottom: 5rem;
-  }
-
-  h3 {
-    padding-bottom: 1rem;
-  }
   li {
-    list-style: none;
+    margin: 0.4rem;
   }
+
+  h2 {
+    padding: 1rem;
+  }
+
   button {
     position: absolute;
     top: 0;

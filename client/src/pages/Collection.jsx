@@ -51,6 +51,7 @@ export default function Collection() {
           index={index}
           costHandler={costHandler}
           backupHandler={backupHandler}
+          id={oneRoadtrip._id}
         />
       ))}
       {backupQuestion && (
@@ -78,4 +79,5 @@ const CardContainer = styled.div`
   align-items: center;
   width: 100%;
   font-size: 1rem;
+  margin-bottom: 5rem;
 `;

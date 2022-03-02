@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
-import MapMoveWatcher from "../../lib/MapMoveWatcher";
-import LocationMarker from "./MapYourLocationMarker";
-import LocateButton from "./LocateButton";
-import FilterMenu from "./FilterMenu";
-import Searchbar from "./Searchbar";
+import LocationMarker from "../components/Map/MapYourLocationMarker";
+import LocateButton from "../components/Map/LocateButton";
+import FilterMenu from "../components/Map/FilterMenu";
+import Searchbar from "../components/Map/Searchbar";
 import styled from "styled-components";
-import { filterLocations } from "../../lib/filter";
-import AllLocationMarker from "./MapAllLocationMarker";
-import RoadtripLocationMarker from "./MapRoadtripLocationMarker";
-import ResetButton from "./ResetButton";
-import SaveButton from "./SaveButton";
+import { filterLocations } from "../lib/filter";
+import AllLocationMarker from "../components/Map/MapAllLocationMarker";
+import RoadtripLocationMarker from "../components/Map/MapRoadtripLocationMarker";
+import ResetButton from "../components/Map/ResetButton";
+import SaveButton from "../components/Map/SaveButton";
 import { useParams } from "react-router-dom";
-import ShowAllLocationsButton from "./ShowAllLocationsButton";
-import AddButton from "./AddLocationButton";
-import MapNewLocationMarker from "./MapNewLocationMarker";
+import ShowAllLocationsButton from "../components/Map/ShowAllLocationsButton";
+import AddButton from "../components/Map/AddLocationButton";
+import MapNewLocationMarker from "../components/Map/MapNewLocationMarker";
+import MapMoveWatcher from "../lib/MapMoveWatcher";
 
 export default function Map() {
   const roadtripId = useParams();
@@ -143,7 +143,7 @@ export default function Map() {
       <RoadtripName
         type='text'
         name='roadtrip'
-        placeholder='Roadtrip name...'
+        placeholder='Roadtrip-name'
         value={roadtrip.name}
         onChange={handleInputChange}
       />
@@ -179,7 +179,7 @@ const RoadtripName = styled.input`
   margin-top: 10px;
   color: var(--tertiary);
   background-color: var(--primary);
-  opacity: 95%;
+  opacity: 85%;
   border: none;
   width: 12rem;
   height: 30px;
@@ -188,6 +188,7 @@ const RoadtripName = styled.input`
   text-align: center;
   :focus {
     outline: none;
+    opacity: 100%;
   }
 
   //Basic MacBook Pro to use with mouse
