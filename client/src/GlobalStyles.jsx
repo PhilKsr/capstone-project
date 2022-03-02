@@ -35,7 +35,6 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     line-height: 1.5;
-    font-size: 1.25rem;
   }
   
   ul[class],

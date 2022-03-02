@@ -19,7 +19,6 @@ const ContentContainer = styled.div`
   font-size: 1rem;
 
   h2 {
-    font-size: 1.3rem;
     font-weight: bold;
     padding-top: 1rem;
   }
