@@ -159,4 +159,38 @@ const Roadtripcard = styled.div`
   .visible {
     opacity: 100%;
   }
+  @media (min-width: 768px) {
+    width: 100%;
+    gap: 1rem;
+    margin-top: 2rem;
+    border-radius: 0%;
+    h2 {
+      padding: 0;
+      font-size: 2rem;
+    }
+    li {
+      margin: 0;
+    }
+
+    div + div {
+      flex-basis: 20%;
+      flex-direction: row;
+
+      button {
+        margin-right: 1rem;
+      }
+    }
+    :nth-child(odd) {
+      width: 60%;
+      display: flex;
+      align-self: start;
+      justify-content: center;
+    }
+    :nth-child(even) {
+      width: 60%;
+      display: flex;
+      align-self: end;
+      justify-content: center;
+    }
+  }
 `;
