@@ -151,6 +151,10 @@ const CostContainer = styled.div`
     display: flex;
     align-items: center;
   }
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `;
 
 //only for switch!

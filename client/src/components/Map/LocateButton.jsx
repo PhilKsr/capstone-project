@@ -24,4 +24,9 @@ const LocateMeButton = styled.div`
     margin-left: 1rem;
     margin-bottom: 5rem;
   }
+  @media (min-width: 768px) {
+    button {
+      margin-bottom: 1rem;
+    }
+  }
 `;

@@ -35,4 +35,9 @@ const StyledResetButton = styled.div`
     margin-left: 5.5rem;
     margin-bottom: 5rem;
   }
+  @media (min-width: 768px) {
+    button {
+      margin-bottom: 1rem;
+    }
+  }
 `;

@@ -29,4 +29,9 @@ const VisibilityButton = styled.div`
     margin-right: 10.2rem;
     margin-bottom: 5rem;
   }
+  @media (min-width: 768px) {
+    button {
+      margin-bottom: 1rem;
+    }
+  }
 `;
