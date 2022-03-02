@@ -28,33 +28,26 @@ export default function AddPackingListItem({ onGetNewItem }) {
 
 const FormContainer = styled.form`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  margin: 1.5rem;
 
   input {
-    :first-of-type {
-      color: var(--tertiary);
-      background-color: var(--primary);
-      border: none;
-      width: 12rem;
-      height: 30px;
-      padding: 5px;
-      border-radius: 5px;
-      text-align: center;
-      :focus {
-        outline: none;
-      }
+    color: var(--tertiary);
+    background-color: var(--primary);
+    border: none;
+    width: 13rem;
+    height: 30px;
+    padding: 1.3rem;
+    border-radius: 15px;
+    text-align: center;
+    :focus {
+      outline: none;
     }
   }
 
   button {
-    box-sizing: content-box;
-    padding: 0.75rem 0.75rem 0.6rem 0.75rem;
-    border: none;
-    border-radius: 50%;
-    background-color: var(--primary);
-    color: white;
-    cursor: pointer;
+    margin: 0;
   }
 `;

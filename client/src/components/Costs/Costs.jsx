@@ -149,6 +149,7 @@ const CostContainer = styled.div`
 
   section {
     display: flex;
+    align-items: center;
   }
 `;
 

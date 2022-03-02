@@ -9,7 +9,6 @@ export default function CostsAddForm({ showForm, onAddCost }) {
     name: "",
     title: "",
     cost: "",
-    date: "",
   };
   const [newCost, setNewCost] = useState(initialNewCost);
 
@@ -50,16 +49,12 @@ export default function CostsAddForm({ showForm, onAddCost }) {
       <input
         type='number'
         name='cost'
-        placeholder='Cost rounded'
+        placeholder='Expense rounded'
         value={newCost.cost}
         required
         onChange={inputHandler}
       />
-      <input
-        type='date'
-        name='date'
-        onChange={(event) => inputHandler(event)}
-      />
+
       <div>
         <Button>
           <img src={Save} alt='Save' data-testid='addOneCostButton' />

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import AddPackingListItem from "../components/AddPackingListItem";
-import ProfileSec from "../components/Home/ProfileSec";
 import PackList from "../components/PackList";
 import styled from "styled-components";
+import Header from "../components/Home/Header";
 
 export default function PackingList() {
   const [packingItems, setPackingItems] = useState([]);
@@ -50,9 +50,8 @@ export default function PackingList() {
 
   return (
     <ContentWrapper>
-      <ProfileSec />
       <section>
-        <h3>Have you packed already?</h3>
+        <h2>Have you packed already?</h2>
         <AddPackingListItem onGetNewItem={getNewItem} />
         <PackList
           packingItems={packingItems}
@@ -69,22 +68,16 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 
   h2 {
+    text-align: center;
     font-size: 1.3rem;
     font-weight: bold;
-    padding-top: 1rem;
-  }
-
-  h3 {
-    margin-bottom: 1rem;
-    color: var(--tertiary);
+    padding: 2rem 0 1rem 0;
   }
 
   section + section {
     text-align: center;
-    width: 90%;
     background: var(--secondary);
     padding: 1rem;
     margin-top: 1rem;

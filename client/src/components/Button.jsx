@@ -10,7 +10,7 @@ export default function Button({
     <StyledButton
       onClick={onClickFunction}
       buttoncolor={buttoncolor ? buttoncolor : "var(--primary)"}
-      size={size ? size : "0.75rem 0.75rem 0.75rem 0.75rem}"}>
+      size={size ? size : "0.75rem 0.75rem 0.65rem 0.75rem}"}>
       {children}
     </StyledButton>
   );
@@ -25,4 +25,5 @@ const StyledButton = styled.button`
   color: white;
   cursor: pointer;
   margin: 1rem;
+  opacity: 85%;
 `;
