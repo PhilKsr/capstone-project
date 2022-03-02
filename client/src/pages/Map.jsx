@@ -191,10 +191,11 @@ const RoadtripName = styled.input`
     opacity: 100%;
   }
 
-  //Basic MacBook Pro to use with mouse
-  @media (min-width: 600px) {
-    width: 15rem;
-    margin-right: 23em;
-    margin-top: 15px;
+  @media (min-width: 768px) {
+    width: 25rem;
+    margin-right: 1.2rem;
+    margin-top: 2.5rem;
+    height: 3rem;
+    font-size: 1.5rem;
   }
 `;

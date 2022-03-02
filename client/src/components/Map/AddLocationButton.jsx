@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "../Button";
-import Pin from "../../images/pinIcon.svg";
+import Pin from "../../assets/pinIcon.svg";
 
 export default function AddButton({ onSetAddNewLocation, addNewLocation }) {
   return (
@@ -27,5 +27,11 @@ const AddLocationButton = styled.div`
     right: 0;
     margin-right: 1rem;
     margin-bottom: 9rem;
+  }
+
+  @media (min-width: 768px) {
+    button {
+      margin-bottom: 5rem;
+    }
   }
 `;

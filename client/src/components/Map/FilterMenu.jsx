@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Button from "../Button";
-import Filter from "../../images/filterIcon.svg";
+import Filter from "../../assets/filterIcon.svg";
 
 export default function FilterMenu({
   checkFilteredLocations,
@@ -74,5 +74,10 @@ const FilterContainer = styled.div`
     border-radius: 3px;
     transform: scale(1.5);
     margin-right: 1rem;
+  }
+  @media (min-width: 768px) {
+    button {
+      margin-bottom: 1rem;
+    }
   }
 `;

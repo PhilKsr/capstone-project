@@ -36,8 +36,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     line-height: 1.5;
     font-size: 1.25rem;
-/*     background: linear-gradient(180deg, #f8f5edf0 70%, #a4d1aacf 100%); 
-    background-repeat: no-repeat; */
   }
   
   ul[class],
@@ -58,7 +56,7 @@ const GlobalStyle = createGlobalStyle`
   .leaflet-container {
     position: relative;
     z-index: 10;
-    height: 667px;
+    height: 95vh;
     }
 
   .leaflet-right{
@@ -70,6 +68,7 @@ const GlobalStyle = createGlobalStyle`
   .leaflet-left.leaflet-top { 
   margin-top: 28rem;
   margin-left: 0.75rem;
+  color: var(--tertiary);
   }
 
   .leaflet-control-geocoder-icon {
@@ -85,6 +84,11 @@ const GlobalStyle = createGlobalStyle`
 
     input {
       color: var(--tertiary);
+    }
+
+    a, span{
+      color: var(--tertiary);
+
     }
   }
 
@@ -120,7 +124,7 @@ const GlobalStyle = createGlobalStyle`
   @media (min-height: 740px) {
     .leaflet-container {
     width: 100%;
-    height: 760px;
+    height: 95vh;
   }
   .leaflet-right {
   margin-right: 2rem; 
@@ -132,11 +136,10 @@ const GlobalStyle = createGlobalStyle`
   }
   }
 
-  //Basic monitor to use with mouse
-  @media (min-height: 760px ) and (min-width: 600px) {
+  @media (min-width: 768px) {
     .leaflet-container {
     width: 100%;
-    height: 100vh;
+    height: 86vh;
   }
 
   .leaflet-right {

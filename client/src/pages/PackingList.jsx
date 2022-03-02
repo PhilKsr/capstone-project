@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import AddPackingListItem from "../components/AddPackingListItem";
 import PackList from "../components/PackList";
 import styled from "styled-components";
-import Header from "../components/Home/Header";
 
 export default function PackingList() {
   const [packingItems, setPackingItems] = useState([]);
@@ -83,5 +82,12 @@ const ContentWrapper = styled.div`
     margin-top: 1rem;
     margin-bottom: 5rem;
     border-radius: 15px;
+  }
+
+  @media (min-width: 768px) {
+    h2 {
+      margin: 2rem;
+      font-size: 3rem;
+    }
   }
 `;

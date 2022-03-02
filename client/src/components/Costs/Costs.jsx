@@ -5,7 +5,7 @@ import CostsBalance from "./CostsBalance";
 import CostsList from "./CostsList";
 import { getTotalCostsPerHead } from "../../lib/costsHelpers";
 import Button from "../Button";
-import Add from "../../images/addIcon.svg";
+import Add from "../../assets/addIcon.svg";
 
 export default function Costs({
   costHandler,
@@ -150,6 +150,10 @@ const CostContainer = styled.div`
   section {
     display: flex;
     align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    width: 50%;
   }
 `;
 

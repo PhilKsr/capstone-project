@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Locate from "../../images/locateIcon.svg";
+import Locate from "../../assets/locateIcon.svg";
 import Button from "../Button";
 
 export default function LocateButton({ mapInstance }) {
@@ -23,5 +23,10 @@ const LocateMeButton = styled.div`
     left: 0;
     margin-left: 1rem;
     margin-bottom: 5rem;
+  }
+  @media (min-width: 768px) {
+    button {
+      margin-bottom: 1rem;
+    }
   }
 `;

@@ -2,7 +2,7 @@ import { Marker, Popup } from "react-leaflet";
 import { getRoadtripIcon } from "../../lib/getIcon";
 import styled from "styled-components";
 import Button from "../Button";
-import Cancel from "../../images/cancelIcon.svg";
+import Cancel from "../../assets/cancelIcon.svg";
 
 export default function RoadtripLocationMarker({
   roadtrip,

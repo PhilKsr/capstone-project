@@ -12,9 +12,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/roadtrip' element={<Map />} />
-        <Route path='/roadtrip/:id' element={<Map />} />
-        <Route path='/collections' element={<Collection />} />
+        <Route path='/map' element={<Map />} />
+        <Route path='/map/:id' element={<Map />} />
+        <Route path='/collection' element={<Collection />} />
         <Route path='/discover' element={<Discover />} />
         <Route path='/packing-list' element={<PackingList />} />
       </Routes>

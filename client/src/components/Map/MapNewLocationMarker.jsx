@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 import styled from "styled-components";
 import Button from "../Button";
-import Save from "../../images/saveIcon.svg";
+import Save from "../../assets/saveIcon.svg";
 
 export default function MapNewLocationMarker({
   addNewLocation,

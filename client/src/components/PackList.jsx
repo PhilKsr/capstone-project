@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "./Button";
-import Remove from "../images/removeIcon.svg";
+import Remove from "../assets/removeIcon.svg";
 
 export default function PackList({
   packingItems,
@@ -72,5 +72,14 @@ const ItemsList = styled.ul`
 
   .line-through {
     text-decoration: line-through;
+  }
+  @media (min-width: 768px) {
+    li {
+      justify-content: space-between;
+      width: 100%;
+    }
+    input + input {
+      width: 100%;
+    }
   }
 `;

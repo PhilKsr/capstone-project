@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Visible from "../../images/visibleIcon.svg";
-import Invisible from "../../images/invisibleIcon.svg";
+import Visible from "../../assets/visibleIcon.svg";
+import Invisible from "../../assets/invisibleIcon.svg";
 import Button from "../Button";
 
 export default function ShowAllLocationsButton({
@@ -28,5 +28,10 @@ const VisibilityButton = styled.div`
     right: 0;
     margin-right: 10.2rem;
     margin-bottom: 5rem;
+  }
+  @media (min-width: 768px) {
+    button {
+      margin-bottom: 1rem;
+    }
   }
 `;

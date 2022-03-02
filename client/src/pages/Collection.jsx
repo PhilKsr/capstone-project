@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "../components/Modal";
 import Costs from "../components/Costs/Costs";
-import Cost from "../images/costIcon.svg";
-import Edit from "../images/editIcon.svg";
-import Remove from "../images/removeIcon.svg";
+import Cost from "../assets/costIcon.svg";
+import Edit from "../assets/editIcon.svg";
+import Remove from "../assets/removeIcon.svg";
 import Button from "../components/Button";
 
 export default function Collection() {
@@ -82,7 +82,7 @@ export default function Collection() {
               size='0.45rem 0.45rem 0.35rem 0.45rem'>
               <img src={Remove} alt='remove' data-testid='removeRoadtrip' />
             </Button>
-            <NavLink to={`/roadtrip/${oneRoadtrip._id}`}>
+            <NavLink to={`/map/${oneRoadtrip._id}`}>
               <Button size='0.45rem 0.45rem 0.35rem 0.45rem'>
                 <img src={Edit} alt='edit' />
               </Button>
@@ -158,5 +158,39 @@ const Roadtripcard = styled.div`
 
   .visible {
     opacity: 100%;
+  }
+  @media (min-width: 768px) {
+    width: 100%;
+    gap: 1rem;
+    margin-top: 2rem;
+    border-radius: 0%;
+    h2 {
+      padding: 0;
+      font-size: 2rem;
+    }
+    li {
+      margin: 0;
+    }
+
+    div + div {
+      flex-basis: 20%;
+      flex-direction: row;
+
+      button {
+        margin-right: 1rem;
+      }
+    }
+    :nth-child(odd) {
+      width: 60%;
+      display: flex;
+      align-self: start;
+      justify-content: center;
+    }
+    :nth-child(even) {
+      width: 60%;
+      display: flex;
+      align-self: end;
+      justify-content: center;
+    }
   }
 `;

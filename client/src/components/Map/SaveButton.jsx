@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../Button";
-import Save from "../../images/saveIcon.svg";
-import Confirm from "../../images/confirmIcon.svg";
+import Save from "../../assets/saveIcon.svg";
+import Confirm from "../../assets/confirmIcon.svg";
 
 export default function SaveButton({
   roadtrip,
@@ -66,6 +66,11 @@ const SaveRoadtripButton = styled.div`
     margin-right: 5.5rem;
     margin-bottom: 5rem;
   }
+  @media (min-width: 768px) {
+    button {
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 const ConfirmationSign = styled.div`
@@ -76,5 +81,11 @@ const ConfirmationSign = styled.div`
     right: 0;
     margin-right: 10.2rem;
     margin-bottom: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    button {
+      margin-bottom: 1rem;
+    }
   }
 `;

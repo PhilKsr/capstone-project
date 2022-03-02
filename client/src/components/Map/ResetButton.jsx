@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Modal from "../Modal";
-import Reset from "../../images/resetIcon.svg";
+import Reset from "../../assets/resetIcon.svg";
 
 export default function ResetButton({ onResetRoadtrip }) {
   const [backupQuestion, setBackupQuestion] = useState(false);
@@ -34,5 +34,10 @@ const StyledResetButton = styled.div`
     left: 0;
     margin-left: 5.5rem;
     margin-bottom: 5rem;
+  }
+  @media (min-width: 768px) {
+    button {
+      margin-bottom: 1rem;
+    }
   }
 `;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "./Button";
-import Add from "../images/addIcon.svg";
+import Add from "../assets/addIcon.svg";
 
 export default function AddPackingListItem({ onGetNewItem }) {
   const addItem = (event) => {
@@ -49,5 +49,11 @@ const FormContainer = styled.form`
 
   button {
     margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    input {
+      width: 100%;
+    }
   }
 `;
