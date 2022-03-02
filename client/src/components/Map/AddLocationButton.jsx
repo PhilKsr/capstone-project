@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "../Button";
-import Pin from "../../images/pinIcon.svg";
+import Pin from "../../assets/pinIcon.svg";
 
 export default function AddButton({ onSetAddNewLocation, addNewLocation }) {
   return (

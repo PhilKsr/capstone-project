@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../Button";
-import Save from "../../images/saveIcon.svg";
-import Confirm from "../../images/confirmIcon.svg";
+import Save from "../../assets/saveIcon.svg";
+import Confirm from "../../assets/confirmIcon.svg";
 
 export default function SaveButton({
   roadtrip,

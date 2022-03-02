@@ -36,9 +36,13 @@ const ExploreSection = styled.section`
     display: inline-block;
     height: 100vh;
     width: 100vw;
-    background-position: center center;
+    background-position: center;
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
   }
 `;

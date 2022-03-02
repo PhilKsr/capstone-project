@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Visible from "../../images/visibleIcon.svg";
-import Invisible from "../../images/invisibleIcon.svg";
+import Visible from "../../assets/visibleIcon.svg";
+import Invisible from "../../assets/invisibleIcon.svg";
 import Button from "../Button";
 
 export default function ShowAllLocationsButton({

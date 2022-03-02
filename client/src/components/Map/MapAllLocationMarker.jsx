@@ -6,7 +6,7 @@ import {
   isLocationAlreadyOnRoadtrip,
 } from "../../lib/roadtripHelpers";
 import Button from "../Button";
-import Add from "../../images/addIcon.svg";
+import Add from "../../assets/addIcon.svg";
 
 export default function AllLocationMarker({
   locations,

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Locate from "../../images/locateIcon.svg";
+import Locate from "../../assets/locateIcon.svg";
 import Button from "../Button";
 
 export default function LocateButton({ mapInstance }) {

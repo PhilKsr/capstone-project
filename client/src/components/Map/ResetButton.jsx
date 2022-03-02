@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Modal from "../Modal";
-import Reset from "../../images/resetIcon.svg";
+import Reset from "../../assets/resetIcon.svg";
 
 export default function ResetButton({ onResetRoadtrip }) {
   const [backupQuestion, setBackupQuestion] = useState(false);

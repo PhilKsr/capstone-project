@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Button from "../Button";
-import Filter from "../../images/filterIcon.svg";
+import Filter from "../../assets/filterIcon.svg";
 
 export default function FilterMenu({
   checkFilteredLocations,

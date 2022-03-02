@@ -82,7 +82,7 @@ export default function Collection() {
               size='0.45rem 0.45rem 0.35rem 0.45rem'>
               <img src={Remove} alt='remove' data-testid='removeRoadtrip' />
             </Button>
-            <NavLink to={`/roadtrip/${oneRoadtrip._id}`}>
+            <NavLink to={`/map/${oneRoadtrip._id}`}>
               <Button size='0.45rem 0.45rem 0.35rem 0.45rem'>
                 <img src={Edit} alt='edit' />
               </Button>
