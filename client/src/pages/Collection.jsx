@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "../components/Modal";
 import Costs from "../components/Costs/Costs";
-import RoadtripCard from "../components/RoadtripCard";
+import Cost from "../images/costIcon.svg";
+import Edit from "../images/editIcon.svg";
+import Remove from "../images/removeIcon.svg";
+import Button from "../components/Button";
 
 export default function Collection() {
   const [roadtrips, setRoadtrips] = useState([]);
@@ -43,17 +47,55 @@ export default function Collection() {
     setIndex(index);
   };
 
+  const showButtons = () => {
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+      if (button.classList.contains("visible")) {
+        button.classList.remove("visible");
+      } else {
+        button.classList.add("visible");
+      }
+    });
+  };
+
   return (
     <CardContainer>
-      {roadtrips.map((oneRoadtrip, index) => (
-        <RoadtripCard
-          oneRoadtrip={oneRoadtrip}
-          index={index}
-          costHandler={costHandler}
-          backupHandler={backupHandler}
-          id={oneRoadtrip._id}
-        />
+      {roadtrips.map((oneRoadtrip) => (
+        <Roadtripcard
+          onClick={showButtons}
+          key={oneRoadtrip._id}
+          data-testid='roadtrip'>
+          <div>
+            <h2>{oneRoadtrip.name}</h2>
+            <ul className='locations__list'>
+              {oneRoadtrip?.locations?.map((oneLocation) => (
+                <li key={oneLocation._id}>
+                  {oneLocation.properties.name}{" "}
+                  <small>({oneLocation.type})</small>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <Button
+              onClickFunction={() => backupHandler(index)}
+              size='0.45rem 0.45rem 0.35rem 0.45rem'>
+              <img src={Remove} alt='remove' data-testid='removeRoadtrip' />
+            </Button>
+            <NavLink to={`/roadtrip/${oneRoadtrip._id}`}>
+              <Button size='0.45rem 0.45rem 0.35rem 0.45rem'>
+                <img src={Edit} alt='edit' />
+              </Button>
+            </NavLink>
+            <Button
+              onClickFunction={() => costHandler(index)}
+              size='0.45rem 0.45rem 0.35rem 0.45rem'>
+              <img src={Cost} alt='costs' data-testid='costsButton' />
+            </Button>
+          </div>
+        </Roadtripcard>
       ))}
+
       {backupQuestion && (
         <Modal
           onBackupHandler={backupHandler}
@@ -61,6 +103,7 @@ export default function Collection() {
           delete
         </Modal>
       )}
+
       {costsList && (
         <Costs
           costHandler={costHandler}
@@ -80,4 +123,40 @@ const CardContainer = styled.div`
   width: 100%;
   font-size: 1rem;
   margin-bottom: 5rem;
+`;
+
+const Roadtripcard = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 95%;
+  width: 90%;
+  margin: 1rem 0 1rem 0;
+  padding: 1rem;
+  background-color: var(--secondary);
+  color: var(--tertiary);
+  border-radius: 15px;
+  padding: 1rem;
+  min-height: min-content;
+
+  li {
+    margin: 0.4rem;
+  }
+
+  h2 {
+    padding: 1rem;
+  }
+
+  div + div {
+    flex-basis: 5%;
+  }
+
+  button {
+    transition: opacity 0.6s;
+    opacity: 0%;
+    margin: 0.3rem 0 0.3rem 0;
+  }
+
+  .visible {
+    opacity: 100%;
+  }
 `;
