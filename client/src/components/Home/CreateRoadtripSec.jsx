@@ -19,7 +19,7 @@ export default function CreateRoadtripSec() {
         <p>
           Discover locations in the area you are heading to. Get excited while
           planning the Roadtrip. Did you find anything new on your researches?
-          Add the location and shareit with the rest of the world.
+          Add the location and share it with the rest of the world.
         </p>
       </div>
       <div>

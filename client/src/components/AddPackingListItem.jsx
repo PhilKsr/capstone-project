@@ -54,11 +54,11 @@ const FormContainer = styled.form`
     :hover {
       opacity: 100%;
     }
+  }
 
-    @media (min-width: 768px) {
-      input {
-        width: 100%;
-      }
+  @media (min-width: 768px) {
+    input {
+      width: 100%;
     }
     button {
       padding: 1rem 3rem;
