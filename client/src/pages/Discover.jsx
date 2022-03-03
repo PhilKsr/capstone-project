@@ -121,7 +121,7 @@ const ContentContainer = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     margin-top: 3rem;
     section {
       background-color: var(--primary);

@@ -29,7 +29,7 @@ const AddLocationButton = styled.div`
     margin-bottom: 9rem;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     button {
       margin-bottom: 5rem;
     }

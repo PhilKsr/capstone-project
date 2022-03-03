@@ -159,7 +159,7 @@ const Roadtripcard = styled.div`
   .visible {
     opacity: 100%;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     width: 100%;
     gap: 1rem;
     margin-top: 2rem;

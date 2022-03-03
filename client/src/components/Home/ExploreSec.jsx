@@ -42,7 +42,7 @@ const ExploreSection = styled.section`
     background-repeat: no-repeat;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     display: none;
   }
 `;

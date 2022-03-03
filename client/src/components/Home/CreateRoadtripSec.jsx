@@ -66,7 +66,7 @@ const CreateRoadtripSection = styled.section`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     padding: 0;
     h2 {
       padding: 5rem;
