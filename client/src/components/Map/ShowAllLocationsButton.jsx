@@ -29,7 +29,7 @@ const VisibilityButton = styled.div`
     margin-right: 10.2rem;
     margin-bottom: 5rem;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     button {
       margin-bottom: 1rem;
     }

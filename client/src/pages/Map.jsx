@@ -191,7 +191,7 @@ const RoadtripName = styled.input`
     opacity: 100%;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     width: 25rem;
     margin-right: 1.2rem;
     margin-top: 2.5rem;

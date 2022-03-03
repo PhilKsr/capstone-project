@@ -73,7 +73,7 @@ const ItemsList = styled.ul`
   .line-through {
     text-decoration: line-through;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     li {
       justify-content: space-between;
       width: 100%;

@@ -114,7 +114,7 @@ const FooterNavbar = styled.ul`
     outline: none;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     display: none;
   }
 
@@ -137,7 +137,7 @@ const FooterNavbar = styled.ul`
 
 const HeaderNavbar = styled.header`
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     background-color: var(--tertiary);
     display: flex;
     gap: 4rem;

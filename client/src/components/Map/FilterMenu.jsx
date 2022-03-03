@@ -75,7 +75,7 @@ const FilterContainer = styled.div`
     transform: scale(1.5);
     margin-right: 1rem;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     button {
       margin-bottom: 1rem;
     }

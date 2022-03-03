@@ -27,7 +27,7 @@ const CoverImage = styled.div`
   background-image: url("https://images.unsplash.com/photo-1502320332898-8ec6e74e147f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
   background-size: cover;
   background-position-x: 40%;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     display: none;
   }
 `;
@@ -35,7 +35,7 @@ const CoverImage = styled.div`
 const CoverVideo = styled.div`
   display: none;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     display: flex;
     justify-content: center;
     align-items: center;

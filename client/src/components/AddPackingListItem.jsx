@@ -56,7 +56,7 @@ const FormContainer = styled.form`
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     input {
       width: 100%;
     }
