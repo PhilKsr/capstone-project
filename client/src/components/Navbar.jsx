@@ -22,7 +22,7 @@ export default function Navbar() {
         </li>
 
         <li>
-          <NavLink to='collection' data-testid='collectionLink'>
+          <NavLink to='/collection' data-testid='collectionLink'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               height='24px'
@@ -35,7 +35,7 @@ export default function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to='roadtrip'>
+          <NavLink to='map'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               height='24px'

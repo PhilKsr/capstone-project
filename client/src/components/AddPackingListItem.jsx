@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Button from "./Button";
-import Add from "../assets/addIcon.svg";
 
 export default function AddPackingListItem({ onGetNewItem }) {
   const addItem = (event) => {
@@ -16,10 +15,10 @@ export default function AddPackingListItem({ onGetNewItem }) {
 
   return (
     <FormContainer onSubmit={addItem}>
-      <input type='text' name='formItem' placeholder='Add item...' />
+      <input type='text' name='formItem' />
       <div data-testid='addButton'>
         <Button data-testid='addButton'>
-          <img src={Add} alt='add' />
+          <h3>ADD</h3>
         </Button>
       </div>
     </FormContainer>
@@ -39,21 +38,37 @@ const FormContainer = styled.form`
     border: none;
     width: 13rem;
     height: 30px;
-    padding: 1.3rem;
+    padding: 1.5rem;
     border-radius: 15px;
     text-align: center;
     :focus {
       outline: none;
     }
   }
-
   button {
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    color: orange;
     margin: 0;
-  }
 
-  @media (min-width: 768px) {
-    input {
-      width: 100%;
+    :hover {
+      opacity: 100%;
+    }
+
+    @media (min-width: 768px) {
+      input {
+        width: 100%;
+      }
+    }
+    button {
+      padding: 1rem 3rem;
+      border-radius: 15px;
+      margin: 0;
+      color: orange;
+
+      :hover {
+        opacity: 100%;
+      }
     }
   }
 `;

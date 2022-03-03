@@ -31,7 +31,7 @@ export default function CreateRoadtripSec() {
       </div>
       <NavLink to={`/map`}>
         <Button data-testid='createNewRoadtrip'>
-          <img src={Add} alt='add' data-testid='createNewRoadtrip' />
+          <h3>START</h3>
         </Button>
       </NavLink>
     </CreateRoadtripSection>
@@ -46,12 +46,24 @@ const CreateRoadtripSection = styled.section`
   h2 {
     font-size: 1.5rem;
     padding: 1.5rem;
+    margin: 2rem;
   }
   h3 {
     padding-top: 1rem;
   }
   a {
     padding: 1rem;
+  }
+
+  button {
+    padding: 0rem 2rem 1rem;
+    border-radius: 15px;
+    margin: 3rem;
+    color: orange;
+
+    :hover {
+      opacity: 100%;
+    }
   }
 
   @media (min-width: 768px) {
@@ -63,22 +75,15 @@ const CreateRoadtripSection = styled.section`
 
     h3 {
       font-size: 2rem;
-      transition: color 0.5s ease-in;
     }
 
     div {
       align-self: start;
       width: 45%;
-      padding: 1rem 6rem;
+      padding: 2rem 6rem;
       background-color: var(--primary);
       color: var(--tertiary);
       margin-bottom: 2rem;
-
-      :hover {
-        h3 {
-          color: coral;
-        }
-      }
 
       :last-of-type {
         align-self: start;
@@ -89,9 +94,10 @@ const CreateRoadtripSection = styled.section`
       align-self: end;
     }
     button {
-      padding: 1rem 5rem;
+      padding: 1rem 5rem 2rem;
       border-radius: 15px;
       margin: 3rem;
+      color: orange;
 
       :hover {
         opacity: 100%;

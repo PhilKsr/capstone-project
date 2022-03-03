@@ -125,7 +125,7 @@ const ContentContainer = styled.div`
     margin-top: 3rem;
     section {
       background-color: var(--primary);
-      width: 60%;
+      width: 70%;
       margin-bottom: 3rem;
       :nth-child(odd) {
         align-self: start;
@@ -144,7 +144,7 @@ const ContentContainer = styled.div`
     }
     a {
       font-size: 2.5rem;
-      padding: 1rem;
+      padding: 2rem;
     }
   }
 `;
