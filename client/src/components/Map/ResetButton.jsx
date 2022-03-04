@@ -17,16 +17,21 @@ export default function ResetButton({ onResetRoadtrip }) {
           <img src={Reset} alt='reset' />
         </Button>
       </StyledResetButton>
-      {backupQuestion && (
-        <Modal onBackupHandler={backupHandler} handleRoadtrip={onResetRoadtrip}>
-          reset
-        </Modal>
-      )}
+      <ModalContainer>
+        {backupQuestion && (
+          <Modal
+            onBackupHandler={backupHandler}
+            handleRoadtrip={onResetRoadtrip}>
+            reset
+          </Modal>
+        )}
+      </ModalContainer>
     </>
   );
 }
 
 const StyledResetButton = styled.div`
+  display: flex;
   button {
     position: absolute;
     z-index: 100;
@@ -40,4 +45,10 @@ const StyledResetButton = styled.div`
       margin-bottom: 1rem;
     }
   }
+`;
+
+const ModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

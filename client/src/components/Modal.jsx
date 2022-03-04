@@ -39,14 +39,10 @@ export default function Modal({ onBackupHandler, handleRoadtrip, children }) {
 const StyledModal = styled.div`
   position: fixed;
   z-index: 150;
-  bottom: 0;
-  left: 0;
   padding: 0 10px 0 10px;
-  margin-left: 2.5rem;
-  margin-bottom: 15rem;
+  top: 25%;
   background-color: var(--primary);
   color: white;
-  width: 80%;
   border-radius: 15px;
   h2 {
     text-align: center;
@@ -63,10 +59,6 @@ const StyledModal = styled.div`
     width: 100%;
     justify-content: space-evenly;
     padding-top: 1rem;
-  }
-
-  @media (min-height: 740px) {
-    margin-bottom: 20rem;
   }
 `;
 
