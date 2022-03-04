@@ -138,7 +138,7 @@ const GlobalStyle = createGlobalStyle`
   @media (min-width: 1024px) {
     .leaflet-container {
     width: 100%;
-    height: 86vh;
+    height: 87vh;
   }
 
   .leaflet-right {
