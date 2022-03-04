@@ -56,9 +56,18 @@ const StyledModal = styled.div`
   }
   div {
     display: flex;
-    width: 100%;
     justify-content: space-evenly;
     padding-top: 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    h2 {
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+    padding: 1rem 2rem;
   }
 `;
 
