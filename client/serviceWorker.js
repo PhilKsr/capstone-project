@@ -1,5 +1,5 @@
 let CACHE_NAME = "my-site-cache-v1";
-const urlsToCache = ["/", "/index.html"];
+const urlsToCache = ["/", "/map", "/collection", "/discover", "/packing-list"];
 self.addEventListener("install", function (event) {
   // Perform install steps
   event.waitUntil(
@@ -8,7 +8,6 @@ self.addEventListener("install", function (event) {
       return cache.addAll(urlsToCache);
     })
   );
-  self.skipWaiting();
 });
 
 self.addEventListener("fetch", function (event) {
@@ -18,6 +17,21 @@ self.addEventListener("fetch", function (event) {
         return response;
       }
       return fetch(event.request);
+    })
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  var cacheWhitelist = ["pwa-task-manager"];
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
     })
   );
 });
